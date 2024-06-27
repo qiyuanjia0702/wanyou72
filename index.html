@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>WebCat</title>
+ <style>
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; /* 防止滚动条出现 */
+}
+
+.zn {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 裁剪超出部分 */
+  object-position: center; /* 居中图片 */
+  z-index: -99999999;
+}
+ body{margin: 0; padding: 0;}
+ @media (min-width: 768px) {
+  /* 当屏幕宽度大于或等于768px时，应用这些样式 */
+  .zn{
+   width: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* 当屏幕宽度小于768px时，应用这些样式 */
+  .zn {
+  width:400%;
+  }
+}
+.f{
+  position: fixed;
+  top: %;
+  left: 10%;
+  width: 100%;
+  }
+#bd{
+  backdrop-filter: blur(10px); /* 模糊度可以根据需要调整 */
+  background: rgba(255, 255, 255, 0.2); /* 透明度和颜色可以根据需要调整 */
+  border-radius: 20px; /* 圆角可以根据需要调整 */
+  padding: 15px; /* 内边距可以根据需要调整 */
+  border: none; /* 去除边框 */
+  outline: none; /* 去除聚焦时的轮廓线 */
+  width: 50%;
+  color: white;
+}
+ .f>#bd::placeholder {
+   color: #fff; /* 设置占位符文本颜色 */
+}
+.ms{
+  color: white;
+  backdrop-filter: blur(10px); /* 模糊度可以根据需要调整 */
+  background: rgba(255, 255, 255, 0.2); /* 透明度和颜色可以根据需要调整 */
+  border-radius: 20px; /* 圆角可以根据需要调整 */
+  padding: 17.654px; /* 内边距可以根据需要调整 */
+  border: none; /* 去除边框 */
+  outline: none; /* 去除聚焦时的轮廓线 */
+  }
+  .sdd{
+    position: fixed;
+  top: 30%;
+  left: 3.62457%;
+    }
+ </style>
+ <script>
+ function search() {
+    var searchQuery = document.getElementById('bd').value;
+    var searchUrl = 'https://cn.bing.com/search?q=' + encodeURIComponent(searchQuery);
+    window.location.href = searchUrl;
+}
+
+ </script>
+  </head>
+  <body>	
+  <a href="http://wbs.us.to:2024/"><img class="sdd" src="1713777446160_preview_rev_1.png" width="100%;"/></a>
+  <div class="f"> <input type="text" id="bd" placeholder="请输入搜索内容">
+<button class="ms" onclick="search()">确定</button></div>
+ <img class="zn" src="https://bing.img.run/rand_uhd.php" alt="随机获取Bing历史壁纸UHD超高清原图" width="100%"/> 
+  </body>
+</html>
