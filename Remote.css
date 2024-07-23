@@ -1,15 +1,60 @@
-/* 消除超链接的蓝色文本和下划线效果 */
+.circle-image {
+width: 100px; /* 设置容器宽度 */
+height: 100px; /* 设置容器高度 */
+border-radius: 20%; /* 将容器变成圆形 */
+overflow: hidden; /* 防止图片超出容器边界 */
+margin: 0 auto;  /* 保持水平居中 */
+}
+.circle-image img {
+width: 100%; /* 图片宽度自适应容器 */
+height: auto; /* 图片高度自动调整，保持比例 */
+object-fit: cover; /* 图片填充整个容器并保持比例 */
+}
+#video-iodm {
+width: 100%; /* 设置容器宽度 */
+height: auto;  /* 视频高度自动调整，保持比例 */
+border-radius: 30px;
+overflow: hidden;
+}
+body {
+    font-family: Arial, sans-serif;
+    /* 添加背景图片 */
+    background-image: url("https://ipv4wp.axzzz.top:9503/f/yJjbig/%E7%88%B1%E5%9B%BD%E4%B8%BB%E4%B9%89.jpg");
+    /* 设置背景图片覆盖整个容器 */
+    background-size: cover;
+    /* 为了让背景图片始终位于最底层，不随页面内容滚动而滚动 */
+    background-attachment: fixed;
+    /* 可选：设置背景图片不重复 */
+    background-repeat: no-repeat;
+}
 a {
-color: inherit; /* 继承父元素颜色 */
-text-decoration: none; /* 消除下划线 */
+    text-decoration: none; /* 消除下划线 */
+    color: inherit; /* 继承父元素颜色 */
 }
 a:hover {
-text-decoration: underline; /* 鼠标悬停时显示下划线 */
-/* 你可以在这里添加鼠标悬停时的其他样式 */
+    text-decoration: underline; /* 鼠标悬停时显示下划线 */
 }
-/* 其他样式可以放在这里 */
-body {
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
+h5 {
+    font-size: 24px;
+    margin-top: 50px;
+    text-align: center; /* 修改此处为居中 */
+    color: #333;
 }
+#txt-content {
+    font-size: 17px;
+    margin-top: 25px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* 半透明的白色层以防止文本被遮挡 */
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2.0s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
