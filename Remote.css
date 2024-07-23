@@ -1,0 +1,15 @@
+/* 消除超链接的蓝色文本和下划线效果 */
+a {
+color: inherit; /* 继承父元素颜色 */
+text-decoration: none; /* 消除下划线 */
+}
+a:hover {
+text-decoration: underline; /* 鼠标悬停时显示下划线 */
+/* 你可以在这里添加鼠标悬停时的其他样式 */
+}
+/* 其他样式可以放在这里 */
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
