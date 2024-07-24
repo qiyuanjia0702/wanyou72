@@ -17,7 +17,7 @@
          li a:hover:not(.active) {background-color: #111;}
          .active {background-color: #4CAF50;}
          #player {border-radius: 15px; overflow: hidden;} /* 圆角边框 */
-         
+
          * {
     border: 0;
     margin: 0;
@@ -25,7 +25,6 @@
     outline: none;
     box-sizing: border-box;
 }
-
 body {
     font-family: Arial, sans-serif;
     /* 添加背景图片 */
@@ -43,7 +42,6 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
 
 #main {
     height: calc(98vh - 100px);
@@ -76,13 +74,21 @@ body {
     margin: 5px 5px;
     border-radius: 50px;
 }
+a {
+    text-decoration: none; /* 消除下划线 */
+    color: inherit; /* 继承父元素颜色 */
+}
+a:hover {
+    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+}
      </style>
 </head>
 <body>
 <div style="color: red;">
 <div style="text-align: center;">
-<br>
-<h3>明月挽幽</h3></div></div>
+<br><b>
+<a href="index.html"><h2>明月挽幽</h2></a>
+</b></div></div>
      <section id="main">
          <video id="player" src="https://api.qtkj.love/api/qttj.php" controls controlsList="nodownload" webkit-playsinline playsinline></video>
      </section>
@@ -123,5 +129,6 @@ body {
              }
          });
      </script>
+     <br><b><b><b><b></b></b></b></b><br><br>
 </body>
 </html>
