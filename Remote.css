@@ -6,6 +6,7 @@
         .contributor {
             margin: 10px;
             text-align: center;
+            cursor: pointer; 
         }
         .avatar {
             width: 50px;
