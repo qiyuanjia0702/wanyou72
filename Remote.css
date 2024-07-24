@@ -1,3 +1,21 @@
+.contributors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .contributor {
+            margin: 20px;
+            text-align: center;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .name {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
 .circle-image {
 width: 100px; /* 设置容器宽度 */
 height: 100px; /* 设置容器高度 */
