@@ -8,13 +8,13 @@
             text-align: center;
         }
         .avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 30%;
+            width: 50px;
+            height: 50px;
+            border-radius: 20%;
         }
         .name {
             margin-top: 10px;
-            font-size: 1.2em;
+            font-size: 0.8em;
         }
 .circle-image {
 width: 100px; /* 设置容器宽度 */
