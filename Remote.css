@@ -6,7 +6,6 @@
         .contributor {
             margin: 10px;
             text-align: center;
-            cursor: pointer; 
         }
         .avatar {
             width: 50px;
@@ -38,7 +37,7 @@ overflow: hidden;
 body {
     font-family: Arial, sans-serif;
     /* 添加背景图片 */
-    background-image: url("https://ipv4wp.axzzz.top:9503/f/yJjbig/%E7%88%B1%E5%9B%BD%E4%B8%BB%E4%B9%89.jpg");
+    background-image: url("https://www.loliapi.com/acg/pe/");
     /* 设置背景图片覆盖整个容器 */
     background-size: cover;
     /* 为了让背景图片始终位于最底层，不随页面内容滚动而滚动 */
