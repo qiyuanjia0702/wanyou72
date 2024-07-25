@@ -16,6 +16,9 @@
             margin-top: 10px;
             font-size: 0.8em;
         }
+      #v2{
+        display:none;
+      }
       #p2{
         display:none;
       }
