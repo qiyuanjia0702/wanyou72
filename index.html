@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 <script src="https://fastly.jsdelivr.net/gh/huangwb8/live2d_bensz@latest/front/autoload.js"></script>
+<script src="clipboard.js"></script>
 <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;"/>
 <link rel="stylesheet" href="Remote.css">
 <title>明月挽幽</title>
@@ -114,7 +115,23 @@
     </h5>
     <div style="text-align: center;">
     <div style="color: red;"><h4>
-    (服务器地址:mc4.mcla.fun:46637)
+    <p id="p1">服务器地址<br>👇</p>
+    <p id="p2">mc4.mcla.fun:46637</p>
+    <button onclick="ok()" class="btn">复制</button>
+    <script>
+      function ok(){
+        var p2 = document.getElementById("p2");
+        var clipboard = new ClipboardJS(".btn",{
+          text:function (trigger){
+            return p2.innerHTML;
+          }
+        })
+        document.getElementById("p1").innerHTML = "复制成功";
+        setTimeout(function (){
+          document.getElementById("p1").innerHTML = "点击复制";
+        },1000);
+      };
+    </script>
     </div></div></h4><br></h4>
     </p><br><br>
     </div></div>
@@ -166,35 +183,97 @@
     <a href="https://www.openfrp.net/"><img src="https://ipv4wp.axzzz.top:9503/f/29vCZ/openfrp.jpg" width="50" height="50"  style="margin-right: 50px; border-radius:50%;"></a>
     <a href="https://r.zyghit.cn/OpenFrpLauncherPreview_v57_dotNET481.exe"><img src="https://ipv4wp.axzzz.top:9503/f/29vCZ/openfrp.jpg" width="50" height="50" style="border-radius:50%;"></a>
     </div><br>
-    <h4>2.Java服<br>
+    <h4>2.Java服(Java)<br>
     就是Java版可进的服务器，Java基岩两者互不相通（注意:该服务器不会添加任何模组，仅添加插件）</h4>
     <div style="text-align: center;">
-    <div style="color: red;"><h4>
-    (服务器地址:awa.mcla.fun:37403)
-    </div></div></h4><br>
+    <div style="color: red;">
+    <p id="q1">服务器地址<br>👇</p>
+    <p id="q2">awa.mcla.fun:37403</p>
+    <button onclick="p3()" class="btn">复制</button>
+    <script>
+      function p3(){
+        var q2 = document.getElementById("q2");
+        var clipboard = new ClipboardJS(".btn",{
+          text:function (trigger){
+            return q2.innerHTML;
+          }
+        })
+        document.getElementById("q1").innerHTML = "复制成功";
+        setTimeout(function (){
+          document.getElementById("q1").innerHTML = "点击复制";
+        },1000);
+      };
+    </script>
+    </div></div><br>
     <h4>3.互通服（Java/Bedrock）<br>
     顾名思义，互通服就是Java版和基岩版可进的服务器，就相当于世面上的安卓能和苹果一起游玩（注意:该服务器不会添加任何模组，为服务器节省内存消耗的情况下预防bug行为）</h4>
     <div style="text-align: center;">
-    <div style="color: red;"><h4>
-    (服务器地址:time.mcla.fun:40554)
-    </div></div></h4><br>
+    <div style="color: red;">
+    <p id="o1">服务器地址<br>👇</p>
+    <p id="o2">time.mcla.fun:40554</p>
+    <button onclick="p4()" class="btn">复制</button>
+    <script>
+      function p4(){
+        var o2 = document.getElementById("o2");
+        var clipboard = new ClipboardJS(".btn",{
+          text:function (trigger){
+            return o2.innerHTML;
+          }
+        })
+        document.getElementById("o1").innerHTML = "复制成功";
+        setTimeout(function (){
+          document.getElementById("o1").innerHTML = "点击复制";
+        },1000);
+      };
+    </script>
+    </div></div><br>
     <h4>4.小型服务器（Java）<br>
     小型服务器是部署小型整合包，部署成本较少，属于长期服务器，而且该服务器也可以使用手机客户端PCL游玩。</h4>
     <div style="text-align: center;">
     <h4>《机械动力:完美世界》<br>整合包下载<br>👇<br><a href="https://www.123pan.com/s/7ceA-Zot5d.html"><img src="https://square.candycake.cloud/uploads/638320128884278582_f99d817c34.png" width="50" height="50" style="border-radius:50%; overflow: hidden;"></a></h4></div>
     <div style="color: red;">
     <div style="text-align: center;">
-    <h4>《服务器地址：time.mcla.fun:40890》</h4>
+    <p id="m1">服务器地址<br>👇</p>
+    <p id="m2">time.mcla.fun:40890</p>
+    <button onclick="p5()" class="btn">复制</button>
+    <script>
+      function p5(){
+        var m2 = document.getElementById("m2");
+        var clipboard = new ClipboardJS(".btn",{
+          text:function (trigger){
+            return m2.innerHTML;
+          }
+        })
+        document.getElementById("m1").innerHTML = "复制成功";
+        setTimeout(function (){
+          document.getElementById("m1").innerHTML = "点击复制";
+        },1000);
+      };
+    </script>
     </div></div>
     <h4>5.大型服务器（Java）<br>
     大型服务器是为了做测试开放，主要测试大型整合包，限期一个月左右，这里呢也可以全民捐赠进行追加时间，只要记住这里是Java游玩圣地就行</h4>
     <div style="color: red;">
     <h6 style="text-align: right;">——服务器预计9月中旬开启</h6></div>
     <div style="text-align: center;">
-    <h4>正式开服时，这里会显示链接<br>👇<br><div style="color: red;">
-    《服务器地址:》</h4></div><br>
-    <div style="text-align: center;">
-    <img src="">
+    <br><div style="color: red;">
+    <p id="j1">服务器地址<br>👇</p>
+    <p id="j2">不是老弟，想什么呢，还没开服</p>
+    <button onclick="p6()" class="btn">复制</button>
+    <script>
+      function p6(){
+        var j2 = document.getElementById("j2");
+        var clipboard = new ClipboardJS(".btn",{
+          text:function (trigger){
+            return j2.innerHTML;
+          }
+        })
+        document.getElementById("j1").innerHTML = "复制成功";
+        setTimeout(function (){
+          document.getElementById("j1").innerHTML = "点击复制";
+        },1000);
+      };
+    </script></div><br><br><br>
     </div></div></div>
     <h4><strong></strong></h4>
     </div></div>
