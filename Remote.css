@@ -62,7 +62,7 @@ h5 {
     font-size: 17px;
     margin-top: 25px;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* 半透明的白色层以防止文本被遮挡 */
+    background-color: rgba(255, 255, 255, 0.3); /* 半透明的白色层以防止文本被遮挡 */
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     animation: fadeIn 2.0s ease-in-out;
