@@ -98,13 +98,28 @@ h5 {
     color: #333;
 }
 #txt-content {
-    font-size: 17px;
-    margin-top: 25px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.3); /* 半透明的白色层以防止文本被遮挡 */
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 2.0s ease-in-out;
+font-size: 17px;
+margin-top: 25px;
+padding: 10px;
+background-color: rgba(255, 255, 255, 0.3); /* 半透明的白色层以防止文本被遮挡 */
+border-radius: 5px;
+box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+animation: fadeIn 2.0s ease-in-out;
+}
+/* 大屏幕下的样式 */
+@media (min-width: 900px) {
+#txt-content {
+/*PC样式*/
+font-size: 24px;
+margin-top: 35px;
+padding: 15px;
+background-color: rgba(255, 255, 255, 0.3); /* 半透明的白色层以防止文本被遮挡 */
+border-radius: 8px;
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+animation: fadeIn 2.0s ease-in-out;
+max-width: 750px; /* 将最大宽度限制为768像素 */
+margin: auto; /* 让内容居中对齐 */
+ }
 }
 @keyframes fadeIn {
     from {
@@ -114,4 +129,5 @@ h5 {
     to {
         opacity: 1;
         transform: scale(1);
-    }
+ }
+}
