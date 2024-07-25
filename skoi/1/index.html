@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="shortcut icon" href="appIcon.png" type="image/x-icon">
+    <title>云音乐歌单集</title>
+    <style>
+        * {
+            font-family: Sans-serif;
+        }
+
+        .splash {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #2196F3;
+            z-index: 1;
+        }
+
+        .splash svg {
+            position: fixed;
+            color: #fff;
+            left: calc(50% - 128px);
+            top: calc(50% - 128px);
+        }
+
+        .btn {
+            border: none;
+            outline: none;
+            padding: 8px 32px;
+            font-size: 16px;
+            background: #ddd;
+            text-transform: uppercase;
+        }
+
+        .btn-disabled {
+            color: rgba(0, 0, 0, 0.5);
+            opacity: 0.5;
+        }
+
+        .list-item {
+            transition: 0.2s;
+        }
+
+        .list-item:hover {
+            background: #ddd;
+            transition: 0.1s;
+        }
+
+        .list-item:active,
+        .list-item-active {
+            background: #aaa !important;
+            transition: 0s;
+        }
+
+        .list-item-container {
+            padding: 4px 8px;
+            transition: 0.3s;
+        }
+
+        .list-item-container:active,
+        .list-item-container-active {
+            transform: scale(0.9);
+            font-weight: bold;
+            transition: 0s;
+        }
+
+        .list-item-title {
+            font-size: 16px;
+        }
+
+        .list-item-content {
+            font-size: 12.5px;
+            opacity: 0.6;
+        }
+
+        .dialog {
+            position: fixed;
+            width: 80%;
+            left: calc(10% - 16px);
+            height: 80%;
+            top: calc(10% - 16px);
+            background: #fff;
+            z-index: 3;
+            padding: 16px;
+            outline: 1.5px solid #1976D2;
+            transform: scale(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.25s;
+            box-shadow: 0 10px 20px 5px rgba(64, 64, 64, 0.5);
+        }
+
+        @media(min-width:640px) {
+            .dialog {
+                width: 50%;
+                left: calc(25% - 16px);
+                transform: scale(1.05);
+            }
+        }
+
+        .dialog-opened {
+            transform: scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .dialog-title {
+            width: 100%;
+            height: 10%;
+            font-size: 20px;
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+
+        .dialog-title::webkit-scrollbar {
+            display: none;
+        }
+
+        .dialog-content {
+            width: 100%;
+            height: calc(80% - 36px);
+            padding: 12px 0;
+            overflow-y: scroll;
+        }
+
+        .dialog-btns {
+            width: 100%;
+            height: calc(10% - 4px);
+            padding-top: 4px;
+            text-align: right;
+            scrollbar-width: none;
+        }
+
+        .dialog-btns::webkit-scrollbar {
+            display: none;
+        }
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(255, 255, 255, 0.65);
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.25s;
+        }
+
+        .overlay-opened {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .link {
+            color: #1976D2;
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            -webkit-user-select: none;
+            -moz-user-focus: none;
+            -moz-user-select: none;
+        }
+
+        .dark .link {
+            color: #E6892D;
+        }
+
+        .link:hover {
+            color: #777;
+        }
+
+        .link:active,
+        .link-active {
+            color: #aaa !important;
+        }
+
+        @media(min-width:640px) {
+
+            .list-item-container:active,
+            .list-item-container-active {
+                transform: scale(0.98);
+            }
+
+            .dialog {
+                outline-width: 2px;
+            }
+        }
+
+        .dark-overlay {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .dark .dark-overlay {
+            backdrop-filter: invert(1);
+        }
+
+        .dark .splash,
+        .dark .overlay {
+            filter: invert(1);
+        }
+
+        .dark .overlay {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .dark .dialog {
+            outline-color: #E6892D;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="splash" id="splash">
+        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55c-2.21 0-4 1.79-4 4s1.79 4 4 4s4-1.79 4-4V7h4V3z" />
+        </svg>
+    </div>
+    <div class="dialog" id="playlists">
+        <div class="dialog-title">打开一个歌单
+        <div style="text-align: center;">
+        <img src="https://q.qlogo.cn/headimg_dl?dst_uin=3038886380&spec=640" alt="Unable to load" style="width: 15%; height: auto; object-fit: cover;"></div></div>
+        <div class="dialog-content">
+            <div style="text-align: center;">
+                <a class="link" onclick="javascript:switchTheme();" id="theme"></a>
+                <a class="link" onclick="javascript:switchBlur();" id="blur" style="margin-left: 32px;"></a>
+            </div>
+            <ol>
+                <li class="list-item" onclick="javascript:openPlaylist('Search/index.html');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">搜索</div>
+                        <div class="list-item-content">网易云音乐曲库搜索</div>
+                    </div>
+                </li>
+                <hr style="opacity: 0.5;">
+                <li class="list-item" onclick="javascript:openPlaylist('Pure/index.html');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">PURE - 纯音</div>
+                        <div class="list-item-content">内置歌单 • 480 首音乐</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('JPDY/index.html');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">极品电音</div>
+                        <div class="list-item-content">内置歌单 • 594 首音乐</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('BA/index.html');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">蔚蓝档案/碧蓝档案 | 更新中（全收录）</div>
+                        <div class="list-item-content">内置歌单 • 297 首音乐</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('BAOST/index.html');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">Blue Archive Original Soundtrack</div>
+                        <div class="list-item-content">内置歌单 • 114 首音乐</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('PIKA/index.html');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">PIKASONIC | 日语精选</div>
+                        <div class="list-item-content">内置歌单 • 27 首音乐</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Phi/index.html');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">【Phigros】游戏原声（详情见简介）</div>
+                        <div class="list-item-content">内置歌单 • 247 首音乐</div>
+                    </div>
+                </li>
+                <hr style="opacity: 0.5;">
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=19723756');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">飙升榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=3779629');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">新歌榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=2884035');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">原创榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=3778678');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">热歌榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=991319590');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐说唱榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=71384707');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐古典榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=1978921795');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐电音榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=71385702');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐ACG榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=745956260');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐韩语榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=2809513713');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐欧美热歌榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=2809577409');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐欧美新歌榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=3001835560');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐ACG动画榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=3001795926');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐ACG游戏榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+                <li class="list-item" onclick="javascript:openPlaylist('Dynamic/index.html?id=3001890046');">
+                    <div class="list-item-container">
+                        <div class="list-item-title">云音乐ACG VOCALOID榜</div>
+                        <div class="list-item-content">网易云音乐官方动态歌单</div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div class="dialog-btns"><button class="btn btn-disabled">取消</button></div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="dark-overlay"></div>
+    <script>
+        //通过 ID 获取元素
+        function gebi(id) {
+            return document.getElementById(id);
+        }
+        //页面加载完成时执行
+        window.onload = function() {
+            window.setTimeout(function() {
+                openDialog("playlists");
+            }, 100);
+            //检测主题设置
+            if (localStorage.getItem("darkTheme")) {
+                document.body.classList.add("dark");
+                gebi("theme").innerText = "切换至浅色主题";
+            } else {
+                gebi("theme").innerText = "切换至深色主题";
+            }
+            //检测透明效果设置
+            if (localStorage.getItem("blur")) {
+                gebi("blur").innerText = "禁用透明效果";
+            } else {
+                gebi("blur").innerText = "启用透明效果";
+            }
+            //触摸屏优化
+            var touchElements = ["list-item", "link", "list-item-container"];
+            var touchDelay = [0, 0, 0];
+            touchElements.forEach(function(item, delayIndex) {
+                document.querySelectorAll("." + item).forEach(function(itemObj, index) {
+                    itemObj.ontouchstart = function() {
+                        itemObj.classList.add(item + "-active");
+                    }
+                    itemObj.ontouchend = function() {
+                        window.setTimeout(function() {
+                            itemObj.classList.remove(item + "-active");
+                        }, touchDelay[delayIndex]);
+                    }
+                });
+            });
+        };
+        //打开对话框
+        function openDialog(id) {
+            gebi(id).classList.add("dialog-opened");
+            gebi("overlay").classList.add("overlay-opened");
+        }
+        //关闭对话框
+        function closeDialog(id) {
+            gebi(id).classList.remove("dialog-opened");
+            gebi("overlay").classList.remove("overlay-opened");
+        }
+        //打开歌单
+        function openPlaylist(url) {
+            closeDialog("playlists");
+            window.setTimeout(function() {
+                location.href = url;
+            }, 350);
+        }
+        //切换主题
+        function switchTheme() {
+            if (localStorage.getItem("darkTheme")) {
+                localStorage.removeItem("darkTheme");
+            } else {
+                localStorage.setItem("darkTheme", true);
+            }
+            location.href = "index.html";
+        }
+        //切换透明效果
+        function switchBlur() {
+            if (localStorage.getItem("blur")) {
+                localStorage.removeItem("blur");
+                gebi("blur").innerText = "启用透明效果";
+            } else {
+                localStorage.setItem("blur", true);
+                gebi("blur").innerText = "禁用透明效果";
+            }
+        }
+    </script>
+</body>
+
+</html>
