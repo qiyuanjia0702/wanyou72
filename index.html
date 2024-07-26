@@ -109,7 +109,174 @@
     <div style="text-align: center;">
     <a href="https://qm.qq.com/q/If5BV5n3SE"><img src="http://p.qlogo.cn/gh/869719941/869719941/0" alt="无法加载" width="60" height="60" style="border-radius:30%; overflow: hidden;"></a><br>
     <h6>(点击图片自动跳转)</h6>
+    </div></div></div><br><br>
+    <div id="txt-content">
+    <div style="text-align: center;">
+    <h3>服务器景色</h3>
+    <style id="v4">
+        .carousel {
+            max-width: 800px;
+            display: flex;
+            position: relative;
+            border-radius:10%;
+            overflow: hidden;
+        }
+
+        .carousel .control {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel .control .next, .carousel .control .prev {
+            position: absolute;
+            top: calc(50% - 2rem);
+            cursor: pointer;
+            user-select: none;
+            background: rgba(66, 66, 66, .66);
+            border-radius: 50%;
+            padding: 6px 8px 4px;
+        }
+
+        .carousel .control .next {
+            right: 1rem;
+        }
+
+        .carousel .control .prev {
+            left: 1rem;
+        }
+
+        .carousel img {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            /* 切换动画 改变transform时触发 0.5秒内完成 */
+            transition: transform .5s ease;
+        }
+
+        .carousel .control .indicators {
+            position: absolute;
+            right: 0;
+            bottom: 2rem;
+            left: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel .control .indicators .indicator {
+            flex: 0 1 auto;
+            width: 30px;
+            height: 3px;
+            margin-right: 3px;
+            margin-left: 3px;
+            cursor: pointer;
+            background-color: #fff;
+            background-clip: padding-box;
+            opacity: .5;
+            border-top: 1rem solid transparent;
+            border-bottom: 1rem solid transparent;
+            transition: opacity .5s ease;
+        }
+    </style> 
+  <script src="skoi/jq.js"></script> 
+  <!--
+    class="carousel" 为必填项
+    autoplay="true"  为选填项 开启自动播放
+    timeout="1000"   为选填项 开启自动播放间隔时间 默认5000
+--> 
+  <div id="v6" class="carousel" autoplay="true" timeout="3000" index="0"> 
+   <img id="v7" src="https://ipv4wp.axzzz.top:9503/f/g1RgsE/163155-64c0d9fb64c7d.jpg" style="transform: translateX(0%);"> 
+   <img id="v8" src="https://ipv4wp.axzzz.top:9503/f/64qmtM/4a17838ef233a6c9e510c2948c9641ab.jpg" style="transform: translateX(0%);"> 
+   <img id="v9" src="https://ipv4wp.axzzz.top:9503/f/mv6dTk/v2-c3d49659ba031b0411c92688eaba738b_r.jpg" style="transform: translateX(0%);"> 
+   <img id="v10" src="https://ipv4wp.axzzz.top:9503/f/1a6NIl/a7ac7cb3e862637fe79d58b660ea3682.jpg" style="transform: translateX(0%);"> 
+   <img id="v11" src="https://ipv4wp.axzzz.top:9503/f/bBmPuO/9cca3afcca8c0a79eac6a39aad5d65ec.jpg" style="transform: translateX(0%);"> 
+   <img id="v12" src="https://ipv4wp.axzzz.top:9503/f/B7Z6ia/89ce487b74da31797c19a3dc4ffc0d79.jpg" style="transform: translateX(0%);"> 
+   <div class="control">
+    <div class="prev">
+     <svg t="1690880358537" viewbox="0 0 1024 1024" p-id="2638" width="24" height="24">
+      <path style="fill: whitesmoke;" d="M659.748571 245.272381l-51.687619-51.687619-318.439619 318.585905 318.415238 318.268952 51.712-51.736381-266.703238-266.556952z" p-id="2639"></path>
+     </svg>
     </div>
+    <div class="next">
+     <svg t="1690880498698" viewbox="0 0 1024 1024" p-id="2777" width="24" height="24">
+      <path style="fill: whitesmoke;" d="M605.086476 512.146286L338.358857 245.272381l51.760762-51.687619 318.415238 318.585905L390.095238 830.415238l-51.687619-51.736381z" p-id="2778"></path>
+     </svg>
+    </div>
+    <div class="indicators">
+     <div class="indicator" style="opacity: 1;"></div>
+     <div class="indicator" style="opacity: 0.5;"></div>
+     <div class="indicator" style="opacity: 0.5;"></div>
+     <div class="indicator" style="opacity: 0.5;"></div>
+     <div class="indicator" style="opacity: 0.5;"></div>
+     <div class="indicator" style="opacity: 0.5;"></div>
+    </div>
+   </div>
+  </div> 
+  <script>
+    const init = function () {
+        const carousel = document.querySelector('.carousel');
+        const size = carousel.querySelectorAll('img').length;
+        const autoplay = carousel.getAttribute("autoplay") === "true";
+        const timeout = carousel.getAttribute("timeout") ? Number(carousel.getAttribute("timeout")) : 1000;
+        const auto = function () {
+            carousel.setAttribute('index', String(Number(carousel.getAttribute('index')) >= size - 1 ? 0 : Number(carousel.getAttribute('index')) + 1));
+        };
+        // 每5秒自动切换下一张
+        let interval = autoplay ? window.setInterval(auto, timeout) : null;
+        const observer = new MutationObserver(function (mutations) {
+            mutations.forEach(e => {
+                // 改为监听 attribute 的方案统一处理变化
+                if (e.target.className == 'carousel') {
+                    const index = e.target.getAttribute('index');
+                    document.querySelectorAll('.carousel img').forEach(img => {
+                        img.style.transform = 'translateX(' + (index * -100) + '%)';
+                    });
+                    document.querySelectorAll('.indicator').forEach((indicator, i) => {
+                        indicator.style.opacity = (i === Number(index) ? "1" : "0.5");
+                    });
+                    // 数值发生变化自动重新计算 避免闪屏
+                    if(autoplay){
+                        clearInterval(interval);
+                        interval = window.setInterval(auto, timeout);
+                    }
+                }
+            });
+        });
+        observer.observe(carousel, {attributes: true});
+        // 用js添加控制器模块dom 减少html中代码
+        const control = document.createElement('div');
+        control.className = 'control';
+        const prev = document.createElement('div');
+        prev.className = 'prev';
+        prev.innerHTML = '<svg t="1690880358537" viewBox="0 0 1024 1024" p-id="2638" width="24" height="24"><path style="fill: whitesmoke;" d="M659.748571 245.272381l-51.687619-51.687619-318.439619 318.585905 318.415238 318.268952 51.712-51.736381-266.703238-266.556952z" p-id="2639"></path></svg>';
+        const next = document.createElement('div');
+        next.className = 'next';
+        next.innerHTML = '<svg t="1690880498698" viewBox="0 0 1024 1024" p-id="2777" width="24" height="24"><path style="fill: whitesmoke;" d="M605.086476 512.146286L338.358857 245.272381l51.760762-51.687619 318.415238 318.585905L390.095238 830.415238l-51.687619-51.736381z" p-id="2778"></path></svg>';
+        prev.addEventListener('click', function () {
+            carousel.setAttribute('index', String(Number(carousel.getAttribute('index')) < 1 ? size - 1 : Number(carousel.getAttribute('index')) - 1));
+        });
+        next.addEventListener('click', function () {
+            carousel.setAttribute('index', String(Number(carousel.getAttribute('index')) >= size - 1 ? 0 : Number(carousel.getAttribute('index')) + 1));
+        });
+        const indicators = document.createElement('div');
+        indicators.className = 'indicators';
+        for (let i = 0; i < size; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator';
+            indicator.addEventListener('click', function () {
+                carousel.setAttribute('index', String(i));
+            });
+            indicators.appendChild(indicator);
+        }
+        control.appendChild(prev);
+        control.appendChild(next);
+        control.appendChild(indicators);
+        carousel.appendChild(control);
+        // 初始化index
+        carousel.setAttribute('index', '0');
+    }
+    window.onload = init;
+</script> 
     </div></div>
     </b><br><br>
     <div id="txt-content">
