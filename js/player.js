@@ -1,22 +1,22 @@
 document.getElementById("player-entirety").outerHTML = '<div id="player-entirety" oc="close">\n\t\t<div id="player-container">\n\t\t\t<span id="close-botton"></span>\n\t\t\t<h1 id="v2">音乐播放器</h1>\n\t\t\t<div id="music-info">\n\t\t\t\t<div id="music-cover" style="background-image: url(&quot;cover1.jpg&quot;);"></div>\n\t\t\t\t<div id="music-details">\n\t\t\t\t\t<div id="music-title">\n\t\t\t\t\t\t歌曲1\n\t\t\t\t\t</div>\n\t\t\t\t\t<div id="music-artist">\n\t\t\t\t\t\t歌手1\n\t\t\t\t\t</div>\n\t\t\t\t\t<div id="music-progress">\n\t\t\t\t\t\t00:00/00:00\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div id="controls">\n\t\t\t\t<button id="prev-button"><i id="v3" class="fas fa-backward"></i></button>\n\t\t\t\t<button id="play-button"><i class="fas fa-play"></i></button>\n\t\t\t\t<button id="next-button"><i id="v5" class="fas fa-forward"></i></button>\n\t\t\t</div>\n\t\t\t<div id="progress-bar">\n\t\t\t\t<div id="progress-bar-fill"></div>\n\t\t\t\t<div id="progress-bar-thumb"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div id="playerOpen"></div>\n\t</div>';
 // 音乐列表
 var playlist = playlist || [{
-        title: "歌曲1",
-        artist: "歌手1",
-        src: "https://cloud.blankwings.net/api/v3/file/get/2534/C400000C0qUQ2OMq7N.mp3?sign=qs-Lg08TsktdOfhjRnwHhu3AGNFOupmcM_dd4mFRf6Y%3D%3A0",
-        cover: "./1.jpg"
+        title: "Wake",
+        artist: "圈圈菌",
+        src: "https://ipv4wp.axzzz.top:9503/f/64gmSM/Wake-oao.mp3",
+        cover: "https://imgapi.cn/qq.php?qq=3038886380"
     },
     {
-        title: "歌曲2",
-        artist: "歌手2",
-        src: "https://cloud.blankwings.net/api/v3/file/get/2535/visions_-_qq%E9%9F%B3%E4%B9%90.mp3?sign=OhidZEEPZ614nYTupOwwZ8pfXZvSZczZ2We6SxjO388%3D%3A0",
-        cover: "./1.jpg"
+        title: "One Last Kiss",
+        artist: "宇多田ヒカル",
+        src: "https://ipv4wp.axzzz.top:9503/f/1agNFl/One%20Last%20Kiss-%E5%AE%87%E5%A4%9A%E7%94%B0%E3%83%92%E3%82%AB%E3%83%AB.mp3",
+        cover: "https://imgapi.cn/qq.php?qq=3038886380"
     },
     {
-        title: "empire",
-        artist: "歌手3",
-        src: "https://cloud.blankwings.net/api/v3/file/get/2537/empire.mp3?sign=5TZOvNRvih9IWpuE67-0wmDR4SAUnRjrQ5q_OJQqONI%3D%3A0",
-        cover: "https://y.gtimg.cn/music/photo_new/T002R300x300M000000flenb3XqrcF_1.jpg?max_age=2592000"
+        title: "What U Do",
+        artist: "Wild Culture/Shel Bee",
+        src: "https://ipv4wp.axzzz.top:9503/f/bBqPhO/What%20U%20Do-Wild%20Culture&Shel%20Bee.mp3",
+        cover: "https://imgapi.cn/qq.php?qq=3038886380"
     },
     // 更多歌曲...
 ];
