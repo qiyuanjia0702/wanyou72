@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/***********************************
-			/* www.dkewl.com */
 /***********************************/
 
 * {
@@ -279,10 +277,6 @@ button {
   position: relative;
 }
 
-.e-nav__link:after {
-  content: "回到首页";
-}
-
 .e-nav__link:hover:before {
   top: -60px;
   right: -50px;
@@ -524,5 +518,4 @@ button {
   .error__nav {
     margin-top: 20px;
   }
-}
-/* 刀客源码网 www.dkewl.com */
+}
