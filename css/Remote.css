@@ -1,133 +1,168 @@
+.bjimg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      object-fit: cover;
+    }
 .contributors {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .contributor {
-            margin: 10px;
-            text-align: center;
-        }
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 20%;
-        }
-        .name {
-            margin-top: 10px;
-            font-size: 0.8em;
-        }
-      #v2{
-        display:none;
-      }
-      #p2{
-        display:none;
-      }
-      #q2{
-        display:none;
-      }
-      #o2{
-        display:none;
-      }
-      #m2{
-        display:none;
-      }
-      #j2{
-        display:none;
-      }
-      .btn{
-        background-color: #00bfff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 16px;
-        background-color: rgba(0, 0, 0, 0.6);
-        cursor: pointer;
-      }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contributor {
+    margin: 10px;
+    text-align: center;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+}
+
+.name {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+#v2 {
+    display: none;
+}
+
+#p2 {
+    display: none;
+}
+
+#q2 {
+    display: none;
+}
+
+#o2 {
+    display: none;
+}
+
+#m2 {
+    display: none;
+}
+
+#j2 {
+    display: none;
+}
+
+.btn {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
 .circle-image {
-width: 100px; /* 设置容器宽度 */
-height: 100px; /* 设置容器高度 */
-border-radius: 20%; /* 将容器变成圆形 */
-overflow: hidden; /* 防止图片超出容器边界 */
-margin: 0 auto;  /* 保持水平居中 */
+    width: 100px;
+    /* 设置容器宽度 */
+    height: 100px;
+    /* 设置容器高度 */
+    border-radius: 20%;
+    /* 将容器变成圆形 */
+    overflow: hidden;
+    /* 防止图片超出容器边界 */
+    margin: 0 auto;
+    /* 保持水平居中 */
 }
+
 .circle-image img {
-width: 100%; /* 图片宽度自适应容器 */
-height: auto; /* 图片高度自动调整，保持比例 */
-object-fit: cover; /* 图片填充整个容器并保持比例 */
+    width: 100%;
+    /* 图片宽度自适应容器 */
+    height: auto;
+    /* 图片高度自动调整，保持比例 */
+    object-fit: cover;
+    /* 图片填充整个容器并保持比例 */
 }
+
 #video-iodm {
-  /* 设置容器宽度和高度 */
-  width: 100%;
-  height: auto;
-  border-radius: 30px;
-  overflow: hidden;
-  position: relative;
+    /* 设置容器宽度和高度 */
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
 }
+
 #video-iodm iframe {
-  /* 设置小窗样式 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+    /* 设置小窗样式 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
-html {
-    font-family: Arial, sans-serif;
-    /* 添加背景图片 */
-    background-image: url("https://www.loliapi.com/acg/pe/");
-    /* 设置背景图片覆盖整个容器 */
-    background-size: cover;
-    /* 为了让背景图片始终位于最底层，不随页面内容滚动而滚动 */
-    background-attachment: fixed;
-    /* 可选：设置背景图片不重复 */
-    background-repeat: no-repeat;
-}
+
 a {
-    text-decoration: none; /* 消除下划线 */
-    color: inherit; /* 继承父元素颜色 */
+    text-decoration: none;
+    /* 消除下划线 */
+    color: inherit;
+    /* 继承父元素颜色 */
 }
+
 a:hover {
-    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+    text-decoration: underline;
+    /* 鼠标悬停时显示下划线 */
 }
+
 h5 {
     font-size: 24px;
     margin-top: 50px;
-    text-align: center; /* 修改此处为居中 */
+    text-align: center;
+    /* 修改此处为居中 */
     color: #333;
 }
+
 #txt-content {
-font-size: 17px;
-margin-top: 25px;
-padding: 10px;
-background-color: rgba(255, 255, 255, 0.3); /* 半透明的白色层以防止文本被遮挡 */
-border-radius: 5px;
-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-animation: fadeIn 2.0s ease-in-out;
+    font-size: 17px;
+    margin-top: 25px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* 半透明的白色层以防止文本被遮挡 */
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2.0s ease-in-out;
 }
+
 /* 大屏幕下的样式 */
 @media (min-width: 900px) {
-#txt-content {
-/*PC样式*/
-font-size: 24px;
-margin-top: 35px;
-padding: 15px;
-background-color: rgba(255, 255, 255, 0.3); /* 半透明的白色层以防止文本被遮挡 */
-border-radius: 8px;
-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-animation: fadeIn 2.0s ease-in-out;
-max-width: 750px; /* 将最大宽度限制为768像素 */
-margin: auto; /* 让内容居中对齐 */
- }
+    #txt-content {
+        /*PC样式*/
+        font-size: 24px;
+        margin-top: 35px;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.3);
+        /* 半透明的白色层以防止文本被遮挡 */
+        border-radius: 8px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 2.0s ease-in-out;
+        max-width: 750px;
+        /* 将最大宽度限制为768像素 */
+        margin: auto;
+        /* 让内容居中对齐 */
+    }
 }
+
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: scale(0.8);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
- }
+    }
 }
