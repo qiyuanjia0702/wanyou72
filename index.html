@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,14 +11,11 @@
     <script src="js/clipboard.js"></script>
     <script src="js/wc.js"></script>
     <script src="js/jq.js"></script>
-    <script src="https://staticcdn.oopz.cn/invite_mobile/js/web-open-app.js"></script>
-    <script src="js/Invitation.js"></script>
     <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
     <link rel="stylesheet" href="css/Remote.css">
     <title>明月阁楼(Bmwy)</title>
 </head>
-
 <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
     <script type="text/javascript">
         document.body.oncontextmenu = document.body.ondragstart = document.body.onselectstart = document.body.onbeforecopy = function() {
@@ -114,21 +110,10 @@
                     </script>
                     <br><br>
                     <h5>加入频道<br>👇</h5>
-                </div>
-                <div style="text-align: center;">
-                    <div id="popup_background"></div>
-                    <div class="popup">
-                        <div class="area-img">
-                            <div id="area_banner">
-                                <div id="area_logo">
-                                </div>
-                            </div>
-                        </div>
-                        <div id="area_name"></div>
-                        <span id="invitation_content"></span>
-                        <div id="invitation_button"><img src="https://areacdn.oopz.cn/area/avatar/20240821/2f4d6a095f6d11efafda12d4d441986a.webp?sign=1724243627-mpSiwk-0-293f4973425e6ce010e8c67e3475a21e" alt="无法加载" width="60" height="60" style="border-radius:30%; overflow: hidden;"></div>
-                    </div><br>
-                    <h6>(点击图片自动跳转)<br>(企鹅社交软件无法跳转,并仅支持移动跳转)</h6>
+                    <a href="https://oopz.cn/i/H0ON6G">
+                    <img src="https://areacdn.oopz.cn/area/avatar/20240821/2f4d6a095f6d11efafda12d4d441986a.webp?sign=1724243627-mpSiwk-0-293f4973425e6ce010e8c67e3475a21e" alt="无法加载" width="60" height="60" style="border-radius:30%; overflow: hidden;"></a>
+                    <br>
+                    <h6>(点击图片自动跳转)<br>(企鹅社交软件无法跳转)</h6>
                 </div>
             </div>
         </div><br><br>
@@ -149,7 +134,7 @@
         <h4>2.😳资源包分享：<br>服主会在这里分享资源，不定期添加（不许催！催的断牛牛）</h4>
         <h4>3.😍游戏安装包：<br>顾名思义，不用我多讲是吧，它就是进服务器用到的东西，嘿嘿(*^▽^*)</h4>
         <h4>4.😘更多版本：<br>容纳史前游戏版本，可以挑选自己喜欢的版本，本服务器仅支持1.21版本(≧▽≦)</h4><br>
-        <h4 style="color: Blue;">提醒说明：<br>我还是要说一下，这些服务器地址不允许分享给别人，别人想玩就邀他进群！如果阿，如果因为你分享给别人导致服务器崩溃，你得进永久小黑屋懂不懂，而且还影响大家游玩。</h4>
+        <h4 style="color: Blue;">提醒说明：<br>我还是要说一下，这些服务器地址不允许分享给别人，别人想玩就邀他进频道！如果阿，如果因为你分享给别人导致服务器崩溃，你得进永久小黑屋懂不懂，而且还影响大家游玩。</h4>
         <div style="text-align: center">
             <h3 style="color: red;">
                 <br>
@@ -625,91 +610,5 @@
         <!--音乐播放器-->
         <script src="js/yinghua.js"></script>
         </div>
-        <script>
-            let officialWebsite = "https://m.oopz.cn",
-                ua = navigator.userAgent,
-                isMobile = /Mobi|Android|iPhone/i.test(ua),
-                isAndroid = -1 < ua.indexOf("Android") || -1 < ua.indexOf("Adr"),
-                isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
-                isWechat = "micromessenger" == ua.toLowerCase().match(/MicroMessenger/i),
-                isQQ = "qq/" == ua.toLowerCase().match(/QQ\//i),
-                isQQBrowser = -1 < ua.indexOf("MQQBrowser") || -1 < ua.indexOf("QQTheme"),
-                pathname = window.location.pathname,
-                invitationCode = pathname.split("/").pop(),
-                iosErrorCallbackFrom = "iosErrorCallback",
-                targetWeb = "oopzVip",
-                urlObj = new URL(window.location.href),
-                params = new URLSearchParams(urlObj.search),
-                paramFrom = void 0 === params.get("from") || null === params.get("from") ? "" : params.get("from"),
-                paramTarget = void 0 === params.get("target") || null === params.get("target") ? "" : params.get("target"),
-                isFromIOSErrorCallback = paramFrom.toLowerCase() === iosErrorCallbackFrom.toLowerCase(),
-                isTargetOpenApp = paramTarget.toLowerCase() === targetWeb.toLowerCase();
-            async function getChannelDetail(e) {
-                var a = getLocalStorageItem("oopz_share_api_url"),
-                    a = (await getData((null != a && "" !== a ? a : "https://api.oopz.cn") + "/invite/v1/codeDetail?code=" + invitationCode)).data,
-                    t = a.areaName,
-                    o = a.channelName,
-                    n = a.areaAvatar,
-                    r = a.banner,
-                    a = (a.channelType, a.status, document.getElementById("popup_background")),
-                    i = document.getElementById("area_banner"),
-                    l = document.getElementById("area_logo"),
-                    c = document.getElementById("area_name"),
-                    s = document.getElementById("invitation_content");
-                a.style.backgroundImage = `url(${r})`, i.src = r, l.src = n, c.innerText = t, s.innerText = o
-            }
-            async function getData(e) {
-                try {
-                    var a = await fetch(e, {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    });
-                    if (a.ok) return await a.json();
-                    throw new Error("网络请求错误, 状态码: " + a.status)
-                } catch (e) {
-                    throw console.error("请求失败:", e), e
-                }
-            }
-
-            function openMobileApp() {
-                var e = "oopz.cn/i/" + invitationCode,
-                    e = isFromIOSErrorCallback ? e : e + `?from=${iosErrorCallbackFrom}&target=` + targetWeb,
-                    a = "oopz://" + e,
-                    e = "https://" + e;
-                let t = document.getElementById("invitation_button");
-                isIOS ? window.location.href = e : new OpenApp({
-                    timeout: 3e3,
-                    scheme: a,
-                    applink: e,
-                    callback: function(e, a) {
-                        t.innerText = "接受邀请", "SUCCESS" !== e && openErrorCallback()
-                    }
-                }).open(), t.innerText = "加载中···"
-            }
-
-            function openErrorCallback() {
-                window.location.href = officialWebsite
-            }
-
-            function getLocalStorageItem(e) {
-                try {
-                    var a = localStorage.getItem(e);
-                    return null === a ? (console.log("Item not found in localStorage."), null) : a
-                } catch (e) {
-                    return console.error("Error reading from localStorage:", e), null
-                }
-            }
-            isMobile || window.location.replace("https://oopz.cn/s/" + invitationCode), !isIOS || isFromIOSErrorCallback || -1 !== window.location.href.indexOf("oopz.vip") || isTargetOpenApp || window.location.replace("https://oopz.vip/i/" + invitationCode), !isWechat && !isQQ && isIOS && isFromIOSErrorCallback && openErrorCallback(), document.addEventListener("DOMContentLoaded", async () => {
-                await getChannelDetail(invitationCode);
-                var e = document.getElementById("invitation_button");
-                let a = document.getElementById("shade");
-                e.addEventListener("click", function(e) {
-                    isWechat || isQQ ? a.style.display = "block" : openMobileApp()
-                })
-            })
-        </script>
     </body>
-
 </html>
