@@ -11,12 +11,15 @@
     <script src="js/clipboard.js"></script>
     <script src="js/wc.js"></script>
     <script src="js/jq.js"></script>
+    <script src="js/zd.js"></script>
     <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"  />
     <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
     <link rel="stylesheet" href="css/Remote.css">
     <title>明月阁楼(Bmwy)</title>
 </head>
 <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
+<div id="section1">
     <script type="text/javascript">
         document.body.oncontextmenu = document.body.ondragstart = document.body.onselectstart = document.body.onbeforecopy = function() {
             return false;
@@ -27,20 +30,22 @@
     </script><b>
         <br><br><br>
         <div class="circle-image">
-            <img src="https://q.qlogo.cn/headimg_dl?dst_uin=3038886380&spec=640" alt="your-image-description" s>
+        <button class="back-to-top" onclick="goToSection('section1')">↑</button>
+            <img class="animate__animated animate__bounce" src="https://q.qlogo.cn/headimg_dl?dst_uin=3038886380&spec=640" alt="your-image-description" s>
         </div><br>
         <div style="color: red;">
             <div style="text-align: center;">
-                <h3>服主:明月挽幽</h3>
+                <h3 class="animate__animated animate__bounce">服主:明月挽幽</h3>
+                </div>
+            </div><!--
                 <a href="https://qm.qq.com/q/qhdxTyczS2"><img src="https://im.qq.com/pcqq/images/windows/short_icon.ico" width="30" height="30" style="border-radius:10%; overflow: hidden;"></a>
-            </div>
-        </div>
+                -->
         </div><br><br>
         <div id="txt-content">
             <div style="text-align: center;">
                 <h2>频道规定</h2>
             </div>
-            <h6 style="text-align: right;">—由明月挽幽编辑并发布</h6>
+            <h6  style="text-align: right;">—由明月挽幽编辑并发布</h6>
             <h4>1.不正当分享:<br>不可以宣群或者链接，如：拼夕夕，未备案网站（非群主允许），带有低俗内容和链接，未经允许的安装包等（第一点想必都知道它的重要性）<br></h4>
             <h4>2.遵守法律法规:<br>本群内的所有活动必须遵守国家法律法规，不得发布违法、色情、暴力、赌博等不良信息。</h4>
             <h4>3.文明用语:<br>群内成员应文明用语，不得发表攻击性、侮辱性、歧视性言论，不得争吵、谩骂或诋毁他人。</h4>
@@ -204,6 +209,7 @@
             <div style="text-align: center;">
                 <div class="text" style=" text-align:center;">
                     <div style="color: red;"><b>
+                    <!--
                             <span>距离互通服结束还剩</span><br>
                             <span id="j_d">00</span>
                             <span id="j_h">00</span>
@@ -225,7 +231,7 @@
                             document.getElementById("j_s").innerHTML = s + " 秒";
                         }
                         setInterval(getRTime, 1000);
-                    </script>
+                    </script>-->
                     <div style="color: red;">
                         <h4>
                             <p id="p1">未开服<br>👇</p>
@@ -610,5 +616,11 @@
         <!--音乐播放器-->
         <script src="js/yinghua.js"></script>
         </div>
+        <script>
+		function goToSection(section) {
+			var hash = section;
+			window.location.hash = hash;
+		}
+	</script>
     </body>
 </html>
