@@ -13,9 +13,12 @@
     <script src="js/wc.js"></script>
     <script src="js/jq.js"></script>
     <script src="js/jiaz.js"></script>
+    <script src="js/Lantern.js"></script>
     <link rel="stylesheet" href="css/jiaz.css">
     <link rel="stylesheet" href="css/muj.css">
     <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
     <link rel="stylesheet" id='font-awesome-css' href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" type='text/css' media='all'>
     <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
     <link rel="stylesheet" href="css/Remote.css">
@@ -83,6 +86,21 @@
 
                 startDraw();
             }
+        </script>
+        <div id="lantern-wrapper" class="lantern-wrapper" no-select></div>
+        <script>
+            let lantern = new Lantern('lantern-wrapper', {
+                date: { // 日期格式：'月-日'
+                    from: '10-1', // 开始悬挂灯笼的日期
+                    to: '10-7' // 结束悬挂灯笼的日期
+                },
+                postion: {
+                    zIndex: 9999, // 整个灯笼的 z-index 属性
+                    lanternRL: [10, 100, 100, 10], // 灯笼距离边界的距离：左侧灯笼距离左边的距离，右侧登录距离右侧的距离；页面灯笼从左往右依次设置
+                    lanternTop: 0 // 灯笼距离顶部的距离。你也可以使用数组从左往右依次设置每个灯笼的距顶距离，例如：[0, 100, 200, 300]
+                },
+                content: '欢度国庆' // 灯笼内显示的文字，只会截取前四个字符
+            });
         </script>
         <div id="loading">
             <div id="loading_bg">
@@ -310,8 +328,7 @@
                     <div style="color: red;">
                         <h4>
                             <p id="p1">基岩服地址<br>👇</p>
-                            <p id="p2">地址：cow.mcla.fun 端口：12882
-                            </p>
+                            <p id="p2">地址：cow.mcla.fun 端口：12882</p>
                             <button onclick="ok()" class="btn">复制</button>
                             <script>
                                 function ok() {
@@ -337,10 +354,10 @@
                     <div class="text" style=" text-align:center;">
                         <div style="color: red;"><b>
                                 <span>距离互通服结束还剩</span><br>
-                                <span id="h_d">00</span>
+                                <!--<span id="h_d">00</span>
                                 <span id="h_h">00</span>
                                 <span id="h_m">00</span>
-                                <span id="h_s">00</span>
+                                <span id="h_s">00</span>-->
                         </div>
                         <script type="text/javascript">
                             function getRTime() {
@@ -359,8 +376,8 @@
                             setInterval(getRTime, 1000);
                         </script>
                         <div style="color: red;">
-                            <p id="o1">Java服地址<br>👇</p>
-                            <p id="o2">time.mcla.fun:40890</p>
+                            <p id="o1">已停服<br>👇</p>
+                            <p id="o2">感谢您的支持！</p>
                             <button onclick="p4()" class="btn">复制</button>
                             <script>
                                 function p4() {
@@ -379,103 +396,108 @@
                         </div>
                     </div>
                 </div><br>
-                <!--<h4>4.大型服务器（Java）<br>
-    大型服务器是部署大型整合包，部署成本较高，属于短期服务器，Beta服玩什么这个就为什么，基本上一到三个月但不会少于一个月。</h4>
-    <div style="text-align: center;">
-    <div class="text" style=" text-align:center;">
-    <div style="color: red;"><b>
-        <span>距离互通服结束还剩</span><br>
-        <span id="d_d">00</span>
-        <span id="d_h">00</span>
-        <span id="d_m">00</span>
-        <span id="d_s">00</span>
-    </div>
-    <script type="text/javascript">
-    function getRTime(){
-        var EndTime= new Date('0000/00/00 19:39:09'); //截止时间
-        var NowTime = new Date();
-        var t =EndTime.getTime() - NowTime.getTime();
-        var d=Math.floor(t/1000/60/60/24);
-        var h=Math.floor(t/1000/60/60%24);
-        var m=Math.floor(t/1000/60%60);
-        var s=Math.floor(t/1000%60);
-        document.getElementById("d_d").innerHTML = d + " 天";
-        document.getElementById("d_h").innerHTML = h + " 时";
-        document.getElementById("d_m").innerHTML = m + " 分";
-        document.getElementById("d_s").innerHTML = s + " 秒";
-    }
-    setInterval(getRTime,1000);
-    </script>
-    <div style="color: red;">
-    <h4>《未知整合包》<br>整合包下载<br>👇<br><a href="">
-    <img src="" width="50" height="50" style="border-radius:50%; overflow: hidden;"></a></h4></div>
-    <div style="color: red;">
-    <div style="text-align: center;">
-    <p id="m1">未开服<br>👇</p>
-    <p id="m2"></p>
-    <button onclick="p5()" class="btn">复制</button>
-    <script>
-      function p5(){
-        var m2 = document.getElementById("m2");
-        var clipboard = new ClipboardJS(".btn",{
-          text:function (trigger){
-            return m2.innerHTML;
-          }
-        })
-        document.getElementById("m1").innerHTML = "复制成功";
-        setTimeout(function (){
-          document.getElementById("m1").innerHTML = "点击复制";
-        },1000);
-      };
-    </script></div>
-    </div></div></div><br>
-    <h4>5.测试服Beta(Java/Bedrock)<br>
-    大型服务器是为了做测试开放，主要测试下次玩的内容，限期基本上一个星期左右，也可以叫它Beta服（测试结束不会删档，会继承即将要玩的服务器）</h4>
-    <div style="text-align: center;">
-    <div class="text" style=" text-align:center;">
-    <div style="color: red;"><b>
-        <span>距离互通服结束还剩</span><br>
-        <span id="c_d">00</span>
+                <h4>4.大型服务器（Java）<br>
+                    大型服务器是部署大型整合包，部署成本较高，属于短期服务器，Beta服玩什么这个就为什么，基本上一到三个月但不会少于一个月。</h4>
+                <div style="text-align: center;">
+                    <div class="text" style=" text-align:center;">
+                        <div style="color: red;"><b>
+                                <span>距离服务器结束还剩</span><br>
+                                <span id="d_d">00</span>
+                                <span id="d_h">00</span>
+                                <span id="d_m">00</span>
+                                <span id="d_s">00</span>
+                        </div>
+                        <script type="text/javascript">
+                            function getRTime() {
+                                var EndTime = new Date('2024/10/14 20:38:16'); //截止时间
+                                var NowTime = new Date();
+                                var t = EndTime.getTime() - NowTime.getTime();
+                                var d = Math.floor(t / 1000 / 60 / 60 / 24);
+                                var h = Math.floor(t / 1000 / 60 / 60 % 24);
+                                var m = Math.floor(t / 1000 / 60 % 60);
+                                var s = Math.floor(t / 1000 % 60);
+                                document.getElementById("d_d").innerHTML = d + " 天";
+                                document.getElementById("d_h").innerHTML = h + " 时";
+                                document.getElementById("d_m").innerHTML = m + " 分";
+                                document.getElementById("d_s").innerHTML = s + " 秒";
+                            }
+                            setInterval(getRTime, 1000);
+                        </script>
+                        <div style="color: red;">
+                            <h4>《辐射次时代5.1》<br>整合包下载<br>👇<br><a href="https://www.123pan.com/s/7ceA-85i5d.html">
+                                    <img src="https://square.candycake.cloud/uploads/2b9a7ca6b42118af2cfcf0bca9a1345d48123de4_db5f68900c.jpg" width="50" height="50" style="border-radius:50%; overflow: hidden;"></a></h4>
+                        </div>
+                        <div style="color: red;">
+                            <div style="text-align: center;">
+                                <p id="m1">服务器地址<br>👇</p>
+                                <p id="m2">nop.candycake.cloud:32376</p>
+                                <button onclick="p5()" class="btn">复制</button>
+                                <script>
+                                    function p5() {
+                                        var m2 = document.getElementById("m2");
+                                        var clipboard = new ClipboardJS(".btn", {
+                                            text: function(trigger) {
+                                                return m2.innerHTML;
+                                            }
+                                        })
+                                        document.getElementById("m1").innerHTML = "复制成功";
+                                        setTimeout(function() {
+                                            document.getElementById("m1").innerHTML = "点击复制";
+                                        }, 1000);
+                                    };
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <h4>5.测试服Beta(Java/Bedrock)<br>
+                    大型服务器是为了做测试开放，主要测试下次玩的内容，限期基本上一个星期左右，也可以叫它Beta服（测试结束不会删档，会继承即将要玩的服务器）</h4>
+                <div style="text-align: center;">
+                    <div class="text" style=" text-align:center;">
+                        <div style="color: red;"><b>
+                                <span>距离Beta服结束还剩</span><br>
+                                <!--<span id="c_d">00</span>
         <span id="c_h">00</span>
         <span id="c_m">00</span>
-        <span id="c_s">00</span>
-    </div>
-    <script type="text/javascript">
-    function getRTime(){
-        var EndTime= new Date('0000/00/00 19:39:09'); //截止时间
-        var NowTime = new Date();
-        var t =EndTime.getTime() - NowTime.getTime();
-        var d=Math.floor(t/1000/60/60/24);
-        var h=Math.floor(t/1000/60/60%24);
-        var m=Math.floor(t/1000/60%60);
-        var s=Math.floor(t/1000%60);
-        document.getElementById("c_d").innerHTML = d + " 天";
-        document.getElementById("c_h").innerHTML = h + " 时";
-        document.getElementById("c_m").innerHTML = m + " 分";
-        document.getElementById("c_s").innerHTML = s + " 秒";
-    }
-    setInterval(getRTime,1000);
-    </script>
-    <div style="color: red;">
-    <p id="j1">服务器地址<br>👇</p>
-    <p id="j2">不是老弟，想什么呢，还没开服</p>
-    <button onclick="p6()" class="btn">复制</button>
-    <script>
-      function p6(){
-        var j2 = document.getElementById("j2");
-        var clipboard = new ClipboardJS(".btn",{
-          text:function (trigger){
-            return j2.innerHTML;
-          }
-        })
-        document.getElementById("j1").innerHTML = "复制成功";
-        setTimeout(function (){
-          document.getElementById("j1").innerHTML = "点击复制";
-        },1000);
-      };
-    </script></div><br> -->
-    </div>
-    </div>
+        <span id="c_s">00</span>-->
+                        </div>
+                        <script type="text/javascript">
+                            function getRTime() {
+                                var EndTime = new Date('0000/00/00 19:39:09'); //截止时间
+                                var NowTime = new Date();
+                                var t = EndTime.getTime() - NowTime.getTime();
+                                var d = Math.floor(t / 1000 / 60 / 60 / 24);
+                                var h = Math.floor(t / 1000 / 60 / 60 % 24);
+                                var m = Math.floor(t / 1000 / 60 % 60);
+                                var s = Math.floor(t / 1000 % 60);
+                                document.getElementById("c_d").innerHTML = d + " 天";
+                                document.getElementById("c_h").innerHTML = h + " 时";
+                                document.getElementById("c_m").innerHTML = m + " 分";
+                                document.getElementById("c_s").innerHTML = s + " 秒";
+                            }
+                            setInterval(getRTime, 1000);
+                        </script>
+                        <div style="color: red;">
+                            <p id="j1">未开服<br>👇</p>
+                            <p id="j2">不是老弟，想什么呢，还没开服</p>
+                            <button onclick="p6()" class="btn">复制</button>
+                            <script>
+                                function p6() {
+                                    var j2 = document.getElementById("j2");
+                                    var clipboard = new ClipboardJS(".btn", {
+                                        text: function(trigger) {
+                                            return j2.innerHTML;
+                                        }
+                                    })
+                                    document.getElementById("j1").innerHTML = "复制成功";
+                                    setTimeout(function() {
+                                        document.getElementById("j1").innerHTML = "点击复制";
+                                    }, 1000);
+                                };
+                            </script>
+                        </div><br>
+                    </div>
+                </div>
     </div>
     </div><br><br>
     <div id="txt-content">
@@ -502,8 +524,23 @@
                     <img src="https://q.qlogo.cn/headimg_dl?dst_uin=475869041&spec=640" class="avatar">
                     <div class="name">jia1chen</div>
                 </div>
+                <div class="contributor">
+                    <img src="https://q.qlogo.cn/headimg_dl?dst_uin=1845568218&spec=640" class="avatar">
+                    <div class="name">TAOFANG1</div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <h5>源码分享</h5>
             </div>
         </div>
+        <pre class="line-numbers">
+        <code class="language-css">https://github.com/qiyuanjia0702/wanyou72/tree/main/Mim
+</code></pre>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script>
+            Prism.highlightAll();
+        </script>
     </div>
 
     <div id="landlord">
@@ -517,6 +554,8 @@
     </b>
     <script id="xplayer" src="https://music.yy.mba/Static/player/player.js" key="667a11b53bebb" m="1"></script>
     <script src="js/yinghua.js"></script>
+
+
     </div>
 </body>
 
