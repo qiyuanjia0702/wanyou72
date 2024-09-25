@@ -1,5 +1,5 @@
-alert("Burn render" +
-    "Storm strikes" +
+alert("此网站是测试计算机渲染" +
+    "移动端请勿访问！！！" +
     "Original project from GitHub")
 var cx, cy
 var glposition
