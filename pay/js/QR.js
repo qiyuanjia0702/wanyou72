@@ -72,16 +72,3 @@ window.onload = function() {
     setThemeBasedOnTime(); // 根据时间设置主题
     detectPaymentApp(); // 检测支付应用
 };
-// 禁止右键菜单功能
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault(); // 禁用默认右键功能
-    alert('禁止使用右键操作！'); // 弹出提示信息
-});
-
-// 禁用键盘上的全选快捷键 (Ctrl+A 或 Command+A)
-document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
-        e.preventDefault(); // 禁止全选操作
-        alert('禁止全选！'); // 弹出提示信息
-    }
-});
