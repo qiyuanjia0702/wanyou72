@@ -73,6 +73,17 @@ body.dark-mode {
     /* 过渡效果 */
 }
 
+#avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    /* 圆形头像 */
+    margin-bottom: 20px;
+    /* 与标题之间的间距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 添加阴影效果 */
+}
+
 body.dark-mode #qrcode-container {
     background-color: #2c2c2c;
     /* 黑暗模式下的二维码容器背景 */
