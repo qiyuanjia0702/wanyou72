@@ -1,120 +1,1456 @@
-<!DOCTYPE html>
-<html lang="zh">
-
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+	
+	<!-- Meta -->
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聚合支付</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        #qrcode {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            border: 1px solid #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        #qrcode img {
-            max-width: 100%;
-            max-height: 100%;
-            display: none;
-            /* 初始隐藏二维码，等待加载完成再显示 */
-        }
-
-        .loading {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            position: absolute;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .instruction {
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<!-- Title -->
+	<title>Bmwy</title>
+	
+	<!-- CSS Plugins -->
+    <link rel="stylesheet" href="css/plugins/bootstrap.min.css">
+	<link rel="stylesheet" href="css/plugins/simplebar.css">
+	<link rel="stylesheet" href="css/plugins/feather.css">
+	<link rel="stylesheet" href="css/plugins/font-awesome.css">
+	<link rel="stylesheet" href="css/plugins/swiper.min.css">
+	<link rel="stylesheet" href="css/plugins/magnific-popup.css">
+	
+	<!-- CSS Base -->
+	<link rel="stylesheet" href="css/style.css">
+	
 </head>
 
 <body>
-    <div class="container">
-        <h1>聚合支付二维码</h1>
-        <div id="qrcode">
-            <div class="loading" id="loading"></div> <!-- 加载图标 -->
-            <!-- 二维码图片会在 JavaScript 中动态插入 -->
-        </div>
-        <p class="instruction">请使用微信、支付宝、QQ扫码付款</p>
-    </div>
+	
+	<!-- Preloader -->
+	<div class="preloader">
+		<span>Kyle</span>
+		<p>0</p>
+	</div>
 
-    <script>
-        function detectPaymentApp() {
-            var ua = navigator.userAgent.toLowerCase();
-            var qrcodeElement = document.getElementById('qrcode');
-            var loadingElement = document.getElementById('loading');
-            var img = document.createElement('img'); // 创建二维码图片元素
+	<!-- Wrap Start -->
+	<div class="wrap">
+		
+  		<div class="page-wrap animate-none">
+			
+			<!-- Home Section -->
+    		<div class="page" data-x-pos="0"  data-y-pos="0">
+				
+				<div class="slider-wrap">
+					
+        			<!-- Bnner Section -->
+					<section class="slider-section">
+						<div class="swiper-container section-slider cursor-grab">
+							<div class="swiper-wrapper">
+								
+								<!-- Slide Item -->
+								<div class="swiper-slide" style="background-image: url(img/slider/1.jpg);">
+									<div class="content-outer">
+										<div class="content-box">
+											<div class="inner">
+												<h1>Bmwyの小屋</h1>
+												<p>欢迎您来到Bmwy的博客世界</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Slide Item -->
+								<div class="swiper-slide" style="background-image: url(img/slider/2.jpg);">
+									<div class="content-outer">
+										<div class="content-box">
+											<div class="inner">
+												<h1>技术和支持</h1>
+												<p>你想要web前端，还是Linux？</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Slide Item -->
+								<div class="swiper-slide" style="background-image: url(img/slider/3.jpg);">
+									<div class="content-outer">
+										<div class="content-box">
+											<div class="inner">
+												<h1>目标和计划</h1>
+												<p>自力更生 | 白手起家 | 万路其一</p>
+											</div>
+										</div>
+									</div>
+								</div>
+				
+								<!-- Slide Item -->
+								<div class="swiper-slide" style="background-image: url(img/slider/4.jpg);">
+									<div class="content-outer">
+										<div class="content-box">
+											<div class="inner">
+												<h1>爱好和兴趣</h1>
+												<p>编程交流 | 平静发呆 | 浩瀚思想者</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Slide Item -->
+								<div class="swiper-slide" style="background-image: url(img/slider/5.jpg);">
+									<div class="content-outer">
+										<div class="content-box">
+											<div class="inner">
+												<h1>娱乐与项目</h1>
+												<p>放松压力，缓解疲劳，自由世界</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Slide Item -->
+								<div class="swiper-slide" style="background-image: url(img/slider/6.jpg);">
+									<div class="content-outer">
+										<div class="content-box">
+											<div class="inner">
+												<h1>关于与经历</h1>
+												<p>想要了解Bmwy背后的故事？</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>  
+						
+						<div class="bottom-panel">
+                			<div class="slider-control-wrap">
+                    			<div class="left-side">
+                        			<div class="scroll-pagination">
+                            			<div class="swiper-pagination"></div>
+                        			</div>
+                        			<div class="swiper-counter">
+                            			<div id="current">01</div>
+                            			<div id="total"></div>
+									</div>
+									<div class="scroll-down">
+                            			<div class="mouse">
+                                			<div class="scroller"></div>
+                            			</div>
+                        			</div>
+								</div>
+							</div>              
+						</div>
+						
+						<div class="slider-nav">
+							<div class="slider-control slider-button-next hover magnetic" data-tooltip="Next" data-position="top">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-hidden="true">
+    								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        								<polygon points="0 0 24 0 24 24 0 24"></polygon>
+        								<rect fill="#000000" opacity="0.3" transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000) " x="7.5" y="7.5" width="2" height="9" rx="1"></rect>
+        								<path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997) "></path>
+    								</g>
+								</svg>
+							</div>
+							
+							<div class="slider-control slider-button-prev hover magnetic" data-tooltip="Prev" data-position="top">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-hidden="true">
+    								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        								<polygon points="0 0 24 0 24 24 0 24"></polygon>
+        								<rect fill="#000000" opacity="0.3" transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) " x="14" y="7" width="2" height="10" rx="1"></rect>
+        								<path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "></path>
+    								</g>
+								</svg>
+							</div>
+						</div>
+						
+					</section>
+				</div>
+				
+				<!-- Menu -->
+				<span class="page-nav nav-left-top up left hover">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        				<polygon points="0 0 24 0 24 24 0 24"></polygon>
+        				<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.5"></path>
+        				<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
+    					</g>
+					</svg> 个人
+				</span>
+				
+				<span class="page-nav nav-left-down down left hover">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+        					<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+    					</g>
+					</svg> 功能
+				</span>
+				
+				<span class="page-nav nav-right-top up right hover">
+					文件
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="ml">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"></path>
+        					<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"></path>
+							<rect fill="#000000" opacity="0.3" x="7" y="10" width="5" height="2" rx="1"></rect>
+        					<rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"></rect>
+    					</g>
+					</svg>
+				</span>
+				
+      			<span class="page-nav nav-right-down down right hover">
+					邮箱
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="ml">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z" fill="#000000" opacity="0.3"></path>
+        					<path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#000000"></path>
+    					</g>
+					</svg>
+				</span>
+				
+				<!-- Newsletter -->
+				<div class="newsletter hover" id="open-newsletter">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M8,13.1668961 L20.4470385,11.9999863 L8,10.8330764 L8,5.77181995 C8,5.70108058 8.01501031,5.63114635 8.04403925,5.56663761 C8.15735832,5.31481744 8.45336217,5.20254012 8.70518234,5.31585919 L22.545552,11.5440255 C22.6569791,11.5941677 22.7461882,11.6833768 22.7963304,11.794804 C22.9096495,12.0466241 22.7973722,12.342628 22.545552,12.455947 L8.70518234,18.6841134 C8.64067359,18.7131423 8.57073936,18.7281526 8.5,18.7281526 C8.22385763,18.7281526 8,18.504295 8,18.2281526 L8,13.1668961 Z" fill="#000000"></path>
+        					<path d="M4,16 L5,16 C5.55228475,16 6,16.4477153 6,17 C6,17.5522847 5.55228475,18 5,18 L4,18 C3.44771525,18 3,17.5522847 3,17 C3,16.4477153 3.44771525,16 4,16 Z M1,11 L5,11 C5.55228475,11 6,11.4477153 6,12 C6,12.5522847 5.55228475,13 5,13 L1,13 C0.44771525,13 6.76353751e-17,12.5522847 0,12 C-6.76353751e-17,11.4477153 0.44771525,11 1,11 Z M4,6 L5,6 C5.55228475,6 6,6.44771525 6,7 C6,7.55228475 5.55228475,8 5,8 L4,8 C3.44771525,8 3,7.55228475 3,7 C3,6.44771525 3.44771525,6 4,6 Z" fill="#000000" opacity="0.3"></path>
+    					</g>
+					</svg> Newsletter sign up
+				</div>
+				
+				<!-- Social -->
+				<div class="social">
+            		<ul>
+						<li class="hover magnetic"><a href="#">Ig</a></li>
+                		<li class="hover magnetic"><a href="#">Fb</a></li>
+						<li class="hover magnetic"><a href="#">Tw</a></li>
+						<li class="hover magnetic"><a href="#">Db</a></li>
+            		</ul>
+        		</div>	
+				
+				<!-- Logo -->
+				<div class="logo hover"></div>
+				
+				<!-- Icon "Full Menu" -->
+      			<div class="page-zoom zoom magnetic hover" data-tooltip="View all pages" data-position="bottom">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				
+				<!-- Page Transition List -->
+				<div class="animation-wrap hover" data-tooltip="Page Transition" data-position="right">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="show-fade magnetic">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3"></path>
+        					<path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000"></path>
+    					</g>
+					</svg>
 
-            // 图片加载完成后隐藏加载动画，显示二维码
-            img.onload = function() {
-                loadingElement.style.display = 'none'; // 隐藏加载图标
-                img.style.display = 'block'; // 显示二维码
-            };
+					<ul class="animation-list">
+						<li><span class="hover animation active" data-animation="animate-none">None</span></li>
+						<li><span class="hover animation" data-animation="animate-one">One</span></li>
+						<li><span class="hover animation" data-animation="animate-two">Two</span></li>
+						<li><span class="hover animation" data-animation="animate-three">Three</span></li>
+					</ul>  
+				</div>
+				
+				<!-- Music -->
+				<a class="cursor-sound music-bg">
+					<div class="sound">
+        				<span class="on">
+							<i class="feather ft-volume-2"></i>
+						</span>
+						
+        				<span class="off">
+							<i class="feather ft-volume-x"></i>
+						</span>
+      				</div>
+      				<div class="lines">
+        				<span></span>
+        				<span></span>
+        				<span></span>
+        				<span></span>
+						<span></span>
+						<span></span>
+      				</div>
+    			</a>
+				
+    		</div>
 
-            // 根据用户的应用类型设置二维码图片
-            if (ua.indexOf('micromessenger') > -1) {
-                img.src = 'https://ipv4wp.axzzz.top:9503/f/xWoNiE/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98.png'; // 微信支付二维码
-                img.alt = '微信支付二维码';
-            } else if (ua.indexOf('alipay') > -1) {
-                img.src = 'https://ipv4wp.axzzz.top:9503/f/N1mgCg/%E6%94%AF%E4%BB%98%E5%AE%9D.png'; // 支付宝支付二维码
-                img.alt = '支付宝支付二维码';
-            } else if (ua.indexOf('qq') > -1) {
-                img.src = 'https://ipv4wp.axzzz.top:9503/f/G0RBuN/QQ%E6%94%AF%E4%BB%98.png'; // QQ支付二维码
-                img.alt = 'QQ支付二维码';
-            } else {
-                // 未识别到支付应用，显示错误提示
-                qrcodeElement.innerHTML = '<p>未检测到指定应用，请手动选择支付方式。</p>';
-                return; // 停止后续操作
-            }
+			<!-- About Section -->
+    		<div class="page about" data-x-pos="-1" data-y-pos="1">
+      			<span class="page-nav hover nav-down down_">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+        					<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+    					</g>
+					</svg> 博客
+				</span>
+				
+				<span class="page-nav hover nav-right right_">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"></path>
+        					<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"></path>
+							<rect fill="#000000" opacity="0.3" x="7" y="10" width="5" height="2" rx="1"></rect>
+        					<rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"></rect>
+    					</g>
+					</svg> 文件
+				</span>
+				
+				<span class="page-nav hover nav-right-down down right">
+					首页
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="ml">
+						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<rect x="0" y="0" width="24" height="24"></rect>
+							<path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000"></path>
+						</g>
+					</svg>
+				</span>
+				
+				<section class="content container" data-simplebar>
+										
+					<!-- Section Title -->
+					<div class="header-page mt-50">
+						<h2>About Me</h2>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="magnetic">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<polygon points="0 0 24 0 24 24 0 24"/>
+								<path d="M11.2600599,5.81393408 L2,16 L22,16 L12.7399401,5.81393408 C12.3684331,5.40527646 11.7359848,5.37515988 11.3273272,5.7466668 C11.3038503,5.7680094 11.2814025,5.79045722 11.2600599,5.81393408 Z" fill="#000000" opacity="0.3"/>
+								<path d="M12.0056789,15.7116802 L20.2805786,6.85290308 C20.6575758,6.44930487 21.2903735,6.42774054 21.6939717,6.8047378 C21.8964274,6.9938498 22.0113578,7.25847607 22.0113578,7.535517 L22.0113578,20 L16.0113578,20 L2,20 L2,7.535517 C2,7.25847607 2.11493033,6.9938498 2.31738608,6.8047378 C2.72098429,6.42774054 3.35378194,6.44930487 3.7307792,6.85290308 L12.0056789,15.7116802 Z" fill="#000000"/>
+							</g>
+						</svg>
+					</div>
+					
+					<div class="row mt-70">
+					
+						<!-- Information Block -->
+						<div class="col-lg-8 col-sm-12">
+    						<div class="info box mb-100">
+								
+								<!-- Title Box -->
+								<h4>Personal Information</h4>
+								
+								<div class="row">
+									<div class="col-lg-4 col-sm-4">
+										<div class="photo">
+											<img src="img/user.jpg" alt="">
+										</div>	
+									</div>
+									<div class="col-lg-8 col-sm-8">
+										<h5>Alex Smith</h5>
+										<div class="loc">
+											<i class="fas fa-map-marked-alt"></i> New York, USA
+										</div>
+										<p>Hello! I’m Alex Smith a self-taught &amp; award winning Digital Designer &amp; Developer with over five years  work experience. I started in my children’s room, got pro at renowned digital agencies akij co and nork blue lebel. Now I’m based in USA, America, working for Apple fredmansky and enjoying the life in the countryside.
+										</p>
+										
+									</div>
+									
+									<!-- Icon Info -->
+									<div class="col-lg-3 col-sm-4">
+                                		<div class="info-icon">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<polygon fill="#000000" opacity="0.3" points="5 3 19 3 23 8 1 8"/>
+													<polygon fill="#000000" points="23 8 12 20 1 8"/>
+												</g>
+											</svg>
+                                     		<div class="desc-icon">
+												<h6>8 Years Job</h6>
+                                            	<p>Experience</p>
+                                       		</div>
+                                		</div>
+                                	</div>
+									
+									<!-- Icon Info -->
+									<div class="col-lg-3 col-sm-4">
+                                		<div class="info-icon">
+                                			<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+                                				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                					<polygon points="0 0 24 0 24 24 0 24"/>
+                                					<circle fill="#000000" opacity="0.3" cx="15" cy="17" r="5"/>
+                                					<circle fill="#000000" opacity="0.3" cx="9" cy="17" r="5"/>
+                                					<circle fill="#000000" opacity="0.3" cx="7" cy="11" r="5"/>
+                                					<circle fill="#000000" opacity="0.3" cx="17" cy="11" r="5"/>
+                                					<circle fill="#000000" opacity="0.3" cx="12" cy="7" r="5"/>
+                                				</g>
+                                			</svg>
+                                     		<div class="desc-icon">
+												<h6>500+ Projects</h6>
+                                            	<p>Completed</p>
+                                      		</div>
+                                		</div>
+                                	</div>
+									
+									<!-- Icon Info -->
+									<div class="col-lg-3 col-sm-4">
+                                		<div class="info-icon">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<path d="M3,12 C3,12 5.45454545,6 12,6 C16.9090909,6 21,12 21,12 C21,12 16.9090909,18 12,18 C5.45454545,18 3,12 3,12 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+													<path d="M12,15 C10.3431458,15 9,13.6568542 9,12 C9,10.3431458 10.3431458,9 12,9 C13.6568542,9 15,10.3431458 15,12 C15,13.6568542 13.6568542,15 12,15 Z" fill="#000000" opacity="0.3"/>
+												</g>
+											</svg>
+                                     		<div class="desc-icon">
+												<h6>Freelance</h6>
+                                           		<p>Available</p>
+                                        	</div>
+                                		</div>
+                                	</div>
+									
+									<!-- Icon Info -->
+									<div class="col-lg-3 col-sm-4">
+                                		<div class="info-icon">
+                                     		<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+                                     			<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                     				<rect x="0" y="0" width="24" height="24"/>
+                                     				<path d="M12,19 C15.8659932,19 19,15.8659932 19,12 C19,9.42267117 16.6666667,6.08933783 12,2 C7.33333333,6.08933783 5,9.42267117 5,12 C5,15.8659932 8.13400675,19 12,19 Z" fill="#000000" opacity="0.3"/>
+                                     				<rect fill="#000000" x="11" y="11" width="2" height="11" rx="1"/>
+                                     			</g>
+                                     		</svg>
+                                     		<div class="desc-icon">
+												<h6>Univercity</h6>
+                                           		<p>The New Scholl</p>
+                                        	</div>
+                                		</div>
+                                	</div>
+									
+									<a href="#" class="hover btn button" data-text="Download CV">
+										<b></b>
+										<b></b>
+										<span>D</span><span>o</span><span>w</span><span>n</span><span>l</span><span>o</span><span>a</span><span>d</span>
+										<span>C</span><span>V</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Information Block -->
+						<div class="col-lg-4 col-sm-12">
+    						<div class="box mb-100">
+								
+								<!-- Title Box -->
+								<h4>Video Presentation</h4>				
+								<div class="video">
+									<div class="video-play hover"></div>
+									<div class="video-content">
+                                        <!--https://www.youtube.com/embed/eFcTE9F9FOo?enablejsapi=1-->
+										<iframe id="video" src="" allowfullscreen="allowfullscreen"></iframe>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+					<div class="row">
+						
+						<div class="col-lg-4 col-sm-12">
+    						<div class="box mb-100">
+								
+								<h4>My Interests</h4>
+								
+								<div class="inter-icon">
+									<i class="feather ft-music"></i>
+									<div class="desc-inter">
+										<h6>Music</h6>
+									</div>
+								</div>
+								
+								<div class="inter-icon">
+									<i class="feather ft-video"></i>
+									<div class="desc-inter">
+										<h6>Movies</h6>
+									</div>
+								</div>
+								
+								<div class="inter-icon">
+									<i class="feather ft-camera"></i>
+									<div class="desc-inter">
+										<h6>Photos</h6>
+									</div>
+								</div>
+								
+								<div class="inter-icon">
+									<i class="fas fa-globe-americas"></i>
+									<div class="desc-inter">
+										<h6>Travelling</h6>
+									</div>
+								</div>
+								
+							</div>	
+						</div>	
+					
+						<!-- Testimonials Block -->
+						<div class="col-lg-8 col-sm-12">
+    						<div class="box testom-box mb-100">
+								
+								<!-- Title Box -->
+								<h4>Testimonials</h4>
+								
+								<div class="testimonials">
+									<div class="swiper-wrapper">
+										
+										<div class="testimonial-item swiper-slide">
+											<div class="testimonial-img">
+        										<img src="img/blog/img-2.jpg" alt="">
+											</div>
+											<div class="testimonial-content">
+												<span>16 October 2019</span>
+												<ul class="rating">
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+                                 				</ul>
+												<h5>Alex Doe</h5>
+												<p>Curabitur eleifend tempor gnceleris eget placeratvel phasellus eget sem just metup consequat gestas.</p>
+											</div>
+										</div>
+										
+										<div class="testimonial-item swiper-slide">
+											<div class="testimonial-img">
+        										<img src="img/portfolio/img-3.jpg" alt="">
+											</div>
+											<div class="testimonial-content">
+												<span>01 October 2019</span>
+												<ul class="rating">
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+                                 				</ul>
+												<h5>Stan Smith</h5>
+												<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi? </p>
+											</div>
+										</div>
+    
+										<div class="testimonial-item swiper-slide">
+											<div class="testimonial-img">
+        										<img src="img/portfolio/img-6.jpg" alt="">
+											</div>
+											<div class="testimonial-content">
+												<span>24 September 2019</span>
+												<ul class="rating">
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+													<li><i class="far fa-star"></i></li>
+                                 				</ul>
+												<h5>John Doe</h5>
+												<p>Tower Hamlets or mass or members of propaganda bananas real estate. However, a large and a mourning, vel euismod.</p>
+											</div>
+										</div>
+    
+									</div>
+									
+									<div class="testimonial-pagination"></div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						
+						<div class="col-lg-8 col-sm-12">
+    						<div class="box mb-100">
+								
+								<h4>Experience & Education</h4>
+								
+								<div class="experience" data-simplebar>
+								
+									<!-- Experience Item -->
+									<div class="item">
+										<div class="main">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3"/>
+													<path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000"/>
+												</g>
+											</svg>
+											<h5>Web Design</h5>
+											<p><i class="far fa-calendar-alt"></i>2012 - 2014 | Сompany Inc</p>
+										</div>
+										<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+									</div>
 
-            // 将二维码图片插入到页面中
-            qrcodeElement.appendChild(img);
-        }
+									<!-- Experience Item -->
+									<div class="item">
+										<div class="main">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3"/>
+													<path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000"/>
+												</g>
+											</svg>
+											<h5>Fornt-End Developer</h5>
+											<p><i class="far fa-calendar-alt"></i>2014 - 2015 | Сompany Inc</p>
+										</div>
+										<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+									</div>
 
-        // 页面加载完成后检测应用并显示相应的二维码
-        window.onload = function() {
-            detectPaymentApp();
-        };
-    </script>
+									<!-- Experience Item -->
+									<div class="item">
+										<div class="main">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3"/>
+													<path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000"/>
+												</g>
+											</svg>
+											<h5>Web Development</h5>
+											<p><i class="far fa-calendar-alt"></i>2015 - 2019 | Сompany Inc</p>
+										</div>
+										<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+									</div>
+								
+									<!-- Education Item -->
+									<div class="item">
+										<div class="main">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<path d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" fill="#000000"/>
+													<path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" fill="#000000" opacity="0.3"/>
+												</g>
+											</svg>
+											<h5>Phd</h5>
+											<p><i class="far fa-calendar-alt"></i>2011 - 2013 | Computer Science</p>
+										</div>
+										<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+									</div>
+
+									<!-- Education Item -->
+									<div class="item">
+										<div class="main">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<path d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" fill="#000000"/>
+													<path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" fill="#000000" opacity="0.3"/>
+												</g>
+											</svg>
+											<h5>Post Graduation</h5>
+											<p><i class="far fa-calendar-alt"></i>2013 - 2016 | Computer Science</p>
+										</div>
+										<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+									</div>
+
+									<!-- Education Item -->
+									<div class="item">
+										<div class="main">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"/>
+													<path d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" fill="#000000"/>
+													<path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" fill="#000000" opacity="0.3"/>
+												</g>
+											</svg>
+											<h5>Gradution</h5>
+											<p><i class="far fa-calendar-alt"></i>2016 - 2018 | Computer Science</p>
+										</div>
+										<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-lg-4 col-sm-12">
+    						<div class="box mb-100">
+								
+								<h4>Skills</h4>
+								
+								<!-- Skill Item -->
+								<div class="skill-item">
+									<h5>HTML5</h5>
+									<div class="progress">
+										<div class="progress-bar" style="width:98%">
+											<div class="progress-value">98%</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Skill Item -->
+								<div class="skill-item">
+									<h5>CSS3</h5>
+									<div class="progress">
+										<div class="progress-bar" style="width:85%">
+											<div class="progress-value">85%</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Skill Item -->
+								<div class="skill-item">
+									<h5>JavaScript</h5>
+									<div class="progress">
+										<div class="progress-bar" style="width:90%">
+											<div class="progress-value">90%</div>
+										</div>
+									</div>
+								</div>
+							
+								<!-- Skill Item -->
+								<div class="skill-item">
+									<h5>UI/UX designer</h5>
+									<div class="progress">
+										<div class="progress-bar" style="width:77%">
+											<div class="progress-value">77%</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</section>
+
+   			</div>
+			
+			<!-- Portfolio Section -->
+    		<div class="page portfolio" data-x-pos="1"  data-y-pos="1">
+    			<span class="page-nav hover nav-left left_">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        				<polygon points="0 0 24 0 24 24 0 24"></polygon>
+        				<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.5"></path>
+        				<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
+    					</g>
+					</svg> About
+				</span>
+				
+    			<span class="page-nav hover nav-down down_">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z" fill="#000000" opacity="0.3"></path>
+        					<path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#000000"></path>
+    					</g>
+					</svg> Contact
+				</span>
+				
+				<span class="page-nav hover nav-left-down down left">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<rect x="0" y="0" width="24" height="24"></rect>
+							<path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000"></path>
+						</g>
+					</svg> Home
+				</span>
+				
+    			<section class="content" data-simplebar>
+										
+					<!-- Section Title -->
+					<div class="header-page mt-70">
+						<h2>Portfolio</h2>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="magnetic">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M14.1124454,7.00625159 C14.0755336,7.00212117 14.0380145,7 14,7 L10,7 C9.96198549,7 9.92446641,7.00212117 9.88755465,7.00625159 L7.34761705,4.55799196 C6.95060373,4.17530866 6.9382927,3.54346816 7.32009765,3.14561006 L8.41948359,2 L15.5805164,2 L16.6799023,3.14561006 C17.0617073,3.54346816 17.0493963,4.17530866 16.6523829,4.55799196 L14.1124454,7.00625159 Z" fill="#000000"/>
+								<path d="M13.7640285,9 L15.4853424,18.1494183 C15.5450675,18.4668794 15.4477627,18.7936387 15.2240963,19.0267093 L12.7215131,21.6345146 C12.7120098,21.6444174 12.7023037,21.6541236 12.6924008,21.6636269 C12.2939201,22.0460293 11.6608893,22.0329953 11.2784869,21.6345146 L8.77590372,19.0267093 C8.55223728,18.7936387 8.45493249,18.4668794 8.5146576,18.1494183 L10.2359715,9 L13.7640285,9 Z" fill="#000000" opacity="0.3"/>
+							</g>
+						</svg>
+					</div>
+					
+					<!-- Portfolio Filter Row Start -->
+					<div class="row mt-100">
+						<div class="col-lg-12 col-sm-12 portfolio-filter">
+							<ul>
+								<li class="hover active" data-filter="*">All</li>
+								<li class="hover" data-filter=".brand">Brand</li>
+								<li class="hover" data-filter=".design">Design</li>
+								<li class="hover" data-filter=".graphic">Graphic</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Portfolio Item Row Start -->
+					<div class="row portfolio-items mt-100 mb-70">
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 graphic">
+							<figure>
+								<img src="img/portfolio/img-1.jpg" alt="">
+								<figcaption>
+									<h3>Frisor Barbershop</h3>
+									<p>
+										<i class="fas fa-filter"></i> Graphic
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"></polygon>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"></rect>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"></polygon>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"></polygon>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"></circle>
+										</g>
+									</svg>
+									<a class="image-link" href="img/portfolio/img-1.jpg"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 design">
+							<figure>
+								<img src="img/portfolio/img-2.jpg" alt="">
+									<figcaption>
+									<h3>Lamborghini</h3>
+									<p>
+										<i class="fas fa-filter"></i> Design
+										</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"></polygon>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"></rect>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"></polygon>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"></polygon>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"></circle>
+										</g>
+									</svg>
+									<a class="image-link" href="img/portfolio/img-2.jpg"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 brand">
+							<figure>
+								<img src="img/portfolio/img-3.jpg" alt="">
+								<figcaption>
+									<h3>Caroline Heves</h3>
+									<p>
+										<i class="fas fa-filter"></i> Graphic
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"/>
+											<rect fill="#000000" x="2" y="6" width="13" height="12" rx="2"/>
+											<path d="M22,8.4142119 L22,15.5857848 C22,16.1380695 21.5522847,16.5857848 21,16.5857848 C20.7347833,16.5857848 20.4804293,16.4804278 20.2928929,16.2928912 L16.7071064,12.7071013 C16.3165823,12.3165768 16.3165826,11.6834118 16.7071071,11.2928877 L20.2928936,7.70710477 C20.683418,7.31658067 21.316583,7.31658098 21.7071071,7.70710546 C21.8946433,7.89464181 22,8.14899558 22,8.4142119 Z" fill="#000000" opacity="0.3"/>
+										</g>
+									</svg>
+									<a class="video-link" href="https://www.youtube.com/watch?v=k_okcNVZqqI"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 graphic">
+							<figure>
+								<img src="img/portfolio/img-4.jpg" alt="">
+								<figcaption>
+									<h3>Red Football</h3>
+									<p>
+										<i class="fas fa-filter"></i> Design
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"></polygon>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"></rect>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"></polygon>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"></polygon>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"></circle>
+										</g>
+									</svg>
+									<a class="image-link" href="img/portfolio/img-4.jpg"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 design">
+							<figure>
+								<img src="img/portfolio/img-5.jpg" alt="">
+								<figcaption>
+									<h3>Harley Davidson</h3>
+									<p>
+										<i class="fas fa-filter"></i> Design
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"/>
+											<rect fill="#000000" x="2" y="6" width="13" height="12" rx="2"/>
+											<path d="M22,8.4142119 L22,15.5857848 C22,16.1380695 21.5522847,16.5857848 21,16.5857848 C20.7347833,16.5857848 20.4804293,16.4804278 20.2928929,16.2928912 L16.7071064,12.7071013 C16.3165823,12.3165768 16.3165826,11.6834118 16.7071071,11.2928877 L20.2928936,7.70710477 C20.683418,7.31658067 21.316583,7.31658098 21.7071071,7.70710546 C21.8946433,7.89464181 22,8.14899558 22,8.4142119 Z" fill="#000000" opacity="0.3"/>
+										</g>
+									</svg>
+									<a class="video-link" href="https://www.youtube.com/watch?v=k_okcNVZqqI"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 brand">
+							<figure>
+								<img src="img/portfolio/img-6.jpg" alt="">
+								<figcaption>
+									<h3>Kelsey Marie</h3>
+									<p>
+										<i class="fas fa-filter"></i> Brand
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"></polygon>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"></rect>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"></polygon>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"></polygon>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"></circle>
+										</g>
+									</svg>
+									<a class="image-link" href="img/portfolio/img-6.jpg"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 graphic">
+							<figure>
+								<img src="img/portfolio/img-7.jpg" alt="">
+								<figcaption>
+									<h3>Porsche 911</h3>
+									<p>
+										<i class="fas fa-filter"></i> Brand
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"></polygon>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"></rect>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"></polygon>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"></polygon>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"></circle>
+										</g>
+									</svg>
+									<a class="image-link" href="img/portfolio/img-7.jpg"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 design">
+							<figure>
+								<img src="img/portfolio/img-8.jpg" alt="">
+								<figcaption>
+									<h3>Austin Wade</h3>
+									<p>
+										<i class="fas fa-filter"></i> Brand
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"></polygon>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"></rect>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"></polygon>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"></polygon>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"></circle>
+										</g>
+									</svg>
+									<a class="image-link" href="img/portfolio/img-8.jpg"></a>
+								</figcaption>
+							</figure>
+						</div>
+						
+						<!-- Portfolio Item -->
+						<div class="item hover col-lg-4 col-sm-6 design">
+							<figure>
+								<img src="img/portfolio/img-9.jpg" alt="">
+								<figcaption>
+									<h3>Gaelle Marcel</h3>
+									<p>
+										<i class="fas fa-filter"></i> Brand
+									</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="icon">
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"></polygon>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"></rect>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"></polygon>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"></polygon>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"></circle>
+										</g>
+									</svg>
+									<a class="image-link" href="img/portfolio/img-9.jpg"></a>
+								</figcaption>
+							</figure>
+						</div>
+					
+					</div>
+					
+				</section>
+				
+    		</div>
+    
+			<!-- Blog Section -->
+    		<div class="page blog" data-x-pos="-1"  data-y-pos="-1">
+    			<span class="page-nav hover nav-up up_">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        				<polygon points="0 0 24 0 24 24 0 24"></polygon>
+        				<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.5"></path>
+        				<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
+    					</g>
+					</svg> About
+				</span>
+					
+    			<span class="page-nav hover nav-right right_">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z" fill="#000000" opacity="0.3"></path>
+        					<path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#000000"></path>
+    					</g>
+					</svg> Contact
+				</span>
+					
+				<span class="page-nav hover nav-right-top up right">
+					Home
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="ml">
+						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<rect x="0" y="0" width="24" height="24"></rect>
+							<path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000"></path>
+						</g>
+					</svg>
+				</span>
+				
+    			<section class="content" data-simplebar>
+										
+					<!-- Section Title -->
+					<div class="header-page mt-70">
+						<h2>Blog</h2>				
+						<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="magnetic">
+    						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    							<rect x="0" y="0" width="24" height="24"/>
+    							<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="9"/>
+    							<path d="M11.7357634,20.9961946 C6.88740052,20.8563914 3,16.8821712 3,12 C3,11.9168367 3.00112797,11.8339369 3.00336944,11.751315 C3.66233009,11.8143341 4.85636818,11.9573854 4.91262842,12.4204038 C4.9904938,13.0609191 4.91262842,13.8615942 5.45804656,14.101772 C6.00346469,14.3419498 6.15931561,13.1409372 6.6267482,13.4612567 C7.09418079,13.7815761 8.34086797,14.0899175 8.34086797,14.6562185 C8.34086797,15.222396 8.10715168,16.1034596 8.34086797,16.2636193 C8.57458427,16.423779 9.5089688,17.54465 9.50920913,17.7048097 C9.50956962,17.8649694 9.83857487,18.6793513 9.74040201,18.9906563 C9.65905192,19.2487394 9.24857641,20.0501554 8.85059781,20.4145589 C9.75315358,20.7620621 10.7235846,20.9657742 11.7357634,20.9960544 L11.7357634,20.9961946 Z M8.28272988,3.80112099 C9.4158415,3.28656421 10.6744554,3 12,3 C15.5114513,3 18.5532143,5.01097452 20.0364482,7.94408274 C20.069657,8.72412177 20.0638332,9.39135321 20.2361262,9.6327358 C21.1131932,10.8600506 18.0995147,11.7043158 18.5573343,13.5605384 C18.7589671,14.3794892 16.5527814,14.1196773 16.0139722,14.886394 C15.4748026,15.6527403 14.1574598,15.137809 13.8520064,14.9904917 C13.546553,14.8431744 12.3766497,15.3341497 12.4789081,14.4995164 C12.5805657,13.664636 13.2922889,13.6156126 14.0555619,13.2719546 C14.8184743,12.928667 15.9189236,11.7871741 15.3781918,11.6380045 C12.8323064,10.9362407 11.963771,8.47852395 11.963771,8.47852395 C11.8110443,8.44901109 11.8493762,6.74109366 11.1883616,6.69207022 C10.5267462,6.64279981 10.170464,6.88841096 9.20435656,6.69207022 C8.23764828,6.49572949 8.44144409,5.85743687 8.2887174,4.48255778 C8.25453994,4.17415686 8.25619136,3.95717082 8.28272988,3.80112099 Z M20.9991771,11.8770357 C20.9997251,11.9179585 21,11.9589471 21,12 C21,16.9406923 17.0188468,20.9515364 12.0895088,20.9995641 C16.970233,20.9503326 20.9337111,16.888438 20.9991771,11.8770357 Z" fill="#000000" opacity="0.3"/>
+    						</g>
+    					</svg>
+					</div>
+					
+					<div class="row blog-masonry mt-100 mb-20">
+						
+						<!-- Blog Item -->
+						<div class="col-lg-4 col-sm-6">
+							<div class="blog-item">
+								<div class="thumbnail hover">
+									<a href="blog-page.html">
+										<img src="img/blog/img-1.jpg" alt="">
+									</a>
+								</div>
+								<h4><a href="blog-page.html" class="hover">Travel</a></h4>
+								<ul>
+                            		<li><a href="#" class="hover">Stan Smith</a></li>
+                            		<li><a href="#" class="hover">Career</a></li>
+                           		</ul>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<div class="head">
+									<span class="date">Nov 22, 2019</span>
+									<span class="book">
+										<a href="#" class="hover"><i class="far fa-heart"></i></a>
+										<a href="#" class="hover"><i class="far fa-bookmark"></i></a>
+									</span>
+								</div>
+								<div class="blog-btn">
+									<a href="blog-page.html" class="button hover" data-text="Read more">
+										<b></b>
+										<b></b>
+										<span>R</span><span>e</span><span>a</span><span>d</span>
+										<span>M</span><span>o</span><span>r</span><span>e</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Blog Item -->
+						<div class="col-lg-4 col-sm-6">
+							<div class="blog-item two">
+								<div class="thumbnail hover">
+									<a href="blog-page.html">
+										<img src="img/blog/img-2.jpg" alt="">
+									</a>
+								</div>
+								<div class="desc">
+									<h4><a href="blog-page.html" class="hover">Tattoo Ideas</a></h4>
+									<ul>
+                            			<li><a href="#" class="hover">Alex Smith</a></li>
+                            			<li><a href="#" class="hover">Work</a></li>
+                           			</ul>
+									<div class="blog-btn">
+										<a href="blog-page.html" class="button hover" data-text="Read more">
+											<b></b>
+											<b></b>
+											<span>R</span><span>e</span><span>a</span><span>d</span>
+											<span>M</span><span>o</span><span>r</span><span>e</span>
+										</a>
+									</div>
+								</div>
+								<div class="head">
+									<span class="date">Nov 01, 2019</span>
+									<span class="book">
+										<a href="#" class="hover"><i class="far fa-heart"></i></a>
+										<a href="#" class="hover"><i class="far fa-bookmark"></i></a>
+									</span>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Blog Item -->
+						<div class="col-lg-4 col-sm-6">
+							<div class="blog-item">
+								<div class="thumbnail hover">
+									<a href="blog-page.html">
+										<img src="img/blog/img-3.jpg" alt="">
+									</a>
+								</div>
+								<h4><a href="blog-page.html" class="hover">Tasty Food</a></h4>
+								<ul>
+                            		<li><a href="#" class="hover">Alex Smith</a></li>
+                            		<li><a href="#" class="hover">Lifestyle</a></li>
+                           		</ul>
+								<p>Proin pulvinar massa neque, vel sodales augue aliquet placerat. Sed consequat commodo magna ac luctus.</p>
+								<div class="head">
+									<span class="date">Oct 22, 2019</span>
+									<span class="book">
+										<a href="#" class="hover"><i class="far fa-heart"></i></a>
+										<a href="#" class="hover"><i class="far fa-bookmark"></i></a>
+									</span>
+								</div>
+								<div class="blog-btn">
+									<a href="blog-page.html" class="button hover" data-text="Read more">
+										<b></b>
+										<b></b>
+										<span>R</span><span>e</span><span>a</span><span>d</span>
+										<span>M</span><span>o</span><span>r</span><span>e</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Blog Item -->
+						<div class="col-lg-4 col-sm-6">
+							<div class="blog-item">
+								<div class="thumbnail hover">
+									<a href="blog-page.html">
+										<img src="img/blog/img-4.jpg" alt="">
+									</a>
+								</div>
+								<h4><a href="blog-page.html" class="hover">Bicycle</a></h4>
+								<ul>
+                            		<li><a href="#" class="hover">Stan Smith</a></li>
+                            		<li><a href="#" class="hover">Work</a></li>
+                           		</ul>
+								<div class="head">
+									<span class="date">Oct 15, 2019</span>
+									<span class="book">
+										<a href="#" class="hover"><i class="far fa-heart"></i></a>
+										<a href="#" class="hover"><i class="far fa-bookmark"></i></a>
+									</span>
+								</div>
+								<div class="blog-btn">
+									<a href="blog-page.html" class="button hover" data-text="Read more">
+										<b></b>
+										<b></b>
+										<span>R</span><span>e</span><span>a</span><span>d</span>
+										<span>M</span><span>o</span><span>r</span><span>e</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Blog Item -->
+						<div class="col-lg-4 col-sm-6">
+							<div class="blog-item">
+								<div class="thumbnail hover">
+									<a href="blog-page.html">
+										<img src="img/blog/img-5.jpg" alt="">
+									</a>
+								</div>
+								<h4><a href="blog-page.html" class="hover">Road Success</a></h4>
+								<ul>
+                            		<li><a href="#" class="hover">Stan Smith</a></li>
+                            		<li><a href="#" class="hover">Career</a></li>
+                           		</ul>
+								<p>Proin pulvinar massa neque, vel sodales augue aliquet placerat.</p>
+								<div class="head">
+									<span class="date">Sep 28, 2019</span>
+									<span class="book">
+										<a href="#" class="hover"><i class="far fa-heart"></i></a>
+										<a href="#" class="hover"><i class="far fa-bookmark"></i></a>
+									</span>
+								</div>
+								<div class="blog-btn">
+									<a href="blog-page.html" class="button hover" data-text="Read more">
+										<b></b>
+										<b></b>
+										<span>R</span><span>e</span><span>a</span><span>d</span>
+										<span>M</span><span>o</span><span>r</span><span>e</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Blog Item -->
+						<div class="col-lg-4 col-sm-6">
+							<div class="blog-item two">
+								<div class="thumbnail hover">
+									<a href="blog-page.html">
+										<img src="img/blog/img-6.jpg" alt="">
+									</a>
+								</div>
+								<div class="desc">
+									<h4><a href="blog-page.html" class="hover">Art of Living</a></h4>
+									<ul>
+                            			<li><a href="#" class="hover">Alex Smith</a></li>
+                            			<li><a href="#" class="hover">Lifestyle</a></li>
+                           			</ul>
+									<div class="blog-btn">
+										<a href="blog-page.html" class="button hover" data-text="Read more">
+											<b></b>
+											<b></b>
+											<span>R</span><span>e</span><span>a</span><span>d</span>
+											<span>M</span><span>o</span><span>r</span><span>e</span>
+										</a>
+									</div>
+								</div>	
+								<div class="head">
+									<span class="date">Sep 10, 2019</span>
+									<span class="book">
+										<a href="#" class="hover"><i class="far fa-heart"></i></a>
+										<a href="#" class="hover"><i class="far fa-bookmark"></i></a>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="btn mb-100">
+						<a href="blog-list.html" class="button hover" data-text="View more">
+							<b></b>
+							<b></b>
+							<span>V</span><span>i</span><span>e</span><span>w</span>
+							<span>M</span><span>o</span><span>r</span><span>e</span>
+						</a>
+					</div>
+					
+				</section>
+				
+    		</div>
+			
+			<!-- Contact Section -->
+    		<div class="page contact" data-x-pos="1"  data-y-pos="-1">
+    			<span class="page-nav hover nav-up up_">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"></path>
+        					<path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"></path>
+							<rect fill="#000000" opacity="0.3" x="7" y="10" width="5" height="2" rx="1"></rect>
+        					<rect fill="#000000" opacity="0.3" x="7" y="14" width="9" height="2" rx="1"></rect>
+    					</g>
+					</svg> Portfolio
+				</span>
+				
+				<span class="page-nav hover nav-left left_"> 
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+    					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        					<rect x="0" y="0" width="24" height="24"></rect>
+        					<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+        					<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+    					</g>
+					</svg> Blog
+				</span>
+				
+				<span class="page-nav hover nav-left-top up left">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="mr">
+						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<rect x="0" y="0" width="24" height="24"></rect>
+							<path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000"></path>
+						</g>
+					</svg> Home
+				</span>
+				
+    			<section class="content container" data-simplebar>
+										
+					<!-- Section Title -->
+					<div class="header-page mt-70">
+						<h2>Contact</h2>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="magnetic">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,6 5,6 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,7.83964668 C5.4908718,7.6432681 5.03602525,7.77972206 4.83964668,8.14442513 C4.6432681,8.5091282 4.77972206,8.96397475 5.14442513,9.16035332 L11.6444251,12.6603533 C11.8664074,12.7798822 12.1335926,12.7798822 12.3555749,12.6603533 L18.8555749,9.16035332 C19.2202779,8.96397475 19.3567319,8.5091282 19.1603533,8.14442513 C18.9639747,7.77972206 18.5091282,7.6432681 18.1444251,7.83964668 Z" fill="#000000"/>
+							</g>
+						</svg>
+					</div>
+					
+					<!-- Form Start -->
+					<div class="row mt-100">
+						<div class="col-lg-8 col-sm-12">
+							<div class="contact-form mb-100">
+                        		<form method="post" class="box contact-valid" id="contact-form">
+									
+									<!-- Title Box -->
+									<h4>Contact Form</h4>
+									
+									<div class="row">
+                            			<div class="col-lg-6 col-sm-12">
+                                			<input type="text" name="name" id="name" class="hover cursor-pen form-control" placeholder="Name *">
+                            			</div>
+                            			<div class="col-lg-6 col-sm-12">
+                                			<input type="email" name="email" id="email" class="hover cursor-pen form-control" placeholder="Email *">
+                            			</div>
+                            			<div class="col-lg-12 col-sm-12">
+                                			<textarea class="hover cursor-pen form-control" name="note"  id="note" placeholder="Your Message"></textarea>
+                            			</div>
+                             			<div class="col-lg-12 col-sm-12 text-center">
+                                			<button type="submit" class="button hover" data-text="Send massage">
+												<b></b>
+												<b></b>
+												<span>S</span><span>e</span><span>n</span><span>d</span>
+												<span>M</span><span>a</span><span>s</span><span>s</span><span>a</span><span>g</span><span>e</span>
+											</button>
+                                			<div id="loader">
+                                    			<i class="fas fa-sync"></i>
+                                			</div>
+                            			</div>
+										<div class="col-lg-12 col-sm-12">
+                            				<div class="error-messages">
+                                				<div id="success">
+													<i class="far fa-check-circle"></i>Thank you, your message has been sent.
+												</div>
+                                				<div id="error">
+													<i class="far fa-times-circle"></i>Error occurred while sending email. Please try again later.
+												</div>
+											</div>
+                            			</div>
+									</div>
+                    			</form>
+                    		</div>
+						</div>
+					
+						<!-- Contact Info -->
+						<div class="col-lg-4 col-sm-12">
+							<div class="box contact-info mb-100">
+								
+								<!-- Title Box -->
+								<h4>Contact Information</h4>
+								
+								<div class="row">
+									
+									<!-- Info item -->
+									<div class="col-lg-12 col-sm-12 info">
+										<i class="fas fa-user-tie"></i>
+										<div class="desc">
+											<p>Freelance</p>
+											<span>Available</span>
+										</div>
+									</div>
+									
+									<!-- Info item -->
+									<div class="col-lg-12 col-sm-12 info">
+										<i class="fas fa-map-marked-alt"></i>
+										<div class="desc">
+											<p>123 Lorem Ipsum, USA</p>
+											<span>Addres</span>
+										</div>
+									</div>
+									
+									<!-- Info item -->
+									<div class="col-lg-12 col-sm-12 info">
+										<i class="fas fa-phone"></i>
+										<div class="desc">
+											<p>(+1) 123 456 7890</p>
+											<span>Phone</span>
+										</div>
+									</div>
+									
+									<!-- Info item -->
+									<div class="col-lg-12 col-sm-12 info">
+										<i class="fas fa-paper-plane"></i>
+										<div class="desc">
+											<p>example@example.com</p>
+											<span>Email</span>
+										</div>
+									</div>
+							
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--Google Map Start-->
+					<div class="google-map box mb-100">
+						
+						<!-- Title Box -->
+						<h4>Google Map</h4>
+						
+						<div class="row">
+							<div class="col-lg-12">
+								<div id="map" data-latitude="40.712775" data-longitude="-74.005973" data-zoom="14"></div>
+							</div>
+						</div>
+					</div>
+				
+				</section>
+				
+    		</div>
+		</div>
+	</div>
+	
+	<!-- Cursor -->
+    <div class="cursor" id="cursor"></div>
+	<div class="cursor-border" id="cursor-border"></div>
+	
+	<!-- Newsletter Block -->
+	<div class="newsletter-block">
+		<div class="main">
+    		<h3>Subscribe to our newsletter</h3>
+    		<div class="hover news-close">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+    				<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        			<g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+            			<rect x="0" y="7" width="16" height="2" rx="1"></rect>
+            			<rect opacity="0.3" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000) " x="0" y="7" width="16" height="2" rx="1"></rect>
+        			</g>
+					</g>
+				</svg> close
+			</div>
+			
+			<form action="subscribe.php" id="subscribe" method="post" name="subscribe">
+				<input class="hover cursor-pen subscribe-email" id="subscribe-email" name="subscribe-email" placeholder="Email" type="text">
+				<button class="hover btn button" data-text="Submit">
+					<b></b>
+					<b></b>
+					<span>S</span><span>u</span><span>b</span><span>m</span><span>i</span><span>t</span>
+				</button>
+			</form>
+		</div>
+	</div>
+	
+    <!-- All Script -->
+    <script src="js/plugins/jquery.min.js"></script>
+	<script src="js/plugins/bootstrap.min.js"></script>
+	<script src="js/plugins/isotope.pkgd.min.js"></script>
+	<script src="js/plugins/simplebar.js"></script>
+	<script src="js/plugins/jquery.magnific-popup.min.js"></script>
+	<script src="js/plugins/swiper.min.js"></script>
+	<script src="js/plugins/TweenMax.min.js"></script>
+	<script src="js/plugins/jquery.validation.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/menu.js"></script>
+	<script src="js/plugins/tilt.js"></script>
+	<script src="http://www.google.cn/maps/api/js?sensor=false"></script>
+	
 </body>
 
 </html>
