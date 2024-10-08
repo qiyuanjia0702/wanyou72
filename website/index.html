@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Bmwy-主题开发</title>
+</head>
+
+<body class="sunrise-mode">
+
+    <button class="button toggle-sidebar sunrise-mode" id="toggleSidebarBtn" onclick="toggleSidebar()">☰</button>
+    <button class="button theme-switcher sunrise-mode" id="themeSwitcher" onclick="toggleTheme()">🌞</button>
+
+    <div class="sidebar sunrise-mode" id="sidebar">
+        <img src="https://imgapi.cn/qq.php?qq=3038886380" alt="头像">
+        <h3>目录</h3>
+        <ul>
+            <li><a href="#introduction" onclick="closeSidebar()">支付聚合的介绍</a></li>
+            <li><a href="#advantages" onclick="closeSidebar()">主要优势</a></li>
+            <li><a href="#why-choose" onclick="closeSidebar()">为什么选择支付聚合</a></li>
+            <li><a href="#future" onclick="closeSidebar()">未来的支付趋势</a></li>
+            <li><a href="#conclusion" onclick="closeSidebar()">结语</a></li>
+        </ul>
+    </div>
+
+    <div class="content" onclick="closeSidebar()">
+        <h1 id="introduction">支付聚合服务的介绍<br>(以下是内容模版)</h1>
+        <p>支付聚合是一种能够将多种支付方式集成到一个平台的解决方案。通过这个系统，用户可以选择微信、支付宝、银行卡等不同支付方式，而商家只需要一个后台管理支付信息，简化了运营流程。</p>
+
+        <h2 id="advantages">支付聚合的主要优势</h2>
+        <ol>
+            <li>统一管理：一个平台整合多种支付方式，商家不需要分别管理。</li>
+            <li>提高支付效率：用户支付过程简化，减少操作步骤，提升客户体验。</li>
+            <li>降低开发成本：通过一次集成，节省开发多个支付接口的成本。</li>
+        </ol>
+
+        <h2 id="why-choose">为什么选择支付聚合？</h2>
+        <p>支付聚合适用于各种类型的企业，尤其是中小企业和电商平台。它不仅提升了交易成功率，还提供了详细的数据报告和分析功能，帮助商家更好地了解客户行为，优化销售策略。</p>
+
+        <h2 id="future">未来的支付趋势</h2>
+        <p>随着数字经济的发展，支付方式不断多样化。未来，支付聚合将更智能化，为用户提供更加便捷的支付体验，并通过AI和大数据分析，帮助商家精准运营。</p>
+
+        <h2 id="conclusion">结语</h2>
+        <p>支付聚合是一种创新且实用的解决方案，为商家和用户带来了双赢的局面。如果你希望简化支付流程，提升客户体验，支付聚合无疑是一个值得考虑的选择。</p>
+    </div>
+
+    <button class="button back-to-top sunrise-mode" onclick="scrollToTop()">↑</button>
+</body>
+<script src="js/style.js"></script>
+
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="referrer" content="never">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="js/clipboard.js"></script>
+    <script src="js/wc.js"></script>
+    <script src="js/jq.js"></script>
+    <script src="js/jiaz.js"></script>
+    <script src="js/Lantern.js"></script>
+    <script src="js/Count.js"></script>
+    <script src="js/Gray.js"></script>
+    <script src="js/Graypicture.js"></script>
+    <link rel="stylesheet" href="css/jiaz.css">
+    <link rel="stylesheet" href="css/muj.css">
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link rel="stylesheet" id='font-awesome-css' href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" type='text/css' media='all'>
+    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
+    <link rel="stylesheet" href="css/Remote.css">
+    <title>明月阁楼(Bmwy)</title>
+</head>
+
+<body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
+    <script type="text/javascript">
+        document.body.oncontextmenu = document.body.ondragstart = document.body.onselectstart = document.body.onbeforecopy = function() {
+            return false;
+        };
+        document.body.onselect = document.body.oncopy = document.body.onmouseup = function() {
+            document.selection.empty();
+        };
+    </script><b>
+        <style>
+            html {
+                filter: grayscale(100%);
+            }
+
+            #_fps_canvas {
+                position: fixed;
+                top: 3px;
+                left: 3px;
+                z-index: 9999;
+            }
+
+            #info {
+                padding: 20px 10px;
+            }
+        </style>
+        </head>
+        <div id="lantern-wrapper" class="lantern-wrapper" no-select></div>
+        <script>
+            let lantern = new Lantern('lantern-wrapper', {
+                date: { // 日期格式：'月-日'
+                    from: '10-1', // 开始悬挂灯笼的日期
+                    to: '10-7' // 结束悬挂灯笼的日期
+                },
+                postion: {
+                    zIndex: 9999, // 整个灯笼的 z-index 属性
+                    lanternRL: [10, 100, 100, 10], // 灯笼距离边界的距离：左侧灯笼距离左边的距离，右侧登录距离右侧的距离；页面灯笼从左往右依次设置
+                    lanternTop: 0 // 灯笼距离顶部的距离。你也可以使用数组从左往右依次设置每个灯笼的距顶距离，例如：[0, 100, 200, 300]
+                },
+                content: '欢度国庆' // 灯笼内显示的文字，只会截取前四个字符
+            });
+        </script>
+        <div id="loading">
+            <div id="loading_bg">
+                <div class="loader">Loading...</div>
+            </div>
+        </div>
+        <br><br><br>
+        <div id="pc-ap">
+            <div class="circle-image">
+                <img src="https://q.qlogo.cn/headimg_dl?dst_uin=3038886380&spec=640" alt="your-image-description" s>
+            </div><br>
+            <div style="color: red;">
+                <div style="text-align: center;">
+                    <h3>服主:明月挽幽</h3>
+                    <canvas id="_fps_canvas"></canvas>
+                    <a href="https://qm.qq.com/q/qhdxTyczS2"><img src="https://im.qq.com/pcqq/images/windows/short_icon.ico" width="30" height="30" style="border-radius:10%; overflow: hidden;"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div><br><br>
+        <div id="pc-ao">
+            <div id="txt-content">
+                <div style="text-align: center;">
+                    <h1>频道规定</h1>
+                </div>
+                <h6 style="text-align: right;">—由明月挽幽编辑并发布</h6>
+                <h4>1.不正当分享:<br>不可以宣群或者链接，如：拼夕夕，未备案网站（非群主允许），带有低俗内容和链接，未经允许的安装包等（第一点想必都知道它的重要性）<br></h4>
+                <h4>2.遵守法律法规:<br>本群内的所有活动必须遵守国家法律法规，不得发布违法、色情、暴力、赌博等不良信息。</h4>
+                <h4>3.文明用语:<br>群内成员应文明用语，不得发表攻击性、侮辱性、歧视性言论，不得争吵、谩骂或诋毁他人。</h4>
+                <h4>4.禁止广告:<br>群内禁止发布任何形式的广告、推销信息，以及非官方发布的游戏外挂、辅助工具等。</h4>
+                <h4>5.尊重他人隐私:<br>群内成员应尊重他人隐私，不得私自公开或传播他人个人信息，如真实姓名、联系方式等。</h4>
+                <h4>6.禁止刷屏：<br>群内禁止频繁发送无意义的信息、图片、表情等，以免影响其他成员的正常交流。</h4>
+                <h4>7.禁止盗版行为:<br>群内成员应尊重游戏版权，不得分享或讨论盗版游戏资源，以及非官方发布的游戏补丁、模组等。</h4>
+                <h4>8.严禁诈骗行为:<br>群内禁止进行任何形式的诈骗行为，如假冒他人身份、骗取他人财物等。</h4>
+                <h4>9.禁止恶意破坏:<br>群内成员应遵守游戏规则，不得恶意破坏他人游戏世界、服务器等，以及使用第三方软件进行作弊行为。</h4>
+                <h4>10.鼓励交流合作:<br>群内鼓励成员之间的交流合作，共同探索游戏乐趣，分享游戏经验和技术。</h4>
+                <h4>11.管理员职责:<br>管理员应积极维护群内秩序，及时处理违规行为，保护群内成员的合法权益。同时，管理员应尊重群内成员的言论自由，不得滥用职权。</h4>
+                <h4>12.群主的职责(服主):<br>
+                    ①维护群内秩序：群主需要负责维护群内的秩序，确保群内成员遵守群规，及时处理违规行为，保持群内的和谐氛围。<br>
+                    ②发布重要通知：群主需要在必要时发布重要通知，如群活动、群规变更、管理员任命等，确保群内成员及时了解相关信息。<br>
+                    ③保护群内成员权益：群主需要保护群内成员的合法权益，如防止成员受到诈骗、恶意攻击等，以及在必要时协助成员解决问题。<br>
+                    ④与管理员协作：群主需要与管理员密切协作，共同维护群内秩序，及时处理违规行为，以及处理群内成员的投诉和建议。<br>
+                    ⑤遵守法律法规：群主需要遵守国家法律法规，不得在群内发布违法、色情、暴力、赌博等不良信息，以及不得从事其他违法活动。<br>
+                    ⑥组织群活动：群主可以组织群活动，如线上游戏比赛等，增强群内成员的互动和凝聚力。
+                </h4>
+                </h4>
+                <h1 style="text-align: center;">《新公告》</h1>
+                <h4>1.所有人不得使用第三方软件，包括飞行mod，一经发现封禁账号和IP永久(服务器从来没开启支持mod飞行，说是mod基本上是挂)<br><br>
+                    2.不得建造高频率红石机器，建造范围不得大于2个区块。<br><br>
+                    3.管理员op负责白名单人数，至少每天上线一次，不会指令可以用服务器后台面板控制<br><br>
+                    4.成员应当遵守公告的规定，不得擅自触犯底线，严重者永久踢出群聊和频道，不可再次入群。<br><br>
+                    5.互相配合，增加集体意识，合作共赢，玩家需要配合，友好交谈生存攻略，不可以为了一些小事情闹的不愉快(如果发生这个事情我会亲自到场)<br><br>
+                    <div style="color: red;">
+                        <div style="text-align: center;">
+                            <p id="v1">牢记使命，不忘初心<br>👇</p>
+                            <p id="v2">1.不正当分享:
+                                不可以宣群或者链接，如：拼夕夕，未备案网站（非群主允许），带有低俗内容和链接，未经允许的安装包等（第一点想必都知道它的重要性）
+                                2.遵守法律法规:
+                                本群内的所有活动必须遵守国家法律法规，不得发布违法、色情、暴力、赌博等不良信息。
+                                3.文明用语:
+                                群内成员应文明用语，不得发表攻击性、侮辱性、歧视性言论，不得争吵、谩骂或诋毁他人。
+                                4.禁止广告:
+                                群内禁止发布任何形式的广告、推销信息，以及非官方发布的游戏外挂、辅助工具等。
+                                5.尊重他人隐私:
+                                群内成员应尊重他人隐私，不得私自公开或传播他人个人信息，如真实姓名、联系方式等。
+                                6.禁止刷屏：
+                                群内禁止频繁发送无意义的信息、图片、表情等，以免影响其他成员的正常交流。
+                                7.禁止盗版行为:
+                                群内成员应尊重游戏版权，不得分享或讨论盗版游戏资源，以及非官方发布的游戏补丁、模组等。
+                                8.严禁诈骗行为:
+                                群内禁止进行任何形式的诈骗行为，如假冒他人身份、骗取他人财物等。
+                                9.禁止恶意破坏:
+                                群内成员应遵守游戏规则，不得恶意破坏他人游戏世界、服务器等，以及使用第三方软件进行作弊行为。
+                                10.鼓励交流合作:
+                                群内鼓励成员之间的交流合作，共同探索游戏乐趣，分享游戏经验和技术。
+                                11.管理员职责:
+                                管理员应积极维护群内秩序，及时处理违规行为，保护群内成员的合法权益。同时，管理员应尊重群内成员的言论自由，不得滥用职权。
+                                12.群主的职责(服主):
+                                ①维护群内秩序：群主需要负责维护群内的秩序，确保群内成员遵守群规，及时处理违规行为，保持群内的和谐氛围。
+                                ②发布重要通知：群主需要在必要时发布重要通知，如群活动、群规变更、管理员任命等，确保群内成员及时了解相关信息。
+                                ③保护群内成员权益：群主需要保护群内成员的合法权益，如防止成员受到诈骗、恶意攻击等，以及在必要时协助成员解决问题。
+                                ④与管理员协作：群主需要与管理员密切协作，共同维护群内秩序，及时处理违规行为，以及处理群内成员的投诉和建议。
+                                ⑤遵守法律法规：群主需要遵守国家法律法规，不得在群内发布违法、色情、暴力、赌博等不良信息，以及不得从事其他违法活动。
+                                ⑥组织群活动：群主可以组织群活动，如线上游戏比赛等，增强群内成员的互动和凝聚力。
+                                《新政策-公告》
+                                1.所有人不得使用第三方软件，包括飞行mod，一经发现封禁账号和IP永久(服务器从来没开启支持mod飞行，说是mod基本上是挂)
+                                2.不得建造高频率红石机器，建造范围不得大于2个区块。
+                                3.管理员op负责白名单人数，至少每天上线一次，不会指令可以用服务器后台面板控制
+                                4.成员应当遵守公告的规定，不得擅自触犯底线，严重者永久踢出群聊和频道，不可再次入群。
+                                5.互相配合，增加集体意识，合作共赢，玩家需要配合，友好交谈生存攻略，不可以为了一些小事情闹的不愉快(如果发生这个事情我会亲自到场)</p>
+                            <button onclick="k2()" class="btn">复制</button>
+                            <script>
+                                function k2() {
+                                    var v2 = document.getElementById("v2");
+                                    var clipboard = new ClipboardJS(".btn", {
+                                        text: function(trigger) {
+                                            return v2.innerHTML;
+                                        }
+                                    })
+                                    document.getElementById("v1").innerHTML = "复制成功";
+                                    setTimeout(function() {
+                                        document.getElementById("v1").innerHTML = "点击复制";
+                                    }, 1000);
+                                };
+                            </script>
+                            <br><br>
+                            <h5>加入频道<br>👇</h5>
+                            <a href="https://oopz.cn/i/H0ON6G">
+                                <img src="https://ipv4wp.axzzz.top:9503/f/G0Z5HN/icon.png" alt="无法加载" width="60" height="60" style="border-radius:30%; overflow: hidden;"></a>
+                            <br>
+                            <h6>(点击图片自动跳转)<br>(企鹅社交软件无法跳转)</h6>
+                        </div>
+                    </div>
+            </div>
+            <div><br><br>
+            </div>
+        </div>
+    </b><br><br>
+
+    <div id="txt-content">
+        <div style="text-align: center;">
+            <div style="color: Blue;">
+                <h2><strong>Minecraft游戏世界</strong></h2>
+            </div>
+            <div style="text-align: center;">
+                <h3 style="color: red;">Minecraft(Tools)</h3>
+            </div>
+        </div>
+        <h4>1.👀-😊：minebbs&nbsp&nbsp&nbsp&nbsp(百科MC)<br>方块人的社交平台，可下载资源模组和游戏版本，是个GitHub开源网站，绝对安全可靠（含PC端资源）</h4>
+        <h4>2.😘更多版本：<br>容纳史前游戏版本，可以挑选自己喜欢的版本，本服务器仅支持1.21版本(≧▽≦)</h4><br>
+        <h4 style="color: Blue;">提醒说明：<br>我还是要说一下，这些服务器地址不允许分享给别人，别人想玩就邀他进频道！如果阿，如果因为你分享给别人导致服务器崩溃，你得进永久小黑屋懂不懂，而且还影响大家游玩。</h4>
+        <div style="text-align: center">
+            <h3 style="color: red;">
+                <br>
+            </h3><b>
+                <h4 style="color: red;">
+                    温馨提醒<br>(以下表情都是可以点击的)<br>(对应是上面的快速通道哦)<br>👇</p>
+                </h4>
+                <p>
+                    👉<a href="https://www.minebbs.com/">👀</a>👈
+                    &nbsp&nbsp
+                    👉<a href="https://www.mcmod.cn/">😊</a>👈
+                    &nbsp&nbsp
+                    👉<a href="https://mcapks.com">😘</a>👈
+                <h4 style="color: red;">
+                    禁止🚫分享
+            </b>
+            </p>
+        </div>
+    </div><br><br><br>
+    <div id="txt-content">
+        <div style="text-align: center;">
+            <h3 style="color: red;">Minecraft(Java/Bedrock)</h3>
+        </div>
+        <h4>1.联机软件介绍:<br><br>
+            ①《Radmin LAN》<br>
+            Radmin LAN是一款使用简单的免费软件产品，用于创建虚拟本地网络。该程序允许用户安全地连接位于防火墙后的计算机。<br>
+            详细请查看官网：
+            <div style="color: red;">
+                <div style="text-align: center;">(以下图标可点击分别:)<br>(软件官网.官网直链.外部下载)</div>
+            </div>
+            <br>
+            <div style="text-align: center;">
+                <a href="https://www.radmin-lan.cn/"><img src="https://www.radmin-lan.cn/favicon-120x120.png" alt="无法加载" width="50" height="50" style=" margin-right: 30px;"></a>
+                <a href="https://download.radmin-lan.cn/download/files/Radmin_LAN_1.4.4642.1.exe"><img src="https://www.radmin-lan.cn/favicon-120x120.png" alt="无法加载" width="50" height="50" style="margin-right: 30px;"></a>
+                <a href="https://qingjue02.lanzouo.com/iTZ99221omwj"><img src="https://www.radmin-lan.cn/favicon-120x120.png" alt="无法加载" width="50" height="50"></a>
+            </div><br>
+            ②《SAKURA》<br>
+            樱花穿透，是一款热度非常高的frp软件，不管是穿后台、建网站、做调试、还是开游戏，解决没有公网IP的难题。<br>
+            详细请查看官网：<br><br>
+            <div style="text-align: center;">
+            </div>
+            <div style="color: red;">
+                <div style="text-align: center;">(图标可点击)<br>(软件官网.官网直链.客户端直链)</div>
+            </div>
+            <br>
+            <div style="text-align: center;">
+                <a href="https://www.natfrp.com/"><img src="https://www.natfrp.com/favicon.ico" alt="无法加载" width="50" height="50" style="margin-right: 30px;"></a>
+                <a href="https://nya.globalslb.net/natfrp/client/launcher-android/3.1.3/SakuraLauncher-arm64-v8a-release.apk"><img src="https://www.natfrp.com/favicon.ico" alt="无法加载" Logowidth="50" height="50" style="margin-right: 30px;"></a>
+                <a href="https://nya.globalslb.net/natfrp/client/launcher-windows/3.1.1.0/SakuraLauncher.exe"><img src="https://www.natfrp.com/favicon.ico" alt="Example Logo" width="50" height="50"></a>
+            </div><br>
+            ③《OPENFRP》<br>
+            支持简易启动，多配置文件同时启动，免配置文件启动，自动TLS/HTTPS,支持映射MC多人游戏、泰拉瑞亚多人联机等通过TCP/UDP代理的内网穿透功能。<br>
+            详细请查看官网：<div style="color: red;">
+                <div style="text-align: center;">(图标可点击)<br>(软件官网.官网直链)</div>
+            </div>
+            <br>
+            <div style="text-align: center;">
+                <a href="https://www.openfrp.net/"><img src="https://ipv4wp.axzzz.top:9503/f/29vCZ/openfrp.jpg" width="50" height="50" style="margin-right: 50px; border-radius:50%;"></a>
+                <a href="https://r.zyghit.cn/OpenFrpLauncherPreview_v57_dotNET481.exe"><img src="https://ipv4wp.axzzz.top:9503/f/29vCZ/openfrp.jpg" width="50" height="50" style="border-radius:50%;"></a>
+            </div><br>
+            <h4>1.互通服（Java/Bedrock）<br>
+                顾名思义，互通服就是Java版和基岩版可进的服务器，就相当于世面上的安卓能和苹果一起游玩（注意:该服务器不会添加任何模组，为服务器节省内存消耗的情况下预防bug行为）</h4>
+            <div style="text-align: center;">
+                <div class="text" style=" text-align:center;">
+                    <div style="color: red;"><b>
+                            <span>距离互通服结束还剩</span><br>
+                            <span id="h_d">00</span>
+                            <span id="h_h">00</span>
+                            <span id="h_m">00</span>
+                            <span id="h_s">00</span>
+                    </div>
+                    <script type="text/javascript">
+                        function getRTime() {
+                            var EndTime = new Date('2024/10/07 20:50:09'); //截止时间
+                            var NowTime = new Date();
+                            var t = EndTime.getTime() - NowTime.getTime();
+                            var d = Math.floor(t / 1000 / 60 / 60 / 24);
+                            var h = Math.floor(t / 1000 / 60 / 60 % 24);
+                            var m = Math.floor(t / 1000 / 60 % 60);
+                            var s = Math.floor(t / 1000 % 60);
+                            document.getElementById("h_d").innerHTML = d + " 天";
+                            document.getElementById("h_h").innerHTML = h + " 时";
+                            document.getElementById("h_m").innerHTML = m + " 分";
+                            document.getElementById("h_s").innerHTML = s + " 秒";
+                        }
+                        setInterval(getRTime, 1000);
+                    </script>
+                    <div style="color: red;">
+                        <p id="o1">互通服地址<br>👇</p>
+                        <p id="o2">cow.mcla.fun:12882</p>
+                        <button onclick="p4()" class="btn">复制</button>
+                        <script>
+                            function p4() {
+                                var o2 = document.getElementById("o2");
+                                var clipboard = new ClipboardJS(".btn", {
+                                    text: function(trigger) {
+                                        return o2.innerHTML;
+                                    }
+                                })
+                                document.getElementById("o1").innerHTML = "复制成功";
+                                setTimeout(function() {
+                                    document.getElementById("o1").innerHTML = "点击复制";
+                                }, 1000);
+                            };
+                        </script>
+                    </div>
+                </div>
+            </div><br>
+            <h4>2.大型服务器（Java）<br>
+                大型服务器是部署大型整合包，部署成本较高，属于短期服务器，Beta服玩什么这个就为什么，基本上一到三个月但不会少于一个月。</h4>
+            <div style="text-align: center;">
+                <div class="text" style=" text-align:center;">
+                    <div style="color: red;"><b>
+                            <span>距离服务器结束还剩</span><br>
+                            <span id="d_d">00</span>
+                            <span id="d_h">00</span>
+                            <span id="d_m">00</span>
+                            <span id="d_s">00</span>
+                    </div>
+                    <script type="text/javascript">
+                        function getRTime() {
+                            var EndTime = new Date('2024/10/14 20:38:16'); //截止时间
+                            var NowTime = new Date();
+                            var t = EndTime.getTime() - NowTime.getTime();
+                            var d = Math.floor(t / 1000 / 60 / 60 / 24);
+                            var h = Math.floor(t / 1000 / 60 / 60 % 24);
+                            var m = Math.floor(t / 1000 / 60 % 60);
+                            var s = Math.floor(t / 1000 % 60);
+                            document.getElementById("d_d").innerHTML = d + " 天";
+                            document.getElementById("d_h").innerHTML = h + " 时";
+                            document.getElementById("d_m").innerHTML = m + " 分";
+                            document.getElementById("d_s").innerHTML = s + " 秒";
+                        }
+                        setInterval(getRTime, 1000);
+                    </script>
+                    <div style="color: red;">
+                        <h4>《辐射次时代5.1》<br>整合包下载<br>👇<br><a href="https://www.123pan.com/s/7ceA-85i5d.html">
+                                <img src="https://square.candycake.cloud/uploads/2b9a7ca6b42118af2cfcf0bca9a1345d48123de4_db5f68900c.jpg" width="50" height="50" style="border-radius:50%; overflow: hidden;"></a></h4>
+                    </div>
+                    <div style="color: red;">
+                        <div style="text-align: center;">
+                            <p id="m1">服务器地址<br>👇</p>
+                            <p id="m2">nop.candycake.cloud:32376</p>
+                            <button onclick="p5()" class="btn">复制</button>
+                            <script>
+                                function p5() {
+                                    var m2 = document.getElementById("m2");
+                                    var clipboard = new ClipboardJS(".btn", {
+                                        text: function(trigger) {
+                                            return m2.innerHTML;
+                                        }
+                                    })
+                                    document.getElementById("m1").innerHTML = "复制成功";
+                                    setTimeout(function() {
+                                        document.getElementById("m1").innerHTML = "点击复制";
+                                    }, 1000);
+                                };
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <h4>3.测试服Beta(Java/Bedrock)<br>
+                大型服务器是为了做测试开放，主要测试下次玩的内容，限期基本上一个星期左右，也可以叫它Beta服（测试结束不会删档，会继承即将要玩的服务器）</h4>
+            <div style="text-align: center;">
+                <div class="text" style=" text-align:center;">
+                    <div style="color: red;"><b>
+                            <span>距离Beta服结束还剩</span><br>
+                            <!--<span id="c_d">00</span>
+        <span id="c_h">00</span>
+        <span id="c_m">00</span>
+        <span id="c_s">00</span>-->
+                    </div>
+                    <script type="text/javascript">
+                        function getRTime() {
+                            var EndTime = new Date('0000/00/00 19:39:09'); //截止时间
+                            var NowTime = new Date();
+                            var t = EndTime.getTime() - NowTime.getTime();
+                            var d = Math.floor(t / 1000 / 60 / 60 / 24);
+                            var h = Math.floor(t / 1000 / 60 / 60 % 24);
+                            var m = Math.floor(t / 1000 / 60 % 60);
+                            var s = Math.floor(t / 1000 % 60);
+                            document.getElementById("c_d").innerHTML = d + " 天";
+                            document.getElementById("c_h").innerHTML = h + " 时";
+                            document.getElementById("c_m").innerHTML = m + " 分";
+                            document.getElementById("c_s").innerHTML = s + " 秒";
+                        }
+                        setInterval(getRTime, 1000);
+                    </script>
+                    <div style="color: red;">
+                        <p id="j1">未开服<br>👇</p>
+                        <p id="j2">不是老弟，想什么呢，还没开服</p>
+                        <button onclick="p6()" class="btn">复制</button>
+                        <script>
+                            function p6() {
+                                var j2 = document.getElementById("j2");
+                                var clipboard = new ClipboardJS(".btn", {
+                                    text: function(trigger) {
+                                        return j2.innerHTML;
+                                    }
+                                })
+                                document.getElementById("j1").innerHTML = "复制成功";
+                                setTimeout(function() {
+                                    document.getElementById("j1").innerHTML = "点击复制";
+                                }, 1000);
+                            };
+                        </script>
+                    </div><br>
+                </div>
+            </div>
+    </div>
+    </div><br><br>
+    <div id="txt-content">
+        <div style="text-align: center;">
+            <h2 style="color: red;"><strong>赞赏板<br></strong></h2>
+            <br><br>
+            <h6>(截图点击图片进行跳转)</h6>
+            <a href="weixin://wxp://f2f0P67sbG-O8_ArovidpaHB6P37tLapzrDu6jK0_Qdi0xcmgUvXEixeuFs0MFBWeByd"><img src="https://ipv4wp.axzzz.top:9503/f/qJoRTV/%E8%B5%9E%E8%B5%8F.png" width="300" height="300" style="border-radius:10%; overflow: hidden;"></a>
+        </div>
+        <div style="color: red;">
+            <div style="text-align: center;">
+                <h3 style="color: red;"><strong>贡献者</strong></h3>
+            </div>
+            <div class="contributors">
+                <div class="contributor">
+                    <img src="https://q.qlogo.cn/headimg_dl?dst_uin=3038886380&spec=640" class="avatar">
+                    <div class="name">Qifan72</div>
+                </div>
+                <div class="contributor">
+                    <img src="http://p.qlogo.cn/gh/875682112/875682112/0" class="avatar">
+                    <div class="name">糖糕云</div>
+                </div>
+                <div class="contributor">
+                    <img src="https://q.qlogo.cn/headimg_dl?dst_uin=475869041&spec=640" class="avatar">
+                    <div class="name">jia1chen</div>
+                </div>
+                <div class="contributor">
+                    <img src="https://q.qlogo.cn/headimg_dl?dst_uin=1845568218&spec=640" class="avatar">
+                    <div class="name">TAOFANG1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="landlord">
+        <div class="message" style="opacity:0"></div>
+        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <h6> ©2024 - 2035 <a href="https://beian.miit.gov.cn/#/home">Reverse technique</a>版权所有<br>本站勉强运行:<span id="sitetime" style="color:#096"></span></h6>
+    </div>
+    </b>
+    <script id="xplayer" src="https://music.yy.mba/Static/player/player.js" key="667a11b53bebb" m="1"></script>
+    <script src="js/yinghua.js"></script>
+    <script>
+        let canvas = document.getElementById('_fps_canvas');
+        let ctx = canvas && canvas.getContext('2d');
+        if (!ctx) {
+            console.info("浏览器不支持canvas")
+        } else {
+            let lastTime = 0;
+            let fpsInterVal = 30; // fps监听间隔次数
+            let fpsCount = 0; // fps监听间隔计数
+            let fps = 0; // fps值
+            let getFps = function() {
+                fpsCount++;
+                let nowTime = performance.now();
+                if (fpsCount >= fpsInterVal) {
+                    fps = Math.round(1000 * fpsCount / (nowTime - lastTime));
+                    lastTime = nowTime;
+                    fpsCount = 0;
+                }
+                return fps;
+            }
+
+            let clearCanvas = function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            let startDraw = function(time) {
+                clearCanvas();
+                ctx.font = "bold 15px 宋体";
+                ctx.fillStyle = "red";
+                ctx.textAlign = "left";
+                ctx.textBaseline = "top";
+                ctx.fillText(getFps() + 'FPS', 10, 15);
+                window.requestAnimationFrame(startDraw)
+            }
+
+            startDraw();
+        }
+    </script>
+
+    </div>
+</body>
+
+</html>
