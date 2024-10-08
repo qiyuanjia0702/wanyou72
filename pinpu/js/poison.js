@@ -2,7 +2,7 @@
 /* alert("此网站是测试计算机渲染，" + */
 /*      "移动端考虑清楚再访问，" + */
 /*      "否则会卡死，严重话死机，" + */
-/*      "本项目来源GitHub项目。")  */
+/*      "本项目来源GitHub项目。") */
 var cx, cy
 var glposition
 var glright
