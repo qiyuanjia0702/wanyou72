@@ -67,7 +67,7 @@ img {
 <script>
 function convertText() {
 var text = document.getElementById('textInput').value;
-var apiLink = 'https://qifan72.cn/Small/copywriting.html' + encodeURIComponent(text);
+var apiLink = 'https://qqbyh.cn/API/tuwen.php?text=' + encodeURIComponent(text);
   fetch(apiLink)
   .then(response => response.blob())
   .then(blob => {
