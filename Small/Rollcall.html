@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名器</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #ecf0f1;
+        }
+        #floatingWindow {
+            position: fixed;
+            top: 15%;
+            left: 15%;
+            width: 250px;
+            background-color: #87CEEB;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        #floatingWindow h1 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: white;
+        }
+        #fileInput {
+            display: none;
+        }
+        .file-label {
+            background-color: #ffd700;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        #fileName {
+            font-size: 14px;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        #floatingWindow button {
+            background-color: #ffd700;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #floatingWindow #selected {
+            font-size: 16px;
+            color: #e74c3c;
+            margin-top: 15px;
+            padding: 8px;
+            border-radius: 15px;
+            background-color: #2c3e50;
+            border: 1px solid #34495e;
+            width: 100%;
+            text-align: center;
+        }
+        #floatingWindow #students {
+            margin-top: 10px;
+            height: 100px;
+            overflow-y: auto;
+            border: 1px solid #34495e;
+            padding: 5px;
+            border-radius: 15px;
+            width: 100%;
+            background-color: #2c3e50;
+            color: white;
+        }
+        #floatingWindow #students p {
+            margin: 0;
+            padding: 2px 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="floatingWindow">
+    <header>
+        <h1>随机点名</h1>
+    </header>
+    <label class="file-label" for="fileInput">选择文件</label>
+    <input type="file" id="fileInput" accept=".txt">
+    <div id="fileName">未选择文件</div>
+    <div id="students">
+        <!-- 学生名单将从文件中读取 -->
+    </div><br>
+    <button id="selectButton" onclick="randomSelect()">点名</button>
+    <div id="selected">
+        点击按钮进行随机点名
+    </div>
+</div>
+
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileName');
+
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            fileNameDisplay.textContent = file.name; // 显示文件名
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const students = e.target.result.split('\n').map(student => student.trim()).filter(Boolean);
+                const studentsElement = document.getElementById('students');
+                studentsElement.innerHTML = '';
+                students.forEach((student) => {
+                    const p = document.createElement('p');
+                    p.textContent = student;
+                    studentsElement.appendChild(p);
+                });
+            };
+            reader.readAsText(file);
+        } else {
+            fileNameDisplay.textContent = '未选择文件';
+        }
+    });
+
+    const recentSelections = []; // 用于存储最近五次的结果
+
+    function randomSelect() {
+        const students = Array.from(document.querySelectorAll('#students p')).map(p => p.textContent);
+        if (students.length === 0) {
+            document.getElementById('selected').textContent = '请先上传学生名单文件';
+            return;
+        }
+
+        const selectedElement = document.getElementById('selected');
+        let interval;
+        let counter = 0;
+        let selectedName = '';
+
+        // 闪屏效果，快速滚动随机名字
+        interval = setInterval(() => {
+            do {
+                const randomIndex = Math.floor(Math.random() * students.length);
+                selectedName = students[randomIndex];
+            } while (recentSelections.includes(selectedName) && students.length > 10); // 如果重复且人数大于10，则重新选择
+
+            selectedElement.textContent = selectedName;
+            counter++;
+
+            // 滚动一定次数后停止
+            if (counter > 100) { // 这里可以调整闪屏次数
+                clearInterval(interval);
+
+                // 更新选中结果，添加到最近记录，并限制为10次内
+                recentSelections.push(selectedName);
+                if (recentSelections.length > 10) {
+                    recentSelections.shift();
+                }
+
+                selectedElement.textContent = '选中的是：' + selectedName;
+            }
+        }, 50); // 每隔50毫秒更换一次名字
+    }
+</script>
+</body>
+</html>
