@@ -10,12 +10,15 @@
             padding: 0;
             overflow: hidden;
             background-color: #ecf0f1;
+            font-family: Arial, sans-serif;
         }
+
         #floatingWindow {
             position: fixed;
             top: 15%;
             left: 15%;
-            width: 250px;
+            width: 80%;
+            max-width: 400px;
             background-color: #87CEEB;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -26,51 +29,63 @@
             align-items: center;
             box-sizing: border-box;
         }
+
         #floatingWindow h1 {
             margin: 0 0 10px 0;
-            font-size: 18px;
+            font-size: 1.5em;
             color: white;
+            text-align: center;
         }
+
         #fileInput {
             display: none;
         }
+
         .file-label {
             background-color: #ffd700;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 15px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1em;
             margin-bottom: 8px;
             text-align: center;
+            width: auto;
         }
+
         #fileName {
-            font-size: 14px;
+            font-size: 0.9em;
             color: #2c3e50;
             margin-bottom: 16px;
             text-align: center;
+            width: 80%;
         }
+
         #floatingWindow button {
             background-color: #ffd700;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 15px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1em;
+            width: auto;
+            margin-top: 8px;
         }
+
         #floatingWindow #selected {
-            font-size: 16px;
+            font-size: 1em;
             color: #e74c3c;
             margin-top: 15px;
             padding: 8px;
             border-radius: 15px;
             background-color: #2c3e50;
             border: 1px solid #34495e;
-            width: 100%;
+            width: 80%;
             text-align: center;
         }
+
         #floatingWindow #students {
             margin-top: 10px;
             height: 100px;
@@ -78,20 +93,65 @@
             border: 1px solid #34495e;
             padding: 5px;
             border-radius: 15px;
-            width: 100%;
+            width: 80%;
             background-color: #2c3e50;
             color: white;
+            text-align: center;
         }
+
         #floatingWindow #students p {
-            margin: 0;
-            padding: 2px 5px;
+            display: inline-block;
+            width: 30%; /* 控制每行最多显示三个名字 */
+            margin: 2px 0;
+            padding: 2px;
+            font-size: 0.9em;
+            white-space: nowrap; /* 确保名字不换行 */
+        }
+
+        @media (min-width: 768px) {
+            #floatingWindow {
+                width: 300px;
+                top: 25%;
+                left: 35%;
+            }
+            #floatingWindow h1 {
+                font-size: 1.2em;
+            }
+            #floatingWindow button,
+            .file-label {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #floatingWindow {
+                width: 90%;
+                top: 10%;
+                left: 5%;
+                padding: 15px;
+            }
+            #floatingWindow h1 {
+                font-size: 1.1em;
+            }
+            #floatingWindow button,
+            .file-label {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+            #floatingWindow #students {
+                height: 80px;
+            }
+            #floatingWindow #selected {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
-<body>
+<body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
 <div id="floatingWindow">
     <header>
-        <h1>随机点名</h1>
+        <h2>随机点名</h2>
     </header>
     <label class="file-label" for="fileInput">选择文件</label>
     <input type="file" id="fileInput" accept=".txt">
@@ -112,7 +172,7 @@
     fileInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (file) {
-            fileNameDisplay.textContent = file.name; // 显示文件名
+            fileNameDisplay.textContent = file.name;
             const reader = new FileReader();
             reader.onload = function(e) {
                 const students = e.target.result.split('\n').map(student => student.trim()).filter(Boolean);
@@ -130,12 +190,12 @@
         }
     });
 
-    const recentSelections = []; // 用于存储最近五次的结果
+    const recentSelections = [];
 
     function randomSelect() {
         const students = Array.from(document.querySelectorAll('#students p')).map(p => p.textContent);
         if (students.length === 0) {
-            document.getElementById('selected').textContent = '请先上传学生名单文件';
+            document.getElementById('selected').textContent = '请先选择人员名单文件';
             return;
         }
 
@@ -144,29 +204,24 @@
         let counter = 0;
         let selectedName = '';
 
-        // 闪屏效果，快速滚动随机名字
         interval = setInterval(() => {
             do {
                 const randomIndex = Math.floor(Math.random() * students.length);
                 selectedName = students[randomIndex];
-            } while (recentSelections.includes(selectedName) && students.length > 10); // 如果重复且人数大于10，则重新选择
+            } while (recentSelections.includes(selectedName) && students.length > 10);
 
             selectedElement.textContent = selectedName;
             counter++;
 
-            // 滚动一定次数后停止
-            if (counter > 100) { // 这里可以调整闪屏次数
+            if (counter > 100) {
                 clearInterval(interval);
-
-                // 更新选中结果，添加到最近记录，并限制为10次内
                 recentSelections.push(selectedName);
                 if (recentSelections.length > 10) {
                     recentSelections.shift();
                 }
-
                 selectedElement.textContent = '选中的是：' + selectedName;
             }
-        }, 50); // 每隔50毫秒更换一次名字
+        }, 50);
     }
 </script>
 </body>
