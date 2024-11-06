@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>随机点名器</title>
+    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
+    <title>随机点名</title>
     <style>
         /* 全局样式 */
         body, html {
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #ecf0f1;
+            background-color: #ffffff; /* 恢复为白色背景 */
             font-family: Arial, sans-serif;
             font-weight: bold;
         }
@@ -22,7 +23,7 @@
             transform: translateX(-50%);
             width: 80%;
             max-width: 400px;
-            background-color: #87CEEB;
+            background-color: #87CEEB; /* 设置天空蓝背景 */
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
@@ -46,7 +47,7 @@
 
         #floatingWindow h2 {
             margin: 0 0 10px 0;
-            font-size: 2.5em; /* 调整标题字体大小 */
+            font-size: 2.5em;
             background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #ff9ff3);
             background-size: 300%;
             -webkit-background-clip: text;
@@ -67,9 +68,9 @@
         }
 
         .file-label {
-            background-color: #ffd700;
-            color: white;
-            border: none;
+            background-color: #87CEEB; /* 设置选择文件按钮背景为天空蓝 */
+            color: #2c3e50;
+            border: 1px solid #7f8c8d;
             padding: 10px 15px;
             border-radius: 15px;
             cursor: pointer;
@@ -88,9 +89,9 @@
         }
 
         #floatingWindow button {
-            background-color: #ffd700;
-            color: white;
-            border: none;
+            background-color: #87CEEB; /* 设置按钮背景为天空蓝 */
+            color: #2c3e50;
+            border: 1px solid #7f8c8d;
             padding: 8px 15px;
             border-radius: 15px;
             cursor: pointer;
@@ -131,7 +132,7 @@
 
         #floatingWindow #students p {
             display: inline-block;
-            width: 30%;
+            width: 22%; /* 调整为 4 列布局 */
             margin: 2px 0;
             padding: 2px;
             font-size: 0.9em;
@@ -178,9 +179,12 @@
         }
     </style>
 </head>
-<body>
+<body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
 <div id="floatingWindow">
     <div id="versionLabel">V0.0.5</div>
+    <!-- Avatar Image with random query parameter -->
+    <img id="avatar" src="https://imgapi.cn/qq.php?qq=3038886380&random=" style="width: auto; height: 80px; border-radius: 50px; overflow: hidden; margin-top: 30px;">
+    <br>
     <header>
         <h2>随机点名</h2>
     </header><br><br>
@@ -194,18 +198,33 @@
 </div>
 
 <script>
+    // Automatically refresh the avatar image every second
+    setInterval(function() {
+        const avatar = document.getElementById('avatar');
+        avatar.src = "https://imgapi.cn/qq.php?qq=3038886380&random=" + new Date().getTime(); // 使用时间戳作为随机参数
+    }, 1000); // 每秒刷新一次
+
     const fileInput = document.getElementById('fileInput');
     const fileNameDisplay = document.getElementById('fileName');
 
     fileInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (file) {
+            // 检查文件后缀是否为 .txt
+            const fileName = file.name;
+            const fileExtension = fileName.split('.').pop().toLowerCase();
+            if (fileExtension !== 'txt') {
+                alert("请选择一个 .txt 文件");
+                fileInput.value = ""; // 清空文件选择
+                fileNameDisplay.textContent = '未选择文件';
+                return;
+            }
+
             fileNameDisplay.textContent = file.name;
             const reader = new FileReader();
             reader.onload = function(e) {
                 const students = e.target.result.split('\n').map(student => student.trim()).filter(Boolean);
-                const studentsElement = document.getElementById('students');
-                studentsElement.innerHTML = '';
+                const studentsElement = document.getElementById('students');studentsElement.innerHTML = '';
                 students.forEach((student) => {
                     const p = document.createElement('p');
                     p.textContent = student;
@@ -217,8 +236,6 @@
             fileNameDisplay.textContent = '未选择文件';
         }
     });
-
-    const recentSelections = [];
 
     function randomSelect() {
         const students = Array.from(document.querySelectorAll('#students p')).map(p => p.textContent);
@@ -235,16 +252,11 @@
         interval = setInterval(() => {
             const randomIndex = Math.floor(Math.random() * students.length);
             selectedName = students[randomIndex];
-
             selectedElement.textContent = selectedName;
             counter++;
 
             if (counter > 100) {
                 clearInterval(interval);
-                recentSelections.push(selectedName);
-                if (recentSelections.length > 10) {
-                    recentSelections.shift();
-                }
             }
         }, 50);
     }
