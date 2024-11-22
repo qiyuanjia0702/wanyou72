@@ -14,21 +14,21 @@ const app = Vue.createApp({
                 }
             ],
             exhibitionImages: [
-                'https://via.placeholder.com/500x200.png?text=展览图片1',
-                'https://via.placeholder.com/500x200.png?text=展览图片2',
-                'https://via.placeholder.com/500x200.png?text=展览图片3'
+                'https://ipv4wp.axzzz.top:9503/f/kJO7T0/2024.11.23_05.30_qkhaDxuZ.png',
+                'https://ipv4wp.axzzz.top:9503/f/JA5Zfw/2024.11.23_05.30_sYtiAKzc.png',
+                'https://ipv4wp.axzzz.top:9503/f/y3qecg/2024.11.23_05.30_kKjmYbfG.png'
             ],
             servers: [{
                     name: '生存服务器',
                     description: '这是一个纯净生存服务器，适合喜欢自由建造的玩家。',
                     ip: '192.168.0.1',
-                    img: 'https://via.placeholder.com/500x200.png?text=服务器1'
+                    img: 'https://ipv4wp.axzzz.top:9503/f/e0OahQ/2024.11.23_05.30_xIYhCaEh.png'
                 },
                 {
                     name: 'PVP服务器',
                     description: '如果你喜欢战斗，这里是你的天堂！',
                     ip: '192.168.0.2',
-                    img: 'https://via.placeholder.com/500x200.png?text=服务器2'
+                    img: 'https://ipv4wp.axzzz.top:9503/f/M95Xhj/2024.11.23_05.30_MpxGfrex.png'
                 }
             ],
             lightboxImage: null
