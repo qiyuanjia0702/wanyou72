@@ -10,6 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Minecraft游戏世界</title>
 </head>
+<style>
+
+</style>
 
 <body>
     <div id="app">
@@ -36,14 +39,20 @@
                     目前正在开发中…
                 </div>
             </div>
-
+            <!-- 文本展示栏 -->
+            <div class="text-display">
+                展示栏
+            </div>
             <!-- 展览 -->
             <div class="card">
                 <div class="carousel">
                     <img v-for="(image, index) in exhibitionImages" :key="'image-' + index" :src="image" @click="showImage(image)">
                 </div>
             </div>
-            
+            <!-- 文本展示栏 -->
+            <div class="text-display">
+                最新消息
+            </div>
             <!-- 公告 -->
             <div class="card" v-for="(announcement, index) in announcements" :key="'announcement-' + index">
                 <img :src="announcement.img" alt="公告">
@@ -52,7 +61,10 @@
                     <p>{{ announcement.text }}</p>
                 </div>
             </div>
-
+            <!-- 文本展示栏 -->
+            <div class="text-display">
+                服务器
+            </div>
             <!-- 服务器介绍 -->
             <div class="card" v-for="(server, index) in servers" :key="'server-' + index">
                 <img :src="server.img" alt="服务器">
