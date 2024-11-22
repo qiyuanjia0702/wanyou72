@@ -1,1 +1,256 @@
-1
+/* 基础样式 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    margin-top: 18px;
+    /* 调整卡片容器位置 */
+}
+
+/* 头像样式 */
+.avatar-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 1s ease-in-out;
+    margin-top: 5px;
+    /* 头像顶部边距 */
+}
+
+.avatar:hover {
+    transform: rotate(1080deg);
+    /* 旋转三圈 */
+}
+
+.avatar:not(:hover) {
+    transform: rotate(-1080deg);
+    /* 悬停结束后反向旋转三圈 */
+}
+
+/* 头像下的文本样式 */
+.avatar-text {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+    /* 渐变背景 */
+    background-size: 400% 400%;
+    color: transparent;
+    -webkit-background-clip: text;
+    animation: gradient 5s ease infinite;
+    /* 渐变动画 */
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 头部区域 */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 跑马灯容器样式 */
+.marquee-container {
+    background: #ffeb3b;
+    padding: 10px;
+    margin-top: 18px;
+    /* 调整跑马灯容器位置 */
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+    /* 避免内容溢出 */
+}
+
+.marquee-text {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+    /* 增加滚动时间 */
+    padding-right: 100%;
+    /* 给跑马灯内容添加足够的空间 */
+}
+
+/* 文字滚动效果 */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* 主题切换时的样式 */
+body.dark-mode .marquee-container {
+    border-color: #fff;
+}
+
+/* 卡片样式 */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 15px;
+}
+
+/* 轮播图样式 */
+.carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel img {
+    scroll-snap-align: start;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* 主题切换按钮 */
+.theme-switch {
+    cursor: pointer;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background 0.3s, color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+/* 白天模式按钮 */
+.theme-switch.light {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+}
+
+/* 黑夜模式按钮 */
+.theme-switch.dark {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+/* 黑夜模式 */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .card {
+    background: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* 图片放大功能 */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* 复制IP按钮样式 */
+.copy-button {
+    display: block;
+    margin: 20px auto;
+    /* 居中按钮 */
+    padding: 12px 24px;
+    background: #4CAF50;
+    /* 按钮背景色 */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+/* 按钮 hover 效果 */
+.copy-button:hover {
+    background: #45a049;
+    /* 更深的绿色 */
+    transform: translateY(-3px);
+}
+
+/* 按钮点击效果 */
+.copy-button:active {
+    transform: translateY(1px);
+}
+
+/* 复制按钮显示文本样式 */
+.copy-button-text {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+}
