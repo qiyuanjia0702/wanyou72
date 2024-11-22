@@ -16,16 +16,16 @@ body {
 /* 头像样式 */
 .avatar-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .avatar {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
+    border-radius: 30%;
     object-fit: cover;
-    transition: transform 1s ease-in-out;
-    margin-top: 5px;
+    transition: transform 3s ease-in-out;
+    margin-top: 10px;
     /* 头像顶部边距 */
 }
 
@@ -128,7 +128,7 @@ body.dark-mode .marquee-container {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, opacity 0.3s;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(200px);
 }
 
 .card img {
@@ -154,7 +154,7 @@ body.dark-mode .marquee-container {
 
 .carousel img {
     scroll-snap-align: start;
-    width: 100%;
+    width: 200%;
     height: 200px;
     object-fit: cover;
     cursor: pointer;
@@ -257,6 +257,7 @@ body.dark-mode .card {
 
 /* 响应式样式 */
 @media (max-width: 768px) {
+
     /* 移动端头像尺寸调整 */
     .avatar {
         width: 60px;
@@ -279,7 +280,28 @@ body.dark-mode .card {
     }
 }
 
+/* 文本展示栏样式 */
+.text-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    /* 背景颜色，可以调整 */
+    padding: 20px;
+    font-size: 24px;
+    /* 字体大小 */
+    font-weight: bold;
+    /* 字体加粗 */
+    color: #333;
+    /* 字体颜色 */
+    border-radius: 10px;
+    /* 边框圆角 */
+    margin-top: 20px;
+    /* 距离上方元素一定距离 */
+}
+
 @media (min-width: 769px) {
+
     /* PC端容器优化 */
     .container {
         max-width: 80%;
