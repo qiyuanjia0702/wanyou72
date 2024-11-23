@@ -84,8 +84,6 @@ body {
     display: flex;
     align-items: center;
     border-radius: 10px;
-    width: 75%;
-    margin: 20px auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s;
     position: relative;
@@ -298,8 +296,6 @@ body.dark-mode .card {
     /* 字体颜色 */
     border-radius: 10px;
     /* 边框圆角 */
-    width: 75%;
-    margin: 20px auto;
     margin-top: 20px;
     /* 距离上方元素一定距离 */
 }
@@ -320,16 +316,6 @@ body.dark-mode .card {
     .card img {
         height: 250px;
     }
-}
-
-.card {
-    max-width: 80%; 
-    max-height: 70vh;
-    opacity: 1;
-    transform: translateY(0px);
-    overflow: hidden;
-    margin: 20px auto;
-    border: 1px solid #ccc; 
 }
 
 .carousel {
