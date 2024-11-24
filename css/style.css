@@ -80,30 +80,58 @@ body {
     background: #ffeb3b;
     padding: 10px;
     margin-top: 18px;
-    /* 调整跑马灯容器位置 */
     display: flex;
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s;
     position: relative;
+    /* 为遮挡物和图标定位准备 */
     overflow: hidden;
-    /* 避免内容溢出 */
+    /* 避免内容超出 */
 }
 
+/* 遮挡物样式 */
+.marquee-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    /* 遮挡宽度，可以根据需要调整 */
+    background: #ffeb3b;
+    /* 与容器背景色一致 */
+    z-index: 1;
+    /* 确保遮挡在文字上方 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 图标居中 */
+}
+
+/* 喇叭图标样式 */
+.marquee-mask .fas {
+    font-size: 20px;
+    /* 图标大小 */
+    color: #333;
+    /* 图标颜色 */
+}
+
+/* 跑马灯文字 */
 .marquee-text {
     display: inline-block;
     font-size: 18px;
     font-weight: bold;
     color: #333;
     white-space: nowrap;
-    animation: marquee 20s linear infinite;
-    /* 增加滚动时间 */
+    animation: marquee 15s linear infinite;
     padding-right: 100%;
-    /* 给跑马灯内容添加足够的空间 */
+    position: relative;
+    /* 避免被遮挡物影响 */
+    z-index: 0;
+    /* 确保在遮挡物和图标下方 */
 }
 
-/* 文字滚动效果 */
+/* 滚动动画 */
 @keyframes marquee {
     0% {
         transform: translateX(100%);
