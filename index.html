@@ -34,7 +34,7 @@
                 <div class="marquee-mask">
                     <i class="fas fa-bullhorn"></i>
                 </div>
-                <div class="marquee-text">这是跑马灯的文字内容，滚动展示重要信息。</div>
+                <div class="marquee-text">Minecraft游戏服务器官网已初步成型，后续努力更进…</div>
             </div>
             <!-- 文本展示栏 -->
             <div class="text-display">
@@ -43,7 +43,14 @@
             <!-- 展览 -->
             <div class="card">
                 <div class="carousel">
-                    <img v-for="(image, index) in exhibitionImages" :key="'image-' + index" :src="image" @click="showImage(image)">
+                    <template v-for="(media, index) in exhibitionMedia" :key="'media-' + index">
+                        <!-- 视频 -->
+                        <video v-if="media.type === 'video'" :src="media.src" class="carousel-video" controls controlsList="nodownload nofullscreen" disablePictureInPicture oncontextmenu="return false;">
+                            您的浏览器不支持视频播放。
+                        </video>
+                        <!-- 图片 -->
+                        <img v-else :src="media.src" class="carousel-img" @click="showImage(media.src)">
+                    </template>
                 </div>
             </div>
             <!-- 文本展示栏 -->
