@@ -203,14 +203,6 @@ body.dark-mode .marquee-container {
     /* 保持横屏比例 */
 }
 
-/* 鼠标悬停效果 */
-.carousel img:hover,
-.carousel video:hover {
-    transform: scale(1.05);
-    /* 放大效果 */
-    transition: transform 0.3s ease;
-}
-
 /* 视频悬停时强制横屏比例 */
 .carousel video:hover {
     aspect-ratio: 18 / 8;
