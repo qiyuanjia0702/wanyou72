@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -11,6 +12,7 @@
 </head>
 
 <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
+<div class="alert" id="alertBox"></div>
     <div id="app">
         <!-- 头部区域 -->
         <div class="header">
@@ -44,7 +46,7 @@
                 <div class="carousel">
                     <template v-for="(media, index) in exhibitionMedia" :key="'media-' + index">
                         <!-- 视频 -->
-                        <video v-if="media.type === 'video'" :src="media.src" class="carousel-video" controls controlsList="nodownload nofullscreen" disablePictureInPicture oncontextmenu="return false;">
+                        <video v-if="media.type === 'video'" :src="media.src" class="carousel-video" controls controlsList="nodownload" oncontextmenu="return false;">
                             您的浏览器不支持视频播放。
                         </video>
                         <!-- 图片 -->
