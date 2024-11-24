@@ -173,19 +173,48 @@ body.dark-mode .marquee-container {
     padding: 15px;
 }
 
-/* 轮播图样式 */
+/* 轮播图容器 */
 .carousel {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
 }
 
-.carousel img {
-    scroll-snap-align: start;
-    width: 200%;
+/* 图片样式 */
+.carousel img,
+.carousel video {
+    scroll-snap-align: center;
+    width: 100%;
+    max-width: 400px;
+    /* 控制最大宽度 */
     height: 200px;
     object-fit: cover;
+    /* 确保内容适应容器 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 增加阴影效果 */
     cursor: pointer;
+}
+
+/* 视频样式 */
+.carousel video {
+    background-color: #000;
+    /* 视频背景为黑色 */
+    aspect-ratio: 16 / 9;
+    /* 保持横屏比例 */
+}
+
+/* 鼠标悬停效果 */
+.carousel img:hover,
+.carousel video:hover {
+    transform: scale(1.05);
+    /* 放大效果 */
+    transition: transform 0.3s ease;
+}
+
+/* 视频悬停时强制横屏比例 */
+.carousel video:hover {
+    aspect-ratio: 16 / 9;
+    /* 仍然保持横屏比例 */
 }
 
 /* 主题切换按钮 */
