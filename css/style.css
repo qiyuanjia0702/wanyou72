@@ -199,7 +199,7 @@ body.dark-mode .marquee-container {
 .carousel video {
     background-color: #000;
     /* 视频背景为黑色 */
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 18 / 8;
     /* 保持横屏比例 */
 }
 
@@ -213,7 +213,7 @@ body.dark-mode .marquee-container {
 
 /* 视频悬停时强制横屏比例 */
 .carousel video:hover {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 18 / 8;
     /* 仍然保持横屏比例 */
 }
 
