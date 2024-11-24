@@ -388,3 +388,56 @@ body.dark-mode .card {
     height: auto;
     scroll-snap-align: start;
 }
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    z-index: 9999;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    /* 初始状态为完全透明 */
+    animation: fadeIn 1s forwards;
+    /* 显示时的动画 */
+}
+
+/* 定义出现动画 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /* 开始时完全透明 */
+        transform: translateX(-50%) translateY(-20px);
+        /* 初始位置稍微向上偏移 */
+    }
+
+    100% {
+        opacity: 1;
+        /* 结束时完全不透明 */
+        transform: translateX(-50%) translateY(0);
+        /* 完全恢复到原始位置 */
+    }
+}
+
+/* 定义消失动画 */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        /* 开始时完全不透明 */
+        transform: translateX(-50%) translateY(0);
+        /* 初始时在正确的位置 */
+    }
+
+    100% {
+        opacity: 0;
+        /* 结束时完全透明 */
+        transform: translateX(-50%) translateY(-20px);
+        /* 最后稍微向上移动 */
+    }
+}
