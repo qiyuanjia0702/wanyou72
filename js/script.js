@@ -1,4 +1,3 @@
-
 const app = Vue.createApp({
     data() {
         return {
@@ -93,4 +92,50 @@ const app = Vue.createApp({
     }
 });
 
+// 显示警告提示
+        function showAlert(message) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.style.display = 'block';
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        }
+
+        // 禁用右键菜单
+        document.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            showAlert('右键菜单已禁用！');
+        });
+
+        // 禁用键盘快捷键 (如F12, Ctrl+Shift+I, Ctrl+U等)
+        document.addEventListener('keydown', (event) => {
+            if (
+                event.key === 'F12' || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J')) || 
+                (event.ctrlKey && event.key === 'U')
+            ) {
+                event.preventDefault();
+                showAlert('开发者工具已禁用！');
+            }
+        });
+
+        // 检测录屏或屏幕捕获
+        let lastStatus = false;
+        setInterval(() => {
+            const isScreenCaptured = navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia;
+            if (isScreenCaptured && !lastStatus) {
+                lastStatus = true;
+                showAlert('检测到屏幕录制！请立即停止！');
+            } else if (!isScreenCaptured) {
+                lastStatus = false;
+            }
+        }, 1000);
+
+        // 禁用选中文本复制
+        document.addEventListener('copy', (event) => {
+            event.preventDefault();
+            showAlert('复制功能已禁用！');
+        });
+      
 app.mount('#app');
