@@ -13,17 +13,38 @@ const app = Vue.createApp({
                     img: 'https://ipv4wp.axzzz.top:9503/f/4wgPTn/2024.11.23_06.38_JWwLvmEM.png'
                 }
             ],
-            exhibitionImages: [
-                'https://ipv4wp.axzzz.top:9503/f/kJO7T0/2024.11.23_05.30_qkhaDxuZ.png',
-                'https://ipv4wp.axzzz.top:9503/f/JA5Zfw/2024.11.23_05.30_sYtiAKzc.png',
-                'https://ipv4wp.axzzz.top:9503/f/y3qecg/2024.11.23_05.30_kKjmYbfG.png',
-                'https://ipv4wp.axzzz.top:9503/f/85Z0Iq/2024.11.24_02.43_VMieDQlz.png',
-                'https://ipv4wp.axzzz.top:9503/f/2AwvuZ/2024.11.24_02.43_ANileASO.png',
-                'https://ipv4wp.axzzz.top:9503/f/v58wTM/2024.11.24_02.43_TbsBowDB.png'
+            exhibitionMedia: [{
+                    type: 'video',
+                    src: 'https://ipv4wp.axzzz.top:9503/f/AWBt8/%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97%E3%80%82.mkv'
+                },
+                {
+                    type: 'image',
+                    src: 'https://ipv4wp.axzzz.top:9503/f/kJO7T0/2024.11.23_05.30_qkhaDxuZ.png'
+                },
+                {
+                    type: 'image',
+                    src: 'https://ipv4wp.axzzz.top:9503/f/JA5Zfw/2024.11.23_05.30_sYtiAKzc.png'
+                },
+                {
+                    type: 'image',
+                    src: 'https://ipv4wp.axzzz.top:9503/f/y3qecg/2024.11.23_05.30_kKjmYbfG.png'
+                },
+                {
+                    type: 'image',
+                    src: 'https://ipv4wp.axzzz.top:9503/f/85Z0Iq/2024.11.24_02.43_VMieDQlz.png'
+                },
+                {
+                    type: 'image',
+                    src: 'https://ipv4wp.axzzz.top:9503/f/2AwvuZ/2024.11.24_02.43_ANileASO.png'
+                },
+                {
+                    type: 'image',
+                    src: 'https://ipv4wp.axzzz.top:9503/f/v58wTM/2024.11.24_02.43_TbsBowDB.png'
+                },
             ],
             servers: [{
                     name: '生存服务器',
-                    description: '本服务器是1.21版本，确保你的游戏版本正确，该服务器添加更多插件，玩家可以使用tpa指令进行互相传送',
+                    description: '本服务器是1.20版本，确保你的游戏版本正确，该服务器添加更多插件，玩家可以使用tpa指令进行互相传送',
                     ip: 'su7.candycake.cloud:36472',
                     img: 'https://ipv4wp.axzzz.top:9503/f/e0OahQ/2024.11.23_05.30_xIYhCaEh.png'
                 },
