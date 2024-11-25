@@ -132,11 +132,4 @@ setInterval(() => {
     }
 }, 1000);
 
-// 禁用选中文本复制
-document.addEventListener('copy', (event) => {
-    event.preventDefault();
-    showAlert('复制功能已禁用！');
-});
-
-
 app.mount('#app');
