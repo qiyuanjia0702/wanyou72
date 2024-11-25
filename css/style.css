@@ -29,16 +29,6 @@ body {
     /* 头像顶部边距 */
 }
 
-.avatar:hover {
-    transform: rotate(1080deg);
-    /* 旋转三圈 */
-}
-
-.avatar:not(:hover) {
-    transform: rotate(-1080deg);
-    /* 悬停结束后反向旋转三圈 */
-}
-
 /* 头像下的文本样式 */
 .avatar-text {
     margin-top: 10px;
@@ -178,35 +168,42 @@ body.dark-mode .marquee-container {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    position: relative;
+    width: 100%; /* 占满父容器宽度 */
+    max-width: 400px; /* 最大宽度 */
+    height: 200px; /* 固定高度 */
+    margin: 0 auto;
+    border-radius: 10px; /* 圆角效果 */
+    background: #f4f4f4; /* 默认背景色 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
 }
 
-/* 图片样式 */
+/* 滚动容器中的每个项目 */
 .carousel img,
 .carousel video {
     scroll-snap-align: center;
-    width: 100%;
-    max-width: 400px;
-    /* 控制最大宽度 */
-    height: 200px;
-    object-fit: cover;
-    /* 确保内容适应容器 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* 增加阴影效果 */
-    cursor: pointer;
+    flex-shrink: 0;
+    max-width: 100%; /* 限制宽度不超过容器 */
+    max-height: 100%; /* 限制高度不超过容器 */
+    margin: auto; /* 居中对齐 */
+    border-radius: 10px; /* 图片和视频保持一致圆角 */
+    object-fit: contain; /* 确保内容按比例显示，不裁剪 */
 }
 
 /* 视频样式 */
 .carousel video {
-    background-color: #000;
-    /* 视频背景为黑色 */
-    aspect-ratio: 18 / 8;
-    /* 保持横屏比例 */
+    background-color: #000; /* 设置黑色背景防止未加载时显示空白 */
+    border: none;
 }
 
-/* 视频悬停时强制横屏比例 */
-.carousel video:hover {
-    aspect-ratio: 18 / 8;
-    /* 仍然保持横屏比例 */
+/* 隐藏滚动条 */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel {
+    -ms-overflow-style: none; /* IE 10+ 隐藏滚动条 */
+    scrollbar-width: none; /* Firefox 隐藏滚动条 */
 }
 
 /* 主题切换按钮 */
