@@ -44,7 +44,7 @@ const app = Vue.createApp({
             ],
             servers: [{
                     name: '生存服务器',
-                    description: '本服务器是1.20版本，确保你的游戏版本正确，该服务器添加更多插件，玩家可以使用tpa指令进行互相传送',
+                    description: '本服务器是1.21版本，确保你的游戏版本正确，该服务器添加更多插件，玩家可以使用tpa指令进行互相传送',
                     ip: 'su7.candycake.cloud:36472',
                     img: 'https://ipv4wp.axzzz.top:9503/f/e0OahQ/2024.11.23_05.30_xIYhCaEh.png'
                 },
