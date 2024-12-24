@@ -126,7 +126,7 @@ setInterval(() => {
     const isScreenCaptured = navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia;
     if (isScreenCaptured && !lastStatus) {
         lastStatus = true;
-        showAlert('检测到屏幕录制！请立即停止！');
+        showAlert('圣诞快乐！🎄');
     } else if (!isScreenCaptured) {
         lastStatus = false;
     }
