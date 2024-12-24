@@ -4,12 +4,12 @@ const app = Vue.createApp({
             isDarkMode: false,
             announcements: [{
                     title: '最新消息',
-                    text: '乌托邦探险之旅开始了，祝你们有个愉快的寒假！',
+                    text: '冬日快乐，祝你们有个愉快的假期',
                     img: 'https://ipv4wp.axzzz.top:9503/f/M95Xhj/2024.11.23_05.30_MpxGfrex.png'
                 },
                 {
                     title: '活动娱乐',
-                    text: '招五名服务器管理员，不低于18岁，会基础的指令和Linux常用命令',
+                    text: '乌托邦探险之旅开始大量开设现代城市，大批量建造，目前为初期状态',
                     img: 'https://ipv4wp.axzzz.top:9503/f/4wgPTn/2024.11.23_06.38_JWwLvmEM.png'
                 }
             ],
@@ -43,9 +43,9 @@ const app = Vue.createApp({
                 },
             ],
             servers: [{
-                    name: '生存服务器',
+                    name: '生存服务器（已停止）',
                     description: '本服务器是1.21版本，确保你的游戏版本正确，该服务器添加更多插件，玩家可以使用tpa指令进行互相传送',
-                    ip: 'su7.candycake.cloud:36472',
+                    ip: '',
                     img: 'https://ipv4wp.axzzz.top:9503/f/e0OahQ/2024.11.23_05.30_xIYhCaEh.png'
                 },
                 {
