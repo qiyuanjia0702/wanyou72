@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
+    <title>倒计时</title>
+    <style>
+        :root {
+            --color2: #f67280;
+            --color4: #c06c84;
+            --color6: #6c5b7b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
+            overflow: hidden;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .clock-container {
+            position: relative;
+            max-width: 90%;
+            width: 380px;
+            height: 80px;
+            border-radius: 10px;
+            background-image: linear-gradient(135deg, var(--color2), var(--color4), var(--color6));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: animate 4s linear infinite;
+            margin: 0 auto; /* 水平居中 */
+        }
+
+        .clock-container::after,
+        .clock-container::before {
+            position: absolute;
+            content: "";
+            background-image: inherit;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border-radius: 10px;
+            filter: blur(15px);
+        }
+
+        .clock-container::before {
+            filter: blur(100px);
+        }
+
+        .clock-display {
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            top: 10px;
+            bottom: 10px;
+            background-color: #2b2a2a;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .clock-display p {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: transparent;
+            letter-spacing: 1px;
+            background-image: linear-gradient(135deg, var(--color2), var(--color4), var(--color6));
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        @keyframes animate {
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        /* 悬浮弹窗样式 */
+        .toast {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            text-align: center;
+            animation: slideDown 0.5s forwards, slideUp 0.5s 5s forwards;
+            z-index: 1000;
+        }
+
+        @keyframes slideDown {
+            from {
+                top: -100px;
+                opacity: 0;
+            }
+            to {
+                top: 10px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                top: 10px;
+                opacity: 1;
+            }
+            to {
+                top: -100px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock-container">
+        <div class="clock-display">
+            <p id="time"></p>
+        </div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div id="toast" class="toast" style="display: none;">倒计时已结束！</div>
+
+    <script>
+        const timeEl = document.querySelector("#time");
+        const toastEl = document.querySelector("#toast");
+        const targetDate = new Date("2024-12-19T20:00:00");
+
+        function showToast(message) {
+            toastEl.textContent = message;
+            toastEl.style.display = "block";
+            setTimeout(() => {
+                toastEl.style.display = "none";
+            }, 5500); // 等待 5 秒动画完成后隐藏
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeDiff = targetDate - now;
+
+            if (timeDiff <= 0) {
+                timeEl.textContent = "倒计时结束";
+                clearInterval(interval);
+                showToast("倒计时已结束！");
+                return;
+            }
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            timeEl.textContent = `${days}天 ${hours < 10 ? "0" + hours : hours}小时 ${minutes < 10 ? "0" + minutes : minutes}分钟 ${seconds < 10 ? "0" + seconds : seconds}秒`;
+        }
+
+        const interval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+
+</html>

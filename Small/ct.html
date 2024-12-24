@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>时间计算器</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #ffffff;
+            --font-family: 'Arial', sans-serif;
+            --background-color: #f4f4f9;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            --text-border-color: #4CAF50;
+        }
+
+        body {
+            font-family: var(--font-family);
+            text-align: center;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .countdown-container {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .countdown-title {
+            font-size: 24px; /* 更小的标题 */
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 30px; /* 默认字体更小 */
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+            border: 2px solid var(--text-border-color);
+            padding: 10px; /* 缩小内边距 */
+            border-radius: 10px;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background-color: #f9f9f9;
+            max-width: 100%;
+        }
+
+        .countdown.shrink {
+            font-size: 24px; /* 溢出时更小的字体 */
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px; /* 调整按钮大小 */
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-container {
+                padding: 20px;
+            }
+
+            .countdown-title {
+                font-size: 20px;
+            }
+
+            .countdown {
+                font-size: 24px; /* 移动端字体更小 */
+            }
+
+            .countdown.shrink {
+                font-size: 20px; /* 更小字体适配 */
+            }
+
+            input[type="date"] {
+                font-size: 12px;
+            }
+
+            button {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="countdown-container">
+            <div class="countdown-title">节日倒计时</div>
+            <input type="date" id="datePicker" />
+            <button onclick="setCustomDate()">设置日期</button>
+            <div id="countdown" class="countdown">请选择日期</div>
+            <audio id="alertSound" src="path/to/your/sound.mp3"></audio> <!-- 音效文件路径 -->
+        </div>
+    </div>
+
+    <script>
+        var countDownDate = new Date().getTime();
+        var countdownFunction;
+
+        // 初始化倒计时
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            if (distance > 0) {
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                var countdownElement = document.getElementById("countdown");
+                countdownElement.innerHTML = `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+
+                // 检查内容是否溢出，调整字体
+                if (countdownElement.scrollWidth > countdownElement.offsetWidth) {
+                    countdownElement.classList.add("shrink");
+                } else {
+                    countdownElement.classList.remove("shrink");
+                }
+            } else {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "节日已到！";
+                var alertSound = document.getElementById('alertSound');
+                alertSound.play();
+                alert("倒计时结束！");
+            }
+        }
+
+        // 设置自定义日期
+        function setCustomDate() {
+            var customDate = document.getElementById('datePicker').value;
+
+            // 验证输入的日期是否有效
+            if (customDate && !isNaN(new Date(customDate).getTime())) {
+                countDownDate = new Date(customDate).getTime();
+
+                // 清理旧的倒计时
+                clearInterval(countdownFunction);
+
+                // 重启倒计时
+                countdownFunction = setInterval(updateCountdown, 1000);
+                updateCountdown(); // 立即更新显示
+            } else {
+                alert("请选择有效的日期！");
+            }
+        }
+
+        // 默认倒计时启动
+        countdownFunction = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

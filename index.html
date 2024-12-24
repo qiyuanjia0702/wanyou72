@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome for the bullhorn icon -->
+    <link rel="stylesheet" href="css/style-pc.css" media="screen and (min-width: 769px)">
+    <link rel="stylesheet" href="css/style-mobile.css" media="screen and (max-width: 768px)">
+    <title>Minecraft游戏世界</title>
+</head>
+
+<body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
+    <div class="alert" id="alertBox"></div>
+    <div id="app">
+        <!-- 头部区域 -->
+        <div class="header">
+            <div class="avatar-container">
+                <!-- 圆形头像 -->
+                <img src="https://imgapi.cn/qq.php?qq=3038886380" alt="头像" class="avatar">
+                <!-- 头像下的文本 -->
+                <div class="avatar-text">Bmwy</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- 主题切换按钮 -->
+            <div class="theme-switch" :class="isDarkMode ? 'dark' : 'light'" @click="toggleTheme">
+                {{ isDarkMode ? '🌙' : '🌞' }}
+            </div>
+
+            <!-- 跑马灯 -->
+            <div class="marquee-container">
+                <div class="marquee-mask">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="marquee-text">Minecraft游戏服务器官网已初步成型，后续努力更进…</div>
+            </div>
+            <!-- 文本展示栏 -->
+            <div class="text-display">
+                最新消息
+            </div>
+            <!-- 公告 -->
+            <div class="card" v-for="(announcement, index) in announcements" :key="'announcement-' + index">
+                <img :src="announcement.img" alt="公告">
+                <div class="card-content">
+                    <h3>{{ announcement.title }}</h3>
+                    <p>{{ announcement.text }}</p>
+                </div>
+            </div>
+            <!-- 文本展示栏 -->
+            <div class="text-display">
+                服务器
+            </div>
+            <!-- 服务器介绍 -->
+            <div class="card" v-for="(server, index) in servers" :key="'server-' + index">
+                <img :src="server.img" alt="服务器">
+                <div class="card-content">
+                    <h3>{{ server.name }}</h3>
+                    <p>{{ server.description }}</p>
+                    <button class="copy-button" @click="copyToClipboard(server.ip)">复制地址</button>
+                    <p hidden>{{ server.ip }}</p>
+                    <div class="copy-button-text"></div>
+                </div>
+            </div>
+
+            <!-- 图片放大 -->
+            <div class="lightbox" v-if="lightboxImage" @click="closeLightbox">
+                <img :src="lightboxImage" alt="放大图片">
+            </div>
+            <div class="card" style="text-align: center;">
+                <div id="loading">获取中...</div>
+                <div>你的位置: <span id="location"></span></div>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+        <script src="js/syt.js"></script>
+</body>
+
+</html>
