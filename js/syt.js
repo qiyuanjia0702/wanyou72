@@ -1,9 +1,11 @@
-function queryLocation() {
+function queryIP() {
     var xhr = new XMLHttpRequest();
     var apiUrl = 'https://qqlykm.cn/api/free/ip/get';
     var loadingText = document.getElementById('loading');
+    var ipElement = document.getElementById('ip');
     var locationElement = document.getElementById('location');
     
+    ipElement.innerHTML = '';
     locationElement.innerHTML = '';
     loadingText.style.display = 'block';
 
@@ -14,15 +16,19 @@ function queryLocation() {
                 try {
                     var data = JSON.parse(xhr.responseText);
                     if (data.success) {
+                        ipElement.innerHTML = data.data.ip;
                         locationElement.innerHTML = data.data.location; 
                     } else {
-                        locationElement.innerHTML = '查询失败：' + (data.message || '未知错误');
+                        ipElement.innerHTML = '查询失败：' + (data.message || '未知错误');
+                        locationElement.innerHTML = '';
                     }
                 } catch (e) {
-                    locationElement.innerHTML = '解析错误：' + e.message;
+                    ipElement.innerHTML = '解析错误：' + e.message;
+                    locationElement.innerHTML = '';
                 }
             } else {
-                locationElement.innerHTML = '请求失败：HTTP状态码 ' + xhr.status;
+                ipElement.innerHTML = '请求失败：HTTP状态码 ' + xhr.status;
+                locationElement.innerHTML = '';
             }
         }
     };
@@ -31,4 +37,4 @@ function queryLocation() {
 }
 
 // 页面加载后自动调用查询函数
-window.onload = queryLocation;
+window.onload = queryIP;
