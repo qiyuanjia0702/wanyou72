@@ -43,10 +43,10 @@ const app = Vue.createApp({
                 },
             ],
             servers: [{
-                    name: '生存服务器（已停止）',
-                    description: '本服务器是1.21版本，确保你的游戏版本正确，该服务器添加更多插件，玩家可以使用tpa指令进行互相传送',
-                    ip: '',
-                    img: 'https://ipv4wp.axzzz.top:9503/f/e0OahQ/2024.11.23_05.30_xIYhCaEh.png'
+                    name: '空中厕所',
+                    description: '服务器客户端以提供的整合包为准，开启一个月游玩时间，注意游玩时不要吃东西。',
+                    ip: 'su7.candycake.cloud:36472',
+                    img: 'https://square.candycake.cloud/uploads/1719063350_7949_P_Cvj_ccae162118.jpg'
                 },
                 {
                     name: '乌托邦探险之旅',
