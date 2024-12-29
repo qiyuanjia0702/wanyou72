@@ -50,14 +50,14 @@ const app = Vue.createApp({
                     description: '服务器客户端以提供的整合包为准，开启一个月游玩时间，注意游玩时不要吃东西。',
                     ip: 'su7.candycake.cloud:36472',
                     img: 'https://square.candycake.cloud/uploads/1719063350_7949_P_Cvj_ccae162118.jpg',
-                    downloadLink: 'https://example.com/download1'
+                    downloadLink: 'https://ipv4wp.axzzz.top:9503/f/RBOlsn/PoopSky-1.0.zip'
                 },
                 {
                     name: '乌托邦探险之旅',
                     description: '该游戏是由B站limit小火柴制作的大型国创休闲类整合包，更多玩法等着你来探索，所以…赶紧上号！不然刷矿bug就要被修复了！',
                     ip: 'neo.candycake.cloud:30475',
                     img: 'https://ipv4wp.axzzz.top:9503/f/Po5MsR/2024.11.23_05.30_fgfZEkgM.png',
-                    downloadLink: 'https://example.com/download2'
+                    downloadLink: 'https://ipv4wp.axzzz.top:9503/f/y3g1ug/Utopian3.2.zip'
                 }
             ],
             lightboxImage: null
