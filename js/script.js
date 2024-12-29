@@ -94,6 +94,21 @@ const app = Vue.createApp({
                 }, index * 200); // 每张卡片延时显示
             });
         }, 1000); // 页面加载后1秒开始显示卡片
+
+        // 禁止滑动
+        document.body.style.overflow = 'hidden';
+
+        // 资源加载完成后隐藏加载动画
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingOverlay = document.getElementById('loading-overlay');
+                loadingOverlay.classList.add('hidden'); // 添加隐藏类
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // 允许滚动
+                }, 500); // 等待过渡效果完成
+            }, 1000); // 确保加载动画不少于一秒
+        });
     }
 });
 
