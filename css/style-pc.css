@@ -183,6 +183,17 @@ body.dark-mode .marquee-container {
     margin-top: 10px;
 }
 
+.card-bottom {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 与上面卡片一致的边框宽度 */
+    text-align: center; /* 居中对齐 */
+    font-weight: bold; /* 字体统一为黑体 */
+    padding: 15px;
+}
+
 /* 轮播图容器 */
 .carousel-container {
     grid-column: span 3; /* 占据三列 */
@@ -470,4 +481,15 @@ body.dark-mode .card {
 
 .download-link:active {
     transform: translateY(1px);
+}
+
+/* .carp类标签样式 */
+.carp {
+    border: 2px solid #ccc; /* 边框颜色和宽度 */
+    border-radius: 15px; /* 边框圆角 */
+    padding: 5px; /* 内边距 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    margin: 40px 700px; /* 外边距 */
+    background-color: #fff; /* 背景颜色 */
+    text-align: center; /* 居中对齐 */
 }
