@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
+  <title>图文生成</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 50px;
+}
+h1 {
+    color: #333;
+}
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+button {
+    width: 40%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 184px;
+}
+#imageContainer {
+    margin-top: 20px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+</style>
+</head>
+  <body>
+  <div class="container">
+  <img src="https://imgapi.cn/qq.php?qq=3038886380" style="width: auto; height: 90px; border-radius: 20%; overflow: hidden;" />
+  <h1>欢迎您的使用</h1>
+  <input type="text" id="textInput" placeholder="请输入内容...">
+  <button onclick="convertText()">生成图文</button>
+  <div id="imageContainer"></div>
+</div>
+<script>
+function convertText() {
+var text = document.getElementById('textInput').value;
+var apiLink = 'https://qqbyh.cn/API/tuwen.php?text=' + encodeURIComponent(text);
+  fetch(apiLink)
+  .then(response => response.blob())
+  .then(blob => {
+  var url = URL.createObjectURL(blob);
+  var img = document.createElement('img');
+  img.src = url;
+  img.style.maxWidth = '100%';
+  img.style.height = 'auto';
+  img.style.borderRadius = '10px';
+  img.style.cursor = 'pointer';
+  img.title = '点击图片即可下载';
+  img.onclick = function() {
+  var link = document.createElement('a');
+  link.href = url;
+  link.download = 'image.png';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+document.getElementById('imageContainer').innerHTML = '';
+document.getElementById('imageContainer').appendChild(img);
+document.getElementById('textInput').value = '';
+})
+  .catch(error => console.error('Error:', error));
+}
+</script>
+</body>
+</html>

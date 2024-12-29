@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    {
+      "name": "酷我",
+      "url": "http://music.haitangw.net/cqapi/kw.js",
+      "version": "0.1"
+    },
+    {
+      "name": "qq",
+      "url": "http://music.haitangw.net/cqapi/qq.js",
+      "version": "0.1"
+    },
+    {
+      "name": "mg",
+      "url": "http://music.haitangw.net/cqapi/xiaomi.js",
+      "version": "0.1.0"
+    }
+  ]
+}
