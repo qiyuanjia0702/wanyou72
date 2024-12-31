@@ -150,7 +150,7 @@
     <script>
         const timeEl = document.querySelector("#time");
         const toastEl = document.querySelector("#toast");
-        const targetDate = new Date("2024-01-01T00:00:00");
+        const targetDate = new Date("2025-01-01T00:00:00");
 
         function showToast(message) {
             toastEl.textContent = message;
@@ -165,7 +165,7 @@
             const timeDiff = targetDate - now;
 
             if (timeDiff <= 0) {
-                timeEl.textContent = "现在已是2025年";
+                timeEl.textContent = "现在已是2025年！";
                 clearInterval(interval);
                 showToast("跨年快乐！");
                 return;
