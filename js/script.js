@@ -60,7 +60,13 @@ const app = Vue.createApp({
                     downloadLink: 'https://ipv4wp.axzzz.top:9503/f/y3g1ug/Utopian3.2.zip'
                 }
             ],
-            lightboxImage: null
+            lightboxImage: null,
+            guidePanel: {
+                img: 'https://ipv4wp.axzzz.top:9503/f/v5ADhM/Boot.jpg',
+                title: '下载最新资源',
+                description: '点击下面的按钮前往下载页面，获取最新的资源。',
+                link: 'download.html'
+            }
         };
     },
     methods: {

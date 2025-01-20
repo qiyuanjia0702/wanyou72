@@ -1,7 +1,7 @@
 /* 基础样式 */
 body {
     margin: 0; /* 去除默认外边距 */
-    font-family: Arial, sans-serif; /* 设置字体 */
+    font-family: 'Roboto', sans-serif; /* 设置字体 */
     transition: background-color 0.3s, color 0.3s; /* 背景色和文字颜色的过渡效果 */
 }
 
@@ -463,32 +463,14 @@ body.dark-mode .card {
 
 /* 下载链接样式 */
 .download-link {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.download-link:hover {
-    background: #0056b3;
-    transform: translateY(-3px);
-}
-
-.download-link:active {
-    transform: translateY(1px);
+    display: none; /* 隐藏下载链接 */
 }
 
 /* .carp类标签样式 */
 .carp {
     border: 2px solid #ccc; /* 边框颜色和宽度 */
-    border-radius: 15px; /* 边框圆角 */
-    padding: 5px; /* 内边距 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    border-radius: 10px; /* 边框圆角 */
+    padding: 10px; /* 内边距 */
     margin: 40px 700px; /* 外边距 */
     background-color: #fff; /* 背景颜色 */
     text-align: center; /* 居中对齐 */
@@ -530,4 +512,54 @@ body.dark-mode .card {
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* 引导面板样式 */
+.download-panel {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    grid-column: span 2; /* 设置为一列布局 */
+}
+
+.download-panel h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.download-panel p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.download-panel .guide-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* 下载链接样式 */
+.download-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.download-link:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
+.download-link:active {
+    transform: translateY(1px);
 }

@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome for the bullhorn icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"> <!-- Google Fonts -->
     <link rel="stylesheet" href="css/style-pc.css" media="screen and (min-width: 769px)">
     <link rel="stylesheet" href="css/style-mobile.css" media="screen and (max-width: 768px)">
     <title>Minecraft游戏世界</title>
@@ -70,6 +71,17 @@
             </div>
             <!-- 文本展示栏 -->
             <div class="text-display">
+                资源获取
+            </div>
+            <!-- 引导面板 -->
+            <div class="download-panel">
+                <img :src="guidePanel.img" alt="引导图片" class="guide-image">
+                <h2>{{ guidePanel.title }}</h2>
+                <p>{{ guidePanel.description }}</p>
+                <a :href="guidePanel.link" class="download-link">前往下载页面</a>
+            </div>
+            <!-- 文本展示栏 -->
+            <div class="text-display">
                 服务器
             </div>
             <!-- 服务器介绍 -->
@@ -81,7 +93,6 @@
                     <button class="copy-button" @click="copyToClipboard(server.ip)">复制地址</button>
                     <p hidden>{{ server.ip }}</p>
                     <div class="copy-button-text"></div>
-                    <a :href="server.downloadLink" class="download-link" target="_blank">整合包下载</a>
                 </div>
             </div>
 
@@ -90,9 +101,9 @@
                 <img :src="lightboxImage" alt="放大图片">
             </div>
         </div>
-        <div class="carp" style="text-align: center;">
+        <div class="carp" style="text-align: center; border: none;">
             <div id="loading">获取中...</div>
-            <div class="ip-address">你的IP地址: <span id="ip"></span>|<span id="location"></span></div>
+            <div class="ip-address" style="font-family: 'SimSun', serif; font-weight: bold;">你的IP地址: <span id="ip"></span>|<span id="location"></span></div>
         </div>
         <script src="js/script.js"></script>
         <script src="js/syt.js"></script>
