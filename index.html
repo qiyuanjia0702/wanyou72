@@ -85,6 +85,8 @@
                     <button class="copy-button" @click="copyToClipboard(server.ip)">复制地址</button>
                     <p hidden>{{ server.ip }}</p>
                     <div class="copy-button-text"></div>
+                    <!-- 添加新的复制按钮 -->
+                    <button v-if="index === 1" class="copy-button" @click="copyHello">移动专线</button>
                 </div>
             </div>
 

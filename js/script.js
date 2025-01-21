@@ -79,7 +79,16 @@ const app = Vue.createApp({
             tempInput.select();
             document.execCommand('copy');
             document.body.removeChild(tempInput);
-            alert('服务器地址已复制');
+            showAlert('服务器地址已复制');
+        },
+        copyHello() {
+            const tempInput = document.createElement('input');
+            tempInput.value = 'yd.mcla.fun:30475';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showAlert('服务器地址已复制');
         },
         showImage(image) {
             this.lightboxImage = image;
