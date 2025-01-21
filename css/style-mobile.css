@@ -15,7 +15,7 @@ body {
 
 /* 头像样式 */
 .avatar-container {
-    text-align: center;
+    text-align: left; /* 取消居中对齐，改为左对齐 */
     margin-bottom: 30px;
 }
 
@@ -157,7 +157,7 @@ body.dark-mode .marquee-container {
     transition: transform 0.3s, opacity 0.3s;
     opacity: 0;
     transform: translateY(200px);
-    text-align: center; /* 居中对齐 */
+    text-align: left; /* 取消居中对齐，改为左对齐 */
 }
 
 .card img {
@@ -185,7 +185,7 @@ body.dark-mode .marquee-container {
     overflow: hidden;
     margin: 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 与上面卡片一致的边框宽度 */
-    text-align: center; /* 居中对齐 */
+    text-align: left; /* 取消居中对齐，改为左对齐 */
     font-weight: bold; /* 字体统一为黑体 */
     padding: 15px;
 }
@@ -412,6 +412,11 @@ body.dark-mode .card {
     /* 距离上方元素一定距离 */
 }
 
+body.dark-mode .text-display {
+    background-color: #333;
+    color: #fff;
+}
+
 @media (min-width: 769px) {
 
     /* PC端容器优化 */
@@ -503,7 +508,13 @@ body.dark-mode .card {
     padding: 10px; /* 内边距 */
     margin: 40px 20px; /* 外边距 */
     background-color: #fff; /* 背景颜色 */
-    text-align: center; /* 居中对齐 */
+    text-align: left; /* 取消居中对齐，改为左对齐 */
+}
+
+body.dark-mode .carp {
+    background: #1e1e1e;
+    color: #fff;
+    border-color: #444;
 }
 
 #loading-overlay {
@@ -551,7 +562,12 @@ body.dark-mode .card {
     padding: 20px;
     margin: 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: center; /* 引导面板居中对齐 */
+}
+
+body.dark-mode .download-panel {
+    background: #1e1e1e;
+    color: #fff;
 }
 
 .download-panel h2 {
@@ -582,6 +598,14 @@ body.dark-mode .card {
     text-decoration: none;
     font-size: 16px;
     transition: background 0.3s, transform 0.3s;
+}
+
+body.dark-mode .download-link {
+    background: #007bff;
+}
+
+body.dark-mode .download-link:hover {
+    background: #0056b3;
 }
 
 .download-link:hover {

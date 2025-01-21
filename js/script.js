@@ -5,7 +5,7 @@ const app = Vue.createApp({
             announcements: [
                 {
                     title: '最新消息',
-                    text: '冬日快乐，祝你们有个愉快的假期',
+                    text: '乌托邦截至今年的三月份结束该档，进行封存',
                     img: 'https://ipv4wp.axzzz.top:9503/f/M95Xhj/2024.11.23_05.30_MpxGfrex.png'
                 },
                 {
@@ -17,7 +17,7 @@ const app = Vue.createApp({
             exhibitionMedia: [
                 {
                     type: 'video',
-                    src: 'https://ipv4wp.axzzz.top:9503/f/JAjZTw/2024.11.25_02.30_vRiYHSDF.mp4'
+                    src: 'https://ipv4wp.axzzz.top:9503/f/76oof7/Publicity.mp4'
                 },
                 {
                     type: 'image',
@@ -47,17 +47,15 @@ const app = Vue.createApp({
             servers: [
                 {
                     name: '空中厕所',
-                    description: '服务器客户端以提供的整合包为准，开启一个月游玩时间，注意游玩时不要吃东西。',
-                    ip: 'su7.candycake.cloud:36472',
+                    description: '（暂停开放）',
+                    ip: '',
                     img: 'https://square.candycake.cloud/uploads/1719063350_7949_P_Cvj_ccae162118.jpg',
-                    downloadLink: 'https://ipv4wp.axzzz.top:9503/f/RBOlsn/PoopSky-1.0.zip'
                 },
                 {
                     name: '乌托邦探险之旅',
-                    description: '该游戏是由B站limit小火柴制作的大型国创休闲类整合包，更多玩法等着你来探索，所以…赶紧上号！不然刷矿bug就要被修复了！',
+                    description: '当你厌倦匆忙的生活时，那里有着宁静的小屋，等待你的归来。耕耘少许时光，垂钓静谧湖畔，沐浴温柔阳光下的田园气息。在这个世界里，你将品味生命的安宁，享受悠然自得的片刻。',
                     ip: 'neo.candycake.cloud:30475',
                     img: 'https://ipv4wp.axzzz.top:9503/f/Po5MsR/2024.11.23_05.30_fgfZEkgM.png',
-                    downloadLink: 'https://ipv4wp.axzzz.top:9503/f/y3g1ug/Utopian3.2.zip'
                 }
             ],
             lightboxImage: null,
@@ -88,6 +86,56 @@ const app = Vue.createApp({
         },
         closeLightbox() {
             this.lightboxImage = null;
+        },
+        initializeCarousel() {
+            const carousel = document.querySelector('.carousel');
+            const items = this.exhibitionMedia.map(media => {
+                if (media.type === 'video') {
+                    return `<video controls class="video-player" autoplay muted controlsList="nodownload">
+                                <source src="${media.src}" type="video/mp4">
+                                您的浏览器不支持HTML5视频标签。
+                            </video>`;
+                } else {
+                    return `<img src="${media.src}" alt="图片">`;
+                }
+            }).join('');
+            carousel.innerHTML = items;
+
+            let index = 0;
+
+            function showNextItem() {
+                index = (index + 1) % carousel.children.length;
+                carousel.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                carousel.classList.add('active');
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isDown = false;
+                carousel.classList.remove('active');
+            });
+
+            carousel.addEventListener('mouseup', () => {
+                isDown = false;
+                carousel.classList.remove('active');
+            });
+
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 3; // scroll-fast
+                carousel.scrollLeft = scrollLeft - walk;
+            });
         }
     },
     mounted() {
@@ -115,8 +163,16 @@ const app = Vue.createApp({
                 }, 500); // 等待过渡效果完成
             }, 1000); // 确保加载动画不少于一秒
         });
+
+        // 每秒重新加载一次动态数据
+        setInterval(this.reloadDynamicData, 1000);
+
+        // 初始化轮播图
+        this.initializeCarousel();
     }
 });
+
+app.mount('#app');
 
 // 显示警告提示
 function showAlert(message) {
@@ -145,60 +201,3 @@ document.addEventListener('keydown', (event) => {
         showAlert('开发者工具已禁用！');
     }
 });
-
-// 检测录屏或屏幕捕获
-let lastStatus = false;
-setInterval(() => {
-    const isScreenCaptured = navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia;
-    if (isScreenCaptured && !lastStatus) {
-        lastStatus = true;
-        showAlert('元旦快乐！');
-    } else if (!isScreenCaptured) {
-        lastStatus = false;
-    }
-}, 1000);
-
-document.addEventListener('DOMContentLoaded', function () {
-    const carousel = document.querySelector('.carousel');
-    const items = carousel.querySelectorAll('img, video');
-    let index = 0;
-
-    function showNextItem() {
-        index = (index + 1) % items.length;
-        carousel.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    // 移除自动播放功能
-    // setInterval(showNextItem, 3000);
-
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    carousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        carousel.classList.add('active');
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        carousel.classList.remove('active');
-    });
-
-    carousel.addEventListener('mouseup', () => {
-        isDown = false;
-        carousel.classList.remove('active');
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 3; // scroll-fast
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-});
-
-app.mount('#app');

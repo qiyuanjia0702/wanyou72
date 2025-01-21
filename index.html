@@ -48,13 +48,7 @@
             <!-- 轮播图 -->
             <div class="carousel-container">
                 <div class="carousel">
-                    <video controls class="video-player" autoplay muted controlsList="nodownload">
-                        <source src="https://ipv4wp.axzzz.top:9503/f/kJVbI0/2024.12.29_19.39_mXNMSZSZ.mp4" type="video/mp4">
-                        您的浏览器不支持HTML5视频标签。
-                    </video>
-                    <img src="https://ipv4wp.axzzz.top:9503/f/M95Xhj/2024.11.23_05.30_MpxGfrex.png" alt="图片1">
-                    <img src="https://ipv4wp.axzzz.top:9503/f/y3qecg/2024.11.23_05.30_kKjmYbfG.png" alt="图片2">
-                    <img src="https://ipv4wp.axzzz.top:9503/f/JA5Zfw/2024.11.23_05.30_sYtiAKzc.png" alt="图片3">
+                    <!-- 轮播图内容将由JavaScript动态生成 -->
                 </div>
             </div>
             <!-- 文本展示栏 -->
@@ -78,7 +72,7 @@
                 <img :src="guidePanel.img" alt="引导图片" class="guide-image">
                 <h2>{{ guidePanel.title }}</h2>
                 <p>{{ guidePanel.description }}</p>
-                <a :href="guidePanel.link" class="download-link">前往下载页面</a>
+                <a :href="guidePanel.link" class="download-link" target="_blank">前往下载页面</a>
             </div>
             <!-- 文本展示栏 -->
             <div class="text-display">
