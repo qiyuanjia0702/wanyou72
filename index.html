@@ -86,6 +86,7 @@
                     <p hidden>{{ server.ip }}</p>
                     <div class="copy-button-text"></div>
                     <!-- 添加新的复制按钮 -->
+                    <button v-if="index === 0" class="copy-button" @click="copyFirstServer">移动专线</button>
                     <button v-if="index === 1" class="copy-button" @click="copyHello">移动专线</button>
                 </div>
             </div>
@@ -97,10 +98,34 @@
         </div>
         <div class="carp" style="text-align: center; border: none;">
             <div id="loading">获取中...</div>
-            <div class="ip-address" style="font-family: 'SimSun', serif; font-weight: bold;">你的IP地址: <span id="ip"></span>|<span id="location"></span></div>
+            <div class="ip-address" style="font-family: 'SimSun', serif; font-weight: bold;">
+                <span id="ip"></span><br>
+                <span id="location"></span>
+            </div>
         </div>
+        <div id="fps-monitor" class="fps-monitor">FPS: <span id="fps-value">0</span></div>
         <script src="js/script.js"></script>
         <script src="js/syt.js"></script>
+        <script>
+            // FPS监控脚本
+            let lastFrameTime = performance.now();
+            let frameCount = 0;
+            const fpsMonitor = document.getElementById('fps-value');
+
+            function updateFPS() {
+                const now = performance.now();
+                frameCount++;
+                if (now - lastFrameTime >= 1000) {
+                    const fps = frameCount;
+                    fpsMonitor.textContent = fps;
+                    frameCount = 0;
+                    lastFrameTime = now;
+                }
+                requestAnimationFrame(updateFPS);
+            }
+
+            requestAnimationFrame(updateFPS);
+        </script>
     </div>
 </body>
 

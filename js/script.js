@@ -46,10 +46,10 @@ const app = Vue.createApp({
             ],
             servers: [
                 {
-                    name: '空中厕所',
-                    description: '（暂停开放）',
-                    ip: '',
-                    img: 'https://square.candycake.cloud/uploads/1719063350_7949_P_Cvj_ccae162118.jpg',
+                    name: '雾中人恐怖生存',
+                    description: '37只恐怖雾中居民！绝望与死亡，你能在迷雾中逃离它们吗！',
+                    ip: 'neo.candycake.cloud:31320',
+                    img: 'https://square.candycake.cloud/uploads/156fae8bb2d8e5921b3012d793d81adc4da8ee47_9e054d916f.jpg',
                 },
                 {
                     name: '乌托邦探险之旅',
@@ -71,6 +71,21 @@ const app = Vue.createApp({
         toggleTheme() {
             this.isDarkMode = !this.isDarkMode;
             document.body.classList.toggle('dark-mode', this.isDarkMode);
+            const marqueeContainer = document.querySelector('.marquee-container');
+            const marqueeText = document.querySelector('.marquee-text');
+            const marqueeIcon = document.querySelector('.marquee-mask .fas');
+            const marqueeMask = document.querySelector('.marquee-mask');
+            if (this.isDarkMode) {
+                marqueeContainer.style.backgroundColor = '#333';
+                marqueeText.style.color = '#fff';
+                marqueeIcon.style.color = '#fff';
+                marqueeMask.style.backgroundColor = '#333';
+            } else {
+                marqueeContainer.style.backgroundColor = '#ffeb3b';
+                marqueeText.style.color = '#333';
+                marqueeIcon.style.color = '#333';
+                marqueeMask.style.backgroundColor = '#ffeb3b';
+            }
         },
         copyToClipboard(ip) {
             const tempInput = document.createElement('input');
@@ -84,6 +99,15 @@ const app = Vue.createApp({
         copyHello() {
             const tempInput = document.createElement('input');
             tempInput.value = 'yd.mcla.fun:30475';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showAlert('服务器地址已复制');
+        },
+        copyFirstServer() {
+            const tempInput = document.createElement('input');
+            tempInput.value = 'yd.mcla.fun:31320';
             document.body.appendChild(tempInput);
             tempInput.select();
             document.execCommand('copy');
