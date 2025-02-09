@@ -168,3 +168,65 @@ body.night-theme .download-button:hover {
 #themeToggle:active {
     border-color: #0056b3;
 }
+
+.download-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.download-modal.day-theme .modal-content {
+    background-color: #fff;
+    color: #000;
+}
+
+.download-modal.night-theme .modal-content {
+    background-color: #444;
+    color: #fff;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.confirm-download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+}
+
+.confirm-download-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.confirm-download-button:active {
+    transform: translateY(1px);
+}

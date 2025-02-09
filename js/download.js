@@ -19,7 +19,14 @@ const resources = [
         size: '47.2MB',
         icon: 'https://square.candycake.cloud/uploads/638365568867248442_90b7f71694.jpeg',
         link: 'https://ipv4wp.axzzz.top:9503/f/D8E7Fo/Maninthefog-1.3.zip'
-    }
+    },
+    {
+        name: 'YYZ-V2',
+        version: '2.0',
+        size: '1.1GB',
+        icon: 'https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_cc6945fe591d092854a951e677db269c~c5_300x300.jpeg?from=2956013662',
+        link: 'https://ipv4wp.axzzz.top:9503/f/87E2tq/YYZ%E9%9A%94%E7%A6%BB%E5%AE%A2%E6%88%B7%E7%AB%AF.zip'
+    },
     // 添加更多资源项
 ];
 
@@ -43,9 +50,33 @@ resources.forEach(resource => {
     resourceList.appendChild(listItem);
 });
 
-document.querySelectorAll('.download-button').forEach(button => {
-    button.addEventListener('click', function () {
-        alert('下载即将开始，请稍候...');
+function showDownloadModal(resource) {
+    const modal = document.createElement('div');
+    modal.className = `download-modal ${document.body.className}`;
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p>您即将下载: <strong>${resource.name}</strong></p>
+            <p>版本: ${resource.version}</p>
+            <p>大小: ${resource.size}</p>
+            <a href="${resource.link}" class="confirm-download-button" target="_blank">确认下载</a>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector('.close-button').addEventListener('click', function () {
+        document.body.removeChild(modal);
+    });
+
+    modal.querySelector('.confirm-download-button').addEventListener('click', function () {
+        document.body.removeChild(modal);
+    });
+}
+
+document.querySelectorAll('.download-button').forEach((button, index) => {
+    button.addEventListener('click', function (event) {
+        event.preventDefault();
+        showDownloadModal(resources[index]);
     });
 });
 
@@ -59,6 +90,9 @@ function setTheme(theme) {
         themeToggle.innerHTML = '🌞';
         themeToggle.style.cursor = 'pointer';
     }
+    document.querySelectorAll('.download-modal').forEach(modal => {
+        modal.className = `download-modal ${theme}`;
+    });
 }
 
 function updateThemeBasedOnTime() {
