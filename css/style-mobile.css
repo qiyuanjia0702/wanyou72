@@ -645,7 +645,7 @@ body.dark-mode .download-panel .download-link:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center; /* 引导面板居中对齐 */
     overflow: hidden; /* 确保图片不会溢出 */
-    height: 400px; /* 再增加面板长度 */
+    height: 450px; /* 再增加面板长度 */
     position: relative; /* 为倒计时定位 */
 }
 
