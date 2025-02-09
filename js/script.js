@@ -69,7 +69,7 @@ const app = Vue.createApp({
                 img: 'https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_cc6945fe591d092854a951e677db269c~c5_300x300.jpeg?from=2956013662',
                 title: '限时活动',
                 description: '点击下面的按钮复制活动服务器地址。',
-                ip: 'activity.server.ip:12345'
+                ip: 'aito.candycake.cloud:28793'
             },
             countdown: 0 // 倒计时初始值
         };
