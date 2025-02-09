@@ -577,10 +577,12 @@ body.dark-mode .carp {
 .download-panel {
     background: #fff;
     border-radius: 10px;
-    padding: 20px;
+    padding: 0; /* 移除内边距 */
     margin: 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center; /* 引导面板居中对齐 */
+    overflow: hidden; /* 确保图片不会溢出 */
+    height: 400px; /* 与活动面板一致的高度 */
 }
 
 body.dark-mode .download-panel {
@@ -590,23 +592,24 @@ body.dark-mode .download-panel {
 
 .download-panel h2 {
     text-align: center; /* 将title文本居中对齐 */
+    margin: 10px 0;
 }
 
 .download-panel p {
     font-size: 16px;
     color: #666;
-    margin-bottom: 20px;
+    margin: 10px 20px;
 }
 
 .download-panel .guide-image {
     width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    height: 50%; /* 调小图片显示的高度 */
+    object-fit: cover; /* 确保图片覆盖整个区域 */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-/* 下载链接样式 */
-.download-link {
+.download-panel .download-link {
     display: inline-block;
     padding: 10px 20px;
     background: #007bff;
@@ -617,21 +620,91 @@ body.dark-mode .download-panel {
     transition: background 0.3s, transform 0.3s;
 }
 
-body.dark-mode .download-link {
-    background: #007bff;
-}
-
-body.dark-mode .download-link:hover {
-    background: #0056b3;
-}
-
-.download-link:hover {
+.download-panel .download-link:hover {
     background: #0056b3;
     transform: translateY(-3px);
 }
 
-.download-link:active {
+.download-panel .download-link:active {
     transform: translateY(1px);
+}
+
+body.dark-mode .download-panel .download-link {
+    background: #007bff;
+}
+
+body.dark-mode .download-panel .download-link:hover {
+    background: #0056b3;
+}
+
+.activity-panel {
+    background: #fff;
+    border-radius: 10px;
+    padding: 0; /* 移除内边距 */
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 引导面板居中对齐 */
+    overflow: hidden; /* 确保图片不会溢出 */
+    height: 400px; /* 再增加面板长度 */
+    position: relative; /* 为倒计时定位 */
+}
+
+.activity-panel h2 {
+    text-align: center; /* 将title文本居中对齐 */
+    margin: 10px 0;
+}
+
+.activity-panel p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 20px;
+}
+
+.activity-panel .guide-image {
+    width: 100%;
+    height: 50%; /* 调小图片显示的高度 */
+    object-fit: cover; /* 确保图片覆盖整个区域 */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.activity-panel .server-description {
+    text-align: left; /* 非居中文本 */
+    margin: 10px 20px;
+    font-size: 16px; /* 调整字体大小与其他文本一致 */
+    color: #333;
+}
+
+.activity-panel .countdown-timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    z-index: 10000;
+}
+
+.activity-panel .countdown-timer::before {
+    content: '距离结束: ';
+    margin-right: 5px;
+}
+
+body.dark-mode .activity-panel {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+body.dark-mode .activity-panel .server-description {
+    color: #ccc;
+}
+
+body.dark-mode .activity-panel .countdown-timer {
+    background: rgba(255, 255, 255, 0.5);
+    color: #000;
 }
 
 .fps-monitor {

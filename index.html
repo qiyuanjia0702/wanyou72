@@ -63,6 +63,19 @@
             </div>
             <!-- 文本展示栏 -->
             <div class="text-display">
+                限时活动
+            </div>
+            <!-- 新的引导面板 -->
+            <div class="activity-panel">
+                <div class="countdown-timer" id="countdownTimer">00:00:00</div> <!-- 倒计时元素 -->
+                <img :src="activityPanel.img" alt="活动图片" class="guide-image">
+                <h2>{{ activityPanel.title }}</h2>
+                <p class="server-description">这是一个限时活动服务器，该服务器为抖音张嫂小雨直播地图，服务器默认是创造模式，可安装游戏参观地图</p> <!-- 非居中文本 -->
+                <p>{{ activityPanel.description }}</p>
+                <button class="copy-button" @click="copyActivityIP">复制地址</button>
+            </div>
+            <!-- 文本展示栏 -->
+            <div class="text-display">
                 资源获取
             </div>
             <!-- 引导面板 -->

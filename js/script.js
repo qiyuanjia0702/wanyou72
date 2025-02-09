@@ -64,7 +64,14 @@ const app = Vue.createApp({
                 title: '下载最新资源',
                 description: '点击下面的按钮前往下载页面，获取最新的资源。',
                 link: 'download.html'
-            }
+            },
+            activityPanel: {
+                img: 'https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_cc6945fe591d092854a951e677db269c~c5_300x300.jpeg?from=2956013662',
+                title: '限时活动',
+                description: '点击下面的按钮复制活动服务器地址。',
+                ip: 'activity.server.ip:12345'
+            },
+            countdown: 0 // 倒计时初始值
         };
     },
     methods: {
@@ -113,6 +120,15 @@ const app = Vue.createApp({
             document.execCommand('copy');
             document.body.removeChild(tempInput);
             showAlert('服务器地址已复制');
+        },
+        copyActivityIP() {
+            const tempInput = document.createElement('input');
+            tempInput.value = this.activityPanel.ip;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showAlert('活动服务器地址已复制');
         },
         showImage(image) {
             this.lightboxImage = image;
@@ -169,6 +185,26 @@ const app = Vue.createApp({
                 const walk = (x - startX) * 3; // scroll-fast
                 carousel.scrollLeft = scrollLeft - walk;
             });
+        },
+        startCountdown() {
+            const targetDate = new Date('2025-03-09T15:48:27').getTime();
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                if (distance > 0) {
+                    this.countdown = Math.floor(distance / 1000);
+                    setTimeout(updateCountdown, 1000);
+                } else {
+                    this.countdown = 0;
+                }
+            };
+            updateCountdown();
+        },
+        formatTime(seconds) {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = seconds % 60;
+            return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
         }
     },
     mounted() {
@@ -202,6 +238,15 @@ const app = Vue.createApp({
 
         // 初始化轮播图
         this.initializeCarousel();
+
+        // 开始倒计时
+        this.startCountdown();
+
+        // 更新倒计时显示
+        setInterval(() => {
+            const countdownTimer = document.getElementById('countdownTimer');
+            countdownTimer.textContent = this.formatTime(this.countdown);
+        }, 1000);
     }
 });
 
