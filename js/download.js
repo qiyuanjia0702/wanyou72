@@ -27,6 +27,13 @@ const resources = [
         icon: 'https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_cc6945fe591d092854a951e677db269c~c5_300x300.jpeg?from=2956013662',
         link: 'https://ipv4wp.axzzz.top:9503/f/87E2tq/YYZ%E9%9A%94%E7%A6%BB%E5%AE%A2%E6%88%B7%E7%AB%AF.zip'
     },
+    {
+        name: '开星写实',
+        version: '1.0',
+        size: '595.7MB',
+        icon: 'https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_27b6ee14fc4f86d228d8862bd3fb5ce9~c5_300x300.jpeg?from=2956013662',
+        link: 'https://ipv4wp.axzzz.top:9503/f/DwbNUo/%E5%BC%80%E6%98%9F%E5%86%99%E5%AE%9E%E6%95%B4%E5%90%88.zip'
+    },
     // 添加更多资源项
 ];
 
