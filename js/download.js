@@ -56,6 +56,7 @@ function showDownloadModal(resource) {
     modal.innerHTML = `
         <div class="modal-content">
             <span class="close-button">&times;</span>
+            <img src="${resource.icon}" alt="${resource.name}图标" class="modal-resource-icon">
             <p>您即将下载: <strong>${resource.name}</strong></p>
             <p>版本: ${resource.version}</p>
             <p>大小: ${resource.size}</p>
@@ -64,12 +65,33 @@ function showDownloadModal(resource) {
     `;
     document.body.appendChild(modal);
 
+    // 添加动画效果
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+
     modal.querySelector('.close-button').addEventListener('click', function () {
-        document.body.removeChild(modal);
+        modal.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(modal);
+        }, 400); // 动画持续时间
     });
 
     modal.querySelector('.confirm-download-button').addEventListener('click', function () {
-        document.body.removeChild(modal);
+        modal.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(modal);
+        }, 400); // 动画持续时间
+    });
+
+    // 点击空白处取消下载框
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(modal);
+            }, 400); // 动画持续时间
+        }
     });
 }
 
@@ -115,3 +137,18 @@ document.getElementById('themeToggle').addEventListener('click', function () {
 // 初始化按钮图标和鼠标样式
 updateThemeBasedOnTime();
 setInterval(updateThemeBasedOnTime, 30000); // 每半分钟检查一次
+
+// 禁用右键菜单
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+});
+
+// 禁用键盘快捷键
+document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && (event.key === 'u' || event.key === 's' || event.key === 'i' || event.key === 'j')) {
+        event.preventDefault();
+    }
+    if (event.key === 'F12') {
+        event.preventDefault();
+    }
+});

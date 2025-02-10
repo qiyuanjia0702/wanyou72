@@ -144,8 +144,7 @@ body.night-theme .download-button:hover {
 
 #themeToggle {
     background: none;
-    border: 2px solid #007bff;
-    border-radius: 50%;
+    border: none; /* 去掉外围颜色 */
     font-size: 24px;
     cursor: pointer;
     margin-bottom: 10px;
@@ -154,19 +153,21 @@ body.night-theme .download-button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s;
     position: absolute;
     top: 20px;
     left: 20px;
 }
 
+/* 移除悬停和点击时的背景颜色变化 */
 #themeToggle:hover {
-    background-color: #007bff;
-    color: #fff;
+    background-color: none;
+    color: inherit;
 }
 
 #themeToggle:active {
-    border-color: #0056b3;
+    background-color: none;
+    color: inherit;
 }
 
 .download-modal {
@@ -180,6 +181,12 @@ body.night-theme .download-button:hover {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.download-modal.show {
+    opacity: 1;
 }
 
 .download-modal.day-theme .modal-content {
@@ -200,6 +207,13 @@ body.night-theme .download-button:hover {
     position: relative;
     max-width: 400px;
     width: 100%;
+}
+
+.modal-resource-icon {
+    width: 80px; /* 调整大小 */
+    height: 80px; /* 调整大小 */
+    border-radius: 25%; /* 调整圆角 */
+    margin-bottom: 10px;
 }
 
 .close-button {

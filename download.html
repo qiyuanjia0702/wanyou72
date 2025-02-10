@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;" />
     <title>我的世界资源获取</title>
     <link rel="stylesheet" href="css/download.css">
+    <link rel="stylesheet" href="css/mobile.css" media="only screen and (max-width: 600px)">
 </head>
 
 <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
@@ -17,9 +18,24 @@
         <ul class="resource-list" id="resourceList">
             <!-- 动态加载资源项 -->
         </ul>
-        <div class="footer">© 2024 Minecraft游戏世界. 保留所有权利.</div>
+        <div class="footer">© 2025 Minecraft游戏世界. 保留所有权利.</div>
     </div>
     <script src="js/download.js"></script>
+    <script>
+        // 禁用右键菜单和键盘快捷键
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.ctrlKey && (event.key === 'u' || event.key === 's' || event.key === 'i' || event.key === 'j')) {
+                event.preventDefault();
+            }
+            if (event.key === 'F12') {
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 
 </html>
