@@ -16,9 +16,13 @@ async function fetchData(ip) {
 
 // 定义一个函数，用于在页面上显示数据
 function displayData(data, title) {
-    let html = `<h2>${title}</h2><table><thead><tr><th>图标</th><th>延迟</th><th>在线人数</th><th>MOTD</th></tr></thead>`;
-    html += `<tr><td><img width="60" src="${data.logo}"></td><td id="ping-${title}">加载中...</td><td id="online-${title}">${data.p}/${data.mp}</td><td id="motd-${title}">${data.motd}</td></tr>`;
-    html += '</table>';
+    let html = `<div class="server-card">
+                    <img src="${data.logo}" alt="${title} logo">
+                    <h3>${title}</h3>
+                    <p class="ping" id="ping-${title}">加载中...</p>
+                    <p class="online" id="online-${title}">${data.p}/${data.mp}</p>
+                    <p class="motd" id="motd-${title}">${data.motd}</p>
+                </div>`;
     return html;
 }
 
@@ -40,12 +44,15 @@ async function updateOnline(ip, title) {
     if (data) {
         document.getElementById(`online-${title}`).innerText = `${data.p}/${data.mp}`;
         document.getElementById(`motd-${title}`).innerText = data.motd;
+        document.querySelector(`#ping-${title}`).closest('.server-card').querySelector('img').src = data.logo; // 实时更新图标
     }
 }
 
 // 页面加载时自动调用fetchData函数，获取数据并显示在页面上
 document.addEventListener('DOMContentLoaded', async function() {
     const servers = [
+        { ip: 'ym.huan4.cn', title: '樱梦云海' },
+        { ip: 'ip:hb.frp.one:10186', title: '纯生存服务器' },
         { ip: 'neo.candycake.cloud:30475', title: '乌托邦探险之旅' },
         { ip: 'neo.candycake.cloud:31320', title: '雾中人恐怖生存' },
         { ip: 'aito.candycake.cloud:28793', title: 'YYZ休闲服务器' } 

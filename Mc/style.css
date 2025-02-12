@@ -15,7 +15,7 @@ a:link, a:visited {
     text-align: center;
     margin: 20px auto;
     padding: 20px;
-    max-width: 800px;
+    max-width: 1200px; /* 增加面板最大宽度 */
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -33,37 +33,66 @@ h1 a {
 }
 
 #data {
-    border: 2px solid #5cb85c;
-    border-radius: 8px;
-    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.server-card {
+    width: 100%; /* 修改宽度为100% */
+    max-width: 300px; /* 增加最大宽度 */
+    height: 260px; /* 固定高度增加20px */
+    padding: 20px;
     background-color: #fff;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    table-layout: fixed; /* 添加此行以防止列位移 */
-}
-
-th, td {
-    padding: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-    word-wrap: break-word; /* 添加此行以防止内容溢出 */
+    display: flex;
+    flex-direction: column; /* 竖直排列 */
+    justify-content: space-between; /* 均匀分布 */
+    margin-bottom: 20px; /* 增加底部间距 */
 }
 
-th {
-    background-color: #5cb85c;
-    color: #fff;
+.server-card img {
+    max-width: 60px;
+    height: auto;
+    vertical-align: middle;
+    margin: 0 auto 20px auto; /* 修改为居中显示 */
+    display: block; /* 确保居中 */
 }
 
-tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
+.server-card h3 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    font-size: 1.5em;
+    color: #5cb85c;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
+.server-card p {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #666;
+}
+
+.server-card .ping,
+.server-card .online,
+.server-card .motd {
+    font-size: 1em;
+    color: #333;
+}
+
+.server-card .ping::before {
+    content: "延迟: ";
+}
+
+.server-card .online::before {
+    content: "人数: ";
+}
+
+.server-card .motd::before {
+    content: "MOTD: ";
 }
 
 button {
@@ -93,34 +122,10 @@ body.dark-theme .container {
     background-color: #fff;
 }
 
-body.dark-theme th {
-    background-color: #5cb85c;
-}
-
 body.dark-theme button {
     background-color: #5cb85c;
 }
 
 body.dark-theme button:hover {
     background-color: #4cae4c;
-}
-
-body.dark-theme th, body.dark-theme td {
-    border-bottom: 1px solid #ddd;
-}
-
-body.dark-theme tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
-}
-
-body.dark-theme tr:hover {
-    background-color: #f1f1f1;
-}
-
-body.dark-theme #data {
-    border: 2px solid #5cb85c;
-}
-
-body.dark-theme table {
-    border: none;
 }
