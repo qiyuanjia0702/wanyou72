@@ -74,6 +74,20 @@ document.addEventListener('DOMContentLoaded', async function() {
             updateOnline(server.ip, server.title);
         });
     }, 3000); // 每3秒更新一次
+
+    // 添加主题切换功能
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.innerText = '☀️'; // 默认黑夜模式按钮显示太阳图标
+    document.body.appendChild(themeToggle);
+
+    // 默认启用黑夜模式
+    document.body.classList.add('dark-theme');
+
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('light-theme');
+        themeToggle.innerText = document.body.classList.contains('light-theme') ? '🌙' : '☀️';
+    });
 });
 
 

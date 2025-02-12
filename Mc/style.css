@@ -1,24 +1,26 @@
 body {
     font-family: 'PingFang SC', 'HarmonyOS_Regular', 'Helvetica Neue', 'Microsoft YaHei', sans-serif !important;
-    color: #333;
+    color: #f4f4f4; /* 默认黑夜模式文本颜色 */
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 a:link, a:visited {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
 }
 
 .container {
     text-align: center;
     margin: 20px auto;
     padding: 20px;
-    max-width: 1200px; /* 增加面板最大宽度 */
-    background-color: #fff;
+    max-width: 1200px;
+    background-color: var(--container-background-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    transition: background-color 0.3s;
 }
 
 h1 a {
@@ -29,58 +31,51 @@ h1 a {
 .x {
     margin-bottom: 20px;
     font-size: 1.2em;
-    color: #666;
+    color: var(--text-color-secondary);
 }
 
 #data {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
 .server-card {
-    width: 100%; /* 修改宽度为100% */
-    max-width: 300px; /* 增加最大宽度 */
-    height: 260px; /* 固定高度增加20px */
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--card-background-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: left;
-    display: flex;
-    flex-direction: column; /* 竖直排列 */
-    justify-content: space-between; /* 均匀分布 */
-    margin-bottom: 20px; /* 增加底部间距 */
+    transition: background-color 0.3s;
 }
 
 .server-card img {
     max-width: 60px;
     height: auto;
     vertical-align: middle;
-    margin: 0 auto 20px auto; /* 修改为居中显示 */
-    display: block; /* 确保居中 */
+    margin: 0 auto 20px auto;
+    display: block;
 }
 
 .server-card h3 {
-    display: inline-block;
-    vertical-align: middle;
     margin: 0;
     font-size: 1.5em;
     color: #5cb85c;
+    text-align: center;
 }
 
 .server-card p {
     margin: 10px 0;
     font-size: 1.2em;
-    color: #666;
+    color: var(--text-color-secondary);
+    text-align: center;
 }
 
 .server-card .ping,
 .server-card .online,
 .server-card .motd {
     font-size: 1em;
-    color: #333;
+    color: var(--text-color);
 }
 
 .server-card .ping::before {
@@ -103,6 +98,7 @@ button {
     background-color: #5cb85c;
     cursor: pointer;
     font-size: 1em;
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -110,22 +106,34 @@ button:hover {
 }
 
 .theme-toggle {
-    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark-theme {
-    background-color: #f4f4f4;
-    color: #333;
+:root {
+    --background-color: #333; /* 默认黑夜模式背景颜色 */
+    --text-color: #f4f4f4; /* 默认黑夜模式文本颜色 */
+    --text-color-secondary: #ccc; /* 默认黑夜模式次要文本颜色 */
+    --container-background-color: #444; /* 默认黑夜模式容器背景颜色 */
+    --card-background-color: #555; /* 默认黑夜模式卡片背景颜色 */
+    --button-background-color: #4cae4c; /* 默认黑夜模式按钮背景颜色 */
+    --button-text-color: #fff; /* 默认黑夜模式按钮文本颜色 */
 }
 
-body.dark-theme .container {
-    background-color: #fff;
-}
-
-body.dark-theme button {
-    background-color: #5cb85c;
-}
-
-body.dark-theme button:hover {
-    background-color: #4cae4c;
+body.light-theme {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --text-color-secondary: #666;
+    --container-background-color: #fff;
+    --card-background-color: #fff;
+    --button-background-color: #5cb85c;
+    --button-text-color: #fff;
 }
