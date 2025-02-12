@@ -16,7 +16,16 @@ async function fetchData(ip) {
 
 // 定义一个函数，用于在页面上显示数据
 function displayData(data, title) {
-    let html = `<tr><td>${title}</td><td><img width="60" src="${data.logo}"></td><td id="ping-${title}">加载中...</td><td id="online-${title}">${data.p}/${data.mp}</td><td id="motd-${title}">${data.motd}</td></tr>`;
+    let html = `
+        <div class="status-card">
+            <img src="${data.logo}" alt="${title} 图标" class="status-card-logo">
+            <div class="status-card-content">
+                <h3>${title}</h3>
+                <p id="ping-${title}">加载中...</p>
+                <p id="online-${title}">在线人数：${data.p}/${data.mp}</p>
+                <p id="motd-${title}">MOTD：${data.motd}</p>
+            </div>
+        </div>`;
     return html;
 }
 
@@ -29,15 +38,15 @@ async function updatePing(ip, title) {
         console.error('Ping 测试失败：', error);
     }
     const ping = Date.now() - start;
-    document.getElementById(`ping-${title}`).innerText = `${ping} ms`;
+    document.getElementById(`ping-${title}`).innerText = `延迟：${ping} ms`;
 }
 
 // 定义一个函数，用于更新在线人数和MOTD
 async function updateOnline(ip, title) {
     const data = await fetchData(ip);
     if (data) {
-        document.getElementById(`online-${title}`).innerText = `${data.p}/${data.mp}`;
-        document.getElementById(`motd-${title}`).innerText = data.motd;
+        document.getElementById(`online-${title}`).innerText = `在线人数：${data.p}/${data.mp}`;
+        document.getElementById(`motd-${title}`).innerText = `MOTD：${data.motd}`;
     }
 }
 
