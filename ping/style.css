@@ -1,0 +1,109 @@
+/* PC样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    color: #333;
+    margin: 0 auto !important;
+    font-weight: bold;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: #333;
+}
+.container {
+    text-align: center;
+    margin: 0 75px;
+}
+#data {
+    border: 2px solid rgba(96, 184, 115, .23);
+    border-radius: 4px;
+}
+table {
+    width: 100%;
+    background-color: rgba(96, 184, 115, .23);
+    border-collapse: collapse;
+}
+#myForm, input, button, img, th {
+    padding: 6px;
+}
+#myForm input[type="text"] {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+#myForm input[type="text"]:focus {
+    border-color: #5cb85c;
+    outline: none;
+    box-shadow: 0 0 8px rgba(92, 184, 92, 0.6);
+}
+button {
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+th {
+    background-color: #d3e9d8;
+    font-weight: bold;
+}
+tr {
+    background-color: #fff;
+    border-bottom-style: dotted;
+    border-bottom-color: rgba(96, 184, 115, .23);
+}
+tr:nth-of-type(odd) {
+    background: rgb(255 255 255 / 74%);
+}
+tr:hover {
+    background-color: #d3e9d8;
+}
+
+/* 移动设备样式 */
+@media (max-width: 768px) {
+    .container {
+        margin: 0 10px;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    table {
+        display: table;
+        table-layout: fixed;
+    }
+    #data table {
+        display: table;
+        table-layout: fixed;
+    }
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #4cae4c;
+    }
+    #myForm input[type="text"] {
+        padding: 8px;
+        font-size: 14px;
+    }
+    th {
+        font-size: 16px;
+    }
+    td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    tr:nth-of-type(n+2) {
+        display: table-row;
+    }
+    body {
+        font-size: 14px;
+    }
+}
