@@ -719,3 +719,87 @@ body.dark-mode .activity-panel .countdown-timer {
     font-size: 14px;
     z-index: 10000;
 }
+
+.status-panel {
+    grid-column: span 2; /* 占据两列 */
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.status-panel h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.status-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.status-table th, .status-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.status-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.status-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.status-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.status-table img {
+    border-radius: 50%;
+}
+
+body.dark-mode .status-panel {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+body.dark-mode .status-table th {
+    background-color: #333;
+}
+
+body.dark-mode .status-table td {
+    border-color: #444;
+    color: #fff;
+}
+
+.status-link-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 20px;
+}
+
+.status-link-button:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
+.status-link-button:active {
+    transform: translateY(1px);
+}

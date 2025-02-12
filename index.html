@@ -49,7 +49,30 @@
                     <!-- 轮播图内容将由JavaScript动态生成 -->
                 </div>
             </div>
-            <!-- 文本展示栏 -->
+            <div class="text-display">
+                服务器状态
+            </div>
+            <!-- 新的面板 -->
+            <div class="status-panel">
+                <h2>服务器状态面板</h2>
+                <div id="server-status">
+                    <table class="status-table">
+                        <thead>
+                            <tr>
+                                <th>服务器</th>
+                                <th>图标</th>
+                                <th>延迟</th>
+                                <th>在线人数</th>
+                                <th>MOTD</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data">
+                            <!-- 服务器信息将由JavaScript动态生成 -->
+                        </tbody>
+                    </table>
+                    <a href="Mc/index.html" target="_blank" class="status-link-button">查看服务器状态</a>
+                </div>
+            </div>
             <div class="text-display">
                 最新消息
             </div>
@@ -119,6 +142,7 @@
         <div id="fps-monitor" class="fps-monitor">FPS: <span id="fps-value">0</span></div>
         <script src="js/script.js"></script>
         <script src="js/syt.js"></script>
+        <script src="js/main.js"></script>
         <script>
             // FPS监控脚本
             let lastFrameTime = performance.now();
