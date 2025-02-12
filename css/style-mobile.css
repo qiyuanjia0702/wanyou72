@@ -813,7 +813,7 @@ body.dark-mode .activity-panel .countdown-timer {
 }
 
 .status-table tr:hover {
-    background-color: #f1f1f1;
+    background-color: inherit; /* 移除悬停效果 */
 }
 
 .status-table img {

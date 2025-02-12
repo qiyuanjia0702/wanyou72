@@ -16,7 +16,7 @@ async function fetchData(ip) {
 
 // 定义一个函数，用于在页面上显示数据
 function displayData(data, title) {
-    let html = `<tr><td>${title}</td><td><img width="60" src="${data.logo}"></td><td id="ping-${title}">加载中...</td><td id="online-${title}">${data.p}/${data.mp}</td><td>${data.motd}</td></tr>`;
+    let html = `<tr><td>${title}</td><td><img width="60" src="${data.logo}"></td><td id="ping-${title}">加载中...</td><td id="online-${title}">${data.p}/${data.mp}</td><td id="motd-${title}">${data.motd}</td></tr>`;
     return html;
 }
 
@@ -32,11 +32,12 @@ async function updatePing(ip, title) {
     document.getElementById(`ping-${title}`).innerText = `${ping} ms`;
 }
 
-// 定义一个函数，用于更新在线人数
+// 定义一个函数，用于更新在线人数和MOTD
 async function updateOnline(ip, title) {
     const data = await fetchData(ip);
     if (data) {
         document.getElementById(`online-${title}`).innerText = `${data.p}/${data.mp}`;
+        document.getElementById(`motd-${title}`).innerText = data.motd;
     }
 }
 
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     dataDiv.innerHTML = html;
 
-    // 实时更新ping延迟和在线人数
+    // 实时更新ping延迟和在线人数及MOTD
     setInterval(() => {
         servers.forEach(server => {
             updatePing(server.ip, server.title);

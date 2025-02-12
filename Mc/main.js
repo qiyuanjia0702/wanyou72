@@ -17,7 +17,7 @@ async function fetchData(ip) {
 // 定义一个函数，用于在页面上显示数据
 function displayData(data, title) {
     let html = `<h2>${title}</h2><table><thead><tr><th>图标</th><th>延迟</th><th>在线人数</th><th>MOTD</th></tr></thead>`;
-    html += `<tr><td><img width="60" src="${data.logo}"></td><td id="ping-${title}">加载中...</td><td id="online-${title}">${data.p}/${data.mp}</td><td>${data.motd}</td></tr>`;
+    html += `<tr><td><img width="60" src="${data.logo}"></td><td id="ping-${title}">加载中...</td><td id="online-${title}">${data.p}/${data.mp}</td><td id="motd-${title}">${data.motd}</td></tr>`;
     html += '</table>';
     return html;
 }
@@ -39,6 +39,7 @@ async function updateOnline(ip, title) {
     const data = await fetchData(ip);
     if (data) {
         document.getElementById(`online-${title}`).innerText = `${data.p}/${data.mp}`;
+        document.getElementById(`motd-${title}`).innerText = data.motd;
     }
 }
 
