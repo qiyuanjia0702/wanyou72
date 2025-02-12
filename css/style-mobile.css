@@ -408,6 +408,57 @@ body.dark-mode .card {
     .marquee-text {
         font-size: 14px;
     }
+
+    .status-table td:nth-child(2) {
+        display: none;
+    }
+
+    .status-table td:nth-child(2),
+    .status-table th:nth-child(2) {
+        display: none;
+    }
+
+    .status-table td:nth-child(2) {
+        display: none;
+    }
+
+    .status-panel {
+        overflow-x: auto;
+    }
+
+    .status-table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .status-table th, .status-table td {
+        word-wrap: break-word;
+    }
+
+    .status-table th:nth-child(1),
+    .status-table td:nth-child(1) {
+        width: 20%;
+    }
+
+    .status-table th:nth-child(3),
+    .status-table td:nth-child(3) {
+        width: 20%;
+    }
+
+    .status-table th:nth-child(4),
+    .status-table td:nth-child(4) {
+        width: 20%;
+    }
+
+    .status-table th:nth-child(5),
+    .status-table td:nth-child(5) {
+        width: 40%;
+    }
+
+    .status-table td:nth-child(2),
+    .status-table th:nth-child(2) {
+        display: none;
+    }
 }
 
 /* 文本展示栏样式 */
