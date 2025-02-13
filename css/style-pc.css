@@ -2,6 +2,8 @@
 body {
     margin: 0; /* 去除默认外边距 */
     font-family: 'Roboto', sans-serif; /* 设置字体 */
+    background-color: #f0f0f0; /* 调整背景颜色为灰色 */
+    color: #333; /* 调整字体颜色为深灰色 */
     transition: background-color 0.3s, color 0.3s; /* 背景色和文字颜色的过渡效果 */
 }
 
@@ -281,11 +283,6 @@ body.dark-mode .marquee-mask .fas {
 body.dark-mode {
     background-color: #121212;
     color: #ffffff;
-}
-
-body.dark-mode .card {
-    background: #1e1e1e;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* 图片放大功能 */
