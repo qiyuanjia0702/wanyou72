@@ -23,6 +23,7 @@ function displayData(data, title) {
                 <h3>${title}</h3>
                 <p id="ping-${title}">加载中...</p>
                 <p id="online-${title}">在线人数：${data.p}/${data.mp}</p>
+                <p id="city-${title}">城市：${data.city}</p> <!-- 移动城市信息 -->
                 <p id="motd-${title}">MOTD：${data.motd}</p>
             </div>
         </div>`;
@@ -46,6 +47,7 @@ async function updateOnline(ip, title) {
     const data = await fetchData(ip);
     if (data) {
         document.getElementById(`online-${title}`).innerText = `在线人数：${data.p}/${data.mp}`;
+        document.getElementById(`city-${title}`).innerText = `城市：${data.city}`; // 更新城市信息
         document.getElementById(`motd-${title}`).innerText = `MOTD：${data.motd}`;
     }
 }

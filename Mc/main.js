@@ -18,10 +18,13 @@ async function fetchData(ip) {
 function displayData(data, title) {
     let html = `<div class="server-card">
                     <img src="${data.logo}" alt="${title} logo">
-                    <h3>${title}</h3>
-                    <p class="ping" id="ping-${title}">加载中...</p>
-                    <p class="online" id="online-${title}">${data.p}/${data.mp}</p>
-                    <p class="motd" id="motd-${title}">${data.motd}</p>
+                    <div class="info">
+                        <h3>${title}</h3>
+                        <p class="ping" id="ping-${title}">加载中...</p>
+                        <p class="online" id="online-${title}">${data.p}/${data.mp}</p>
+                        <p class="city" id="city-${title}">城市: ${data.city}</p> <!-- 添加城市字样 -->
+                        <p class="motd" id="motd-${title}">${data.motd}</p>
+                    </div>
                 </div>`;
     return html;
 }
@@ -43,6 +46,7 @@ async function updateOnline(ip, title) {
     const data = await fetchData(ip);
     if (data) {
         document.getElementById(`online-${title}`).innerText = `${data.p}/${data.mp}`;
+        document.getElementById(`city-${title}`).innerText = data.city;
         document.getElementById(`motd-${title}`).innerText = data.motd;
         document.querySelector(`#ping-${title}`).closest('.server-card').querySelector('img').src = data.logo; // 实时更新图标
     }

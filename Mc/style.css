@@ -41,20 +41,36 @@ h1 a {
 }
 
 .server-card {
+    display: flex;
+    align-items: center;
     padding: 20px;
     background-color: var(--card-background-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: left;
     transition: background-color 0.3s;
+    width: 300px; /* 固定宽度 */
+    height: 200px; /* 固定高度 */
+}
+
+@media (max-width: 600px) {
+    .server-card {
+        width: auto; /* 移动端取消固定宽度 */
+        height: auto; /* 移动端取消固定高度 */
+    }
 }
 
 .server-card img {
     max-width: 60px;
     height: auto;
     vertical-align: middle;
-    margin: 0 auto 20px auto;
+    margin-right: 20px;
     display: block;
+}
+
+.server-card .info {
+    display: flex;
+    flex-direction: column;
 }
 
 .server-card h3 {
@@ -65,17 +81,19 @@ h1 a {
 }
 
 .server-card p {
-    margin: 10px 0;
-    font-size: 1.2em;
+    margin: 5px 0;
+    font-size: 1em;
     color: var(--text-color-secondary);
-    text-align: center;
+    text-align: left; /* 修改为居左对齐 */
 }
 
 .server-card .ping,
 .server-card .online,
-.server-card .motd {
+.server-card .motd,
+.server-card .city {
     font-size: 1em;
     color: var(--text-color);
+    text-align: left; /* 修改为居左对齐 */
 }
 
 .server-card .ping::before {
@@ -88,6 +106,10 @@ h1 a {
 
 .server-card .motd::before {
     content: "MOTD: ";
+}
+
+.server-card .city::before {
+    content: "城市: ";
 }
 
 button {
