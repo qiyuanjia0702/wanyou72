@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarTitle = document.querySelector('.navbar h2');
     navbarTitle.textContent = ''; // 清空原有文本
     const img = document.createElement('img');
-    img.src = 'icon/logo.png'; 
+    img.src = 'https://ipv4wp.axzzz.top:9503/f/2DWeIZ/Logo.png'; 
     img.style.width = '120px'; // 设置图片宽度
     img.style.height = 'aotu'; // 保持图片比例
     navbarTitle.appendChild(img);
