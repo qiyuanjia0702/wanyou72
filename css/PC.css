@@ -92,7 +92,8 @@
 .hero-content {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center; /* 修改为居中对齐 */
+    text-align: center;
+    /* 修改为居中对齐 */
 }
 
 .hero h1 {
@@ -116,6 +117,38 @@
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 2rem;
+}
+
+.btn-copy {
+    background-color: #4CAF50;
+    /* 绿色背景 */
+    border: none;
+    /* 无边框 */
+    color: white;
+    /* 白色文字 */
+    padding: 10px 20px;
+    /* 内边距 */
+    text-align: center;
+    /* 文字居中 */
+    text-decoration: none;
+    /* 无下划线 */
+    display: inline-block;
+    /* 行内块元素 */
+    font-size: 16px;
+    /* 字体大小 */
+    margin: 4px 2px;
+    /* 外边距 */
+    cursor: pointer;
+    /* 鼠标指针 */
+    border-radius: 12px;
+    /* 圆角 */
+    transition: background-color 0.3s;
+    /* 背景色过渡效果 */
+}
+
+.btn-copy:hover {
+    background-color: #45a049;
+    /* 悬停时的背景色 */
 }
 
 .card {
@@ -200,6 +233,30 @@
 
 .carousel {
     height: 400px;
+}
+
+/* 复制通知样式 */
+.copy-notification {
+    display: none;
+    position: fixed;
+    top: 6%;
+    /* 导航栏高度 + 10px 间隔 */
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-20px);
+}
+
+.copy-notification.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* 响应式设计 */

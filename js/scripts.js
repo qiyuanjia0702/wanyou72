@@ -24,12 +24,6 @@ document.addEventListener('contextmenu', (e) => {
     showTooltip('右键菜单已禁用');
 });
 
-document.addEventListener('copy', (e) => {
-    e.preventDefault();
-    showTooltip('复制功能已禁用');
-});
-
-// 禁止 F12 开发者工具
 document.addEventListener('keydown', (e) => {
     if (e.key === 'F12') {
         e.preventDefault();
