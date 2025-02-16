@@ -51,7 +51,7 @@ async function updateOnline(ip, title) {
 // 页面加载时自动调用fetchData函数，获取数据并显示在卡片上
 document.addEventListener('DOMContentLoaded', async function() {
     const servers = [
-        { ip: 'neo.candycake.cloud:30475', title: '乌托邦' },
+        { ip: 'neo.candycake.cloud:30475', title: '明月域阁' },
         { ip: 'neo.candycake.cloud:31320', title: '雾中人' },
         { ip: 'aito.candycake.cloud:28793', title: 'YYZ' } 
     ];
