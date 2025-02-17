@@ -1,27 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380"
-        style="border-radius: 20%; overflow: hidden;">
+    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380" style="border-radius: 20%; overflow: hidden;">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/PC.css" media="screen and (min-width: 769px)">
     <link rel="stylesheet" href="css/mobile.css" media="screen and (max-width: 768px)">
     <link rel="stylesheet" href="css/notification.css">
     <title>Minecraft明月域阁</title>
 </head>
-
-<body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false"
-    ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()"
-    oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()">
-    <noscript><iframe src="/blog/*>" ;</iframe></noscript>
-    <style>
-        .card:not(:first-child) {
-            text-align: center;
-        }
-    </style>
+<body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()"> <noscript><iframe src="/blog/*>" ;</iframe></noscript>
     <!-- 导航栏 -->
     <nav class="navbar">
         <h2></h2>
@@ -44,46 +33,48 @@
 
     <!-- 标签区 -->
     <section class="card1" style="text-align: center;">
-        <h2>服务器公告</h2>
     </section>
 
-    <!-- 功能卡片区 -->
-    <section class="card-container">
-        <div class="card">
-            <!-- 第一个卡片内容 -->
+    <!-- 动画滑块 -->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
         </div>
-        <div class="card">
-            <!-- 第二个卡片内容 -->
-            <button class="btn btn-copy" onclick="copyToClipboard('neo.candycake.cloud:30475')">
-                复制
-                <span class="tooltip">点击复制内容1</span>
-            </button>
-        </div>
-        <div class="card">
-            <!-- 第三个卡片内容 -->
-            <button class="btn btn-copy" onclick="copyToClipboard('neo.candycake.cloud:31320')">
-                复制
-                <span class="tooltip">点击复制内容2</span>
-            </button>
-        </div>
-        <div class="card">
-            <!-- 第四个卡片内容 -->
-            <button class="btn btn-copy" onclick="copyToClipboard('aito.candycake.cloud:28793')">
-                复制
-                <span class="tooltip">点击复制内容3</span>
-            </button>
-        </div>
-    </section>
+    </div>
+
+    <!-- 复制按钮 -->
+    <!--
+    <button class="btn btn-copy" style="display: block; margin: 0 auto;" onclick="copyToClipboard('neo.candycake.cloud:30475')">
+        复制
+        <span class="tooltip">点击复制</span>
+    </button>
+    <button class="btn btn-copy" style="display: block; margin: 0 auto;" onclick="copyToClipboard('neo.candycake.cloud:31320')">
+        复制
+        <span class="tooltip">点击复制</span>
+    </button>
+    <button class="btn btn-copy" style="display: block; margin: 0 auto;" onclick="copyToClipboard('aito.candycake.cloud:28793')">
+        复制
+        <span class="tooltip">点击复制</span>
+    </button>
+    -->
 
     <!-- 复制通知 -->
     <div id="copyNotification" class="copy-notification">复制成功</div>
+    <!-- 版权区 -->
+    <footer class="footer" style="text-align: center;">
+        <div class="container"><br>
+            <p>&copy; 2023 Minecraft明月域阁. 保留所有权利。</p>
+        </div>
+    </footer>
 
     <script src="js/scripts.js"></script>
     <script src="js/content.js"></script>
     <script src="js/card.js"></script>
     <script>
         document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function () {
+            link.addEventListener('click', function() {
                 sessionStorage.setItem('skipLoading', 'true');
             });
         });
@@ -105,7 +96,17 @@
                 notification.classList.remove('show');
             }, 2000);
         }
+
+        // 滑块动画逻辑
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach((slide, index) => {
+            slide.style.animationDelay = `${index * 0.5}s`;
+            if (index % 2 === 0) {
+                slide.classList.add('slide-in-left');
+            } else {
+                slide.classList.add('slide-in-right');
+            }
+        });
     </script>
 </body>
-
 </html>

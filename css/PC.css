@@ -259,6 +259,73 @@
     transform: translateY(0);
 }
 
+/* 滑块样式 */
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.slide {
+    width: 100%;
+    height: 300px;
+    background: #f1f1f1;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slide-in 1s forwards;
+}
+
+.slide img {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.slide h3 {
+    text-align: center;
+}
+
+.slide p {
+    text-align: center;
+}
+
+.slide-in-left {
+    animation-name: slide-in-left;
+}
+
+.slide-in-right {
+    animation-name: slide-in-right;
+}
+
+@keyframes slide-in-left {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .nav-links {
@@ -267,5 +334,49 @@
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+}
+
+/* 滑块样式和动画效果 */
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.slide {
+    width: 80%;
+    background: #f1f1f1;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slide-in 1s forwards;
+}
+
+.slide-in-left {
+    animation-name: slide-in-left;
+}
+
+.slide-in-right {
+    animation-name: slide-in-right;
+}
+
+@keyframes slide-in-left {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
