@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小元Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #e9ecef;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .chat-container {
+        width: 100%;
+        max-width: 600px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        margin-top: 10px;
+        backdrop-filter: blur(80px);
+    }
+
+    .messages {
+        flex: 1;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        font-size: 16px;
+    }
+
+    .message {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+
+    .message img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .message-content {
+        padding: 12px 16px;
+        border-radius: 12px;
+        max-width: 85%;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .message-content .title {
+        font-size: 1.3em;
+        font-weight: bold;
+        display: block;
+        margin: 16px 0 12px 0;
+        color: #333;
+    }
+
+    .message.user {
+        flex-direction: row-reverse;
+    }
+
+    .message.user img {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+
+    .message.user .message-content {
+        background-color: #007bff;
+        backdrop-filter: blur(80px);
+        color: white;
+        text-align: right;
+    }
+
+    .message.bot .message-content {
+        background-color: #f1f3f5;
+    }
+
+    .input-container {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .input-container input {
+        flex: 1;
+        min-width: 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .input-container button {
+        padding: 10px 15px;
+        min-width: 60px;
+        white-space: nowrap;
+        background-color: #007bff;
+        backdrop-filter: blur(80px);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .input-container button:hover {
+        background-color: #0056b3;
+        backdrop-filter: blur(80px);
+    }
+
+    /* Media query for small screens */
+    @media (max-width: 600px) {
+        .chat-container {
+            height: 83vh;
+            padding: 15px;
+        }
+
+        .messages {
+            padding: 20px;
+            font-size: 15px;
+        }
+
+        .input-container {
+            gap: 8px;
+        }
+
+        .input-container input {
+            font-size: 14px;
+        }
+
+        .input-container button {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        .message img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .message-content {
+            font-size: 15px;
+            max-width: 100%;
+        }
+    }
+
+    /* 添加下拉菜单样式 */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        right: 0;
+        background-color: #fff;
+        min-width: 160px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 1;
+        margin-bottom: 10px;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+
+    .dropdown-item {
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* 深色模式样式 */
+    body.dark-mode {
+        background-color: #1a1a1a;
+    }
+
+    .dark-mode .chat-container {
+        background-color: #2d2d2d;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(80px);
+    }
+
+    .dark-mode .messages {
+        background-color: #383838;
+        border-color: #444;
+        color: #fff;
+        backdrop-filter: blur(80px);
+    }
+
+    .dark-mode .message.bot .message-content {
+        background-color: #444;
+        color: #fff;
+    }
+
+    .dark-mode .message.user .message-content {
+        background-color: #0056b3;
+        backdrop-filter: blur(80px);
+    }
+
+    .dark-mode .input-container input {
+        background-color: #383838;
+        border-color: #444;
+        color: #fff;
+    }
+
+    .dark-mode .dropdown-content {
+        background-color: #2d2d2d;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .dark-mode .dropdown-item {
+        color: #fff;
+    }
+
+    .dark-mode .dropdown-item:hover {
+        background-color: #383838;
+    }
+
+    /* 段落样式 */
+    .message-content p {
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+
+    .dark-mode .message-content p {
+        color: #fff;
+    }
+
+    /* 调整标题和段落样式 */
+    .message-content .title {
+        font-size: 1.3em;
+        font-weight: bold;
+        display: block;
+        margin: 16px 0 12px 0;
+        color: #333;
+    }
+
+    .message-content p {
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+
+    .dark-mode .message-content .title {
+        color: #fff;
+    }
+
+    /* 粗体文本样式 */
+    .message-content .bold-text {
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #333;
+    }
+
+    /* 段落标题样式 */
+    .message-content .section-title {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin: 16px 0 8px 0;
+    }
+
+    /* 子段落样式 */
+    .message-content .subsection {
+        margin: 8px 0 8px 20px;
+    }
+
+    /* 正文样式 */
+    .message-content .subtitle {
+        font-weight: bold;
+    }
+
+    /* 深色模式适配 */
+    .dark-mode .message-content .bold-text,
+    .dark-mode .message-content .section-title,
+    .dark-mode .message-content .subtitle,
+    .dark-mode .message-content p {
+        color: #fff;
+    }
+
+    .loading {
+        text-align: center;
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+    <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <div id="loading" class="loading" style="display: none;">加载中...</div>
+        <div class="input-container">
+            <input id="chat-input" type="text" placeholder="输入消息..." />
+            <button onclick="sendMessage()">发送</button>
+            <div class="dropdown">
+                <button onclick="toggleDropdown(event)">更多</button>
+                <div class="dropdown-content" id="dropdownMenu">
+                    <div class="dropdown-item" onclick="toggleTheme()">
+                        <span>浅色/深色</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 格式化消息文本
+        function formatMessage(text) {
+            if (!text) return '';
+
+            // 处理标题和换行
+            let lines = text.split('\n');
+            let formattedLines = lines.map(line => {
+                // 处理标题（**文本**）
+                line = line.replace(/\*\*(.*?)\*\*/g, '<span class="bold-text">$1</span>');
+                return line;
+            });
+
+            // 将 ### 替换为换行，并确保每个部分都是一个段落
+            let processedText = formattedLines.join('\n');
+            let sections = processedText
+                .split('###')
+                .filter(section => section.trim())
+                .map(section => {
+                    // 移除多余的换行和空格
+                    let lines = section.split('\n').filter(line => line.trim());
+
+                    if (lines.length === 0) return '';
+
+                    // 处理每个部分
+                    let result = '';
+                    let currentIndex = 0;
+
+                    while (currentIndex < lines.length) {
+                        let line = lines[currentIndex].trim();
+
+                        // 如果是数字开头（如 "1.")
+                        if (/^\d+\./.test(line)) {
+                            result += `<p class="section-title">${line}</p>`;
+                        }
+                        // 如果是小标题（以破折号开头）
+                        else if (line.startsWith('-')) {
+                            result += `<p class="subsection"><span class="bold-text">${line.replace(/^-/, '').trim()}</span></p>`;
+                        }
+                        // 如果是正文（包含冒号的行）
+                        else if (line.includes(':')) {
+                            let [subtitle, content] = line.split(':').map(part => part.trim());
+                            result += `<p><span class="subtitle">${subtitle}</span>: ${content}</p>`;
+                        }
+                        // 普通文本
+                        else {
+                            result += `<p>${line}</p>`;
+                        }
+                        currentIndex++;
+                    }
+                    return result;
+                });
+
+            return sections.join('');
+        }
+
+        // 显示消息
+        function displayMessage(role, message) {
+            const messagesContainer = document.getElementById('messages');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${role}`;
+
+            const avatar = document.createElement('img');
+            avatar.src = role === 'user' ? 'user-avatar.png' : 'bot-avatar.png';
+            avatar.alt = role === 'user' ? 'User' : 'Bot';
+
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+
+            // 用户消息直接显示，机器人消息需要格式化
+            messageContent.innerHTML = role === 'user' ? message : formatMessage(message);
+
+            messageElement.appendChild(avatar);
+            messageElement.appendChild(messageContent);
+            messagesContainer.appendChild(messageElement);
+
+            // 平滑滚动到底部
+            messageElement.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function sendMessage() {
+            const inputElement = document.getElementById('chat-input');
+            const message = inputElement.value;
+            if (!message.trim()) return;
+
+            displayMessage('user', message);
+            inputElement.value = '';
+
+            // 显示加载动画
+            const loadingElement = document.getElementById('loading');
+            if (loadingElement) {
+                loadingElement.style.display = 'block';
+            }
+
+            const apiKey = 'sk-uqgyncqiyxkmylaelrfrjvcejqrzoytylxwkmtcbnvtvqjoo';
+            const endpoint = 'https://api.siliconflow.com/chat/completions';
+
+            const payload = {
+                reasoner: "deepseek-ai/DeepSeek-R1",
+                messages: [
+                    { role: "system", content: "You are a helpful assistant" },
+                    { role: "user", content: message }
+                ],
+                stream: false
+            };
+
+            fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // 隐藏加载动画
+                    if (loadingElement) {
+                        loadingElement.style.display = 'none';
+                    }
+
+                    if (data.choices && data.choices.length > 0) {
+                        displayMessage('bot', data.choices[0].message.content);
+                    } else {
+                        displayMessage('bot', '出错了，请稍后再试。');
+                    }
+                })
+                .catch(error => {
+                    // 隐藏加载动画
+                    if (loadingElement) {
+                        loadingElement.style.display = 'none';
+                    }
+
+                    displayMessage('bot', '出错了，请稍后再试。');
+                    console.error('Error:', error);
+                });
+        }
+
+        // 添加主题切换功能
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const chatContainer = document.querySelector('.chat-container');
+            const messages = document.querySelector('.messages');
+
+            // 同时切换容器的深色模式
+            chatContainer.classList.toggle('dark-mode');
+            messages.classList.toggle('dark-mode');
+
+            // 保存主题设置
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        // 页面加载时检查主题设置
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.chat-container').classList.add('dark-mode');
+                document.querySelector('.messages').classList.add('dark-mode');
+            }
+        });
+
+        // 添加下拉菜单功能
+        function toggleDropdown(event) {
+            event.preventDefault();
+            document.getElementById('dropdownMenu').classList.toggle('show');
+        }
+
+        // 点击其他地方关闭下拉菜单
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropdown button')) {
+                const dropdowns = document.getElementsByClassName('dropdown-content');
+                for (const dropdown of dropdowns) {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // 添加回车发送功能
+        document.getElementById('chat-input').addEventListener('keypress', function (event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+
+</html>
