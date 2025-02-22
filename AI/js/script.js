@@ -51,7 +51,7 @@ async function sendMessage() {
         const response = await fetch('https://api.siliconflow.cn/v1/chat/completions', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer sk-isawunjgabcmnrvscmbqvopyljkxrwiggiwahwyrtakjyfkf',
+                'Authorization': 'Bearer sk-zxpsicplqdvrwdtoolupiobfahtaibanbaugrwqicpwvjnpn',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
