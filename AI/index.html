@@ -1,524 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小元Chat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: #e9ecef;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+    <title>DeepSeek AI 对话平台</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            --surface: #242424;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+        }
 
-    .chat-container {
-        width: 100%;
-        max-width: 600px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        height: 80vh;
-        margin-top: 10px;
-        backdrop-filter: blur(80px);
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .messages {
-        flex: 1;
-        overflow-y: auto;
-        border: 1px solid #ddd;
-        margin-bottom: 20px;
-        padding: 15px;
-        border-radius: 5px;
-        background-color: #f8f9fa;
-        font-size: 16px;
-    }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .message {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 15px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+            height: 100%;
+        }
 
-    .message img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-    }
-
-    .message-content {
-        padding: 12px 16px;
-        border-radius: 12px;
-        max-width: 85%;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
-    .message-content .title {
-        font-size: 1.3em;
-        font-weight: bold;
-        display: block;
-        margin: 16px 0 12px 0;
-        color: #333;
-    }
-
-    .message.user {
-        flex-direction: row-reverse;
-    }
-
-    .message.user img {
-        margin-left: 10px;
-        margin-right: 0;
-    }
-
-    .message.user .message-content {
-        background-color: #007bff;
-        backdrop-filter: blur(80px);
-        color: white;
-        text-align: right;
-    }
-
-    .message.bot .message-content {
-        background-color: #f1f3f5;
-    }
-
-    .input-container {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-    }
-
-    .input-container input {
-        flex: 1;
-        min-width: 0;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-    .input-container button {
-        padding: 10px 15px;
-        min-width: 60px;
-        white-space: nowrap;
-        background-color: #007bff;
-        backdrop-filter: blur(80px);
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .input-container button:hover {
-        background-color: #0056b3;
-        backdrop-filter: blur(80px);
-    }
-
-    /* Media query for small screens */
-    @media (max-width: 600px) {
         .chat-container {
-            height: 83vh;
-            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 130px);
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin: 1rem 0;
         }
 
-        .messages {
-            padding: 20px;
-            font-size: 15px;
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .input-container {
-            gap: 8px;
+        .message {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            animation: fadeIn 0.3s ease-in;
         }
 
-        .input-container input {
-            font-size: 14px;
+        .message.bot .avatar {
+            background: var(--primary);
         }
 
-        .input-container button {
-            padding: 8px 12px;
-            font-size: 14px;
+        .message.user {
+            justify-content: flex-end;
         }
 
-        .message img {
-            width: 30px;
-            height: 30px;
+        .message .content {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            max-width: 70%;
+            word-break: break-word;
         }
 
-        .message-content {
-            font-size: 15px;
-            max-width: 100%;
+        .message.bot .content {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
         }
-    }
 
-    /* 添加下拉菜单样式 */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+        .message.user .content {
+            background: var(--primary);
+            color: white;
+            border-radius: 0.75rem 0.75rem 0 0.75rem;
+        }
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        bottom: 100%;
-        right: 0;
-        background-color: #fff;
-        min-width: 160px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        z-index: 1;
-        margin-bottom: 10px;
-    }
+        .message.user .avatar {
+            order: 2;
+        }
 
-    .dropdown-content.show {
-        display: block;
-    }
+        .message.user .content {
+            order: 1;
+        }
 
-    .dropdown-item {
-        padding: 12px 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
+        .user-input-area {
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
 
-    .dropdown-item:hover {
-        background-color: #f8f9fa;
-    }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 1rem;
+        }
 
-    /* 深色模式样式 */
-    body.dark-mode {
-        background-color: #1a1a1a;
-    }
+        textarea {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 1rem 2rem 1rem 1.5rem;
+            border-radius: 0.75rem;
+            resize: none;
+            min-height: 56px;
+            transition: all 0.2s;
+        }
 
-    .dark-mode .chat-container {
-        background-color: #2d2d2d;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(80px);
-    }
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
 
-    .dark-mode .messages {
-        background-color: #383838;
-        border-color: #444;
-        color: #fff;
-        backdrop-filter: blur(80px);
-    }
+        .send-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
 
-    .dark-mode .message.bot .message-content {
-        background-color: #444;
-        color: #fff;
-    }
+        .send-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
 
-    .dark-mode .message.user .message-content {
-        background-color: #0056b3;
-        backdrop-filter: blur(80px);
-    }
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
 
-    .dark-mode .input-container input {
-        background-color: #383838;
-        border-color: #444;
-        color: #fff;
-    }
+        .thinking-indicator {
+            padding: 1rem 0;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
 
-    .dark-mode .dropdown-content {
-        background-color: #2d2d2d;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
+        .dot-flashing {
+            position: relative;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--text-secondary);
+            animation: dotFlashing 1s infinite linear;
+        }
 
-    .dark-mode .dropdown-item {
-        color: #fff;
-    }
+        .dot-flashing::before, .dot-flashing::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--text-secondary);
+        }
 
-    .dark-mode .dropdown-item:hover {
-        background-color: #383838;
-    }
+        .dot-flashing::before {
+            left: -15px;
+            animation: dotFlashing 1s infinite linear;
+            animation-delay: 0s;
+        }
 
-    /* 段落样式 */
-    .message-content p {
-        margin: 10px 0;
-        line-height: 1.6;
-    }
+        .dot-flashing::after {
+            left: 15px;
+            animation: dotFlashing 1s infinite linear;
+            animation-delay: 0.2s;
+        }
 
-    .dark-mode .message-content p {
-        color: #fff;
-    }
+        @keyframes dotFlashing {
+            0% { opacity: 0.2 }
+            50% { opacity: 1 }
+            100% { opacity: 0.2 }
+        }
 
-    /* 调整标题和段落样式 */
-    .message-content .title {
-        font-size: 1.3em;
-        font-weight: bold;
-        display: block;
-        margin: 16px 0 12px 0;
-        color: #333;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .message-content p {
-        margin: 10px 0;
-        line-height: 1.6;
-    }
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
 
-    .dark-mode .message-content .title {
-        color: #fff;
-    }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
 
-    /* 粗体文本样式 */
-    .message-content .bold-text {
-        font-weight: bold;
-        font-size: 1.1em;
-        color: #333;
-    }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
 
-    /* 段落标题样式 */
-    .message-content .section-title {
-        font-size: 1.1em;
-        font-weight: bold;
-        margin: 16px 0 8px 0;
-    }
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
 
-    /* 子段落样式 */
-    .message-content .subsection {
-        margin: 8px 0 8px 20px;
-    }
+            .chat-container {
+                padding: 1rem;
+                margin: 0.5rem 0;
+            }
 
-    /* 正文样式 */
-    .message-content .subtitle {
-        font-weight: bold;
-    }
+            .message .content {
+                max-width: 100%;
+            }
 
-    /* 深色模式适配 */
-    .dark-mode .message-content .bold-text,
-    .dark-mode .message-content .section-title,
-    .dark-mode .message-content .subtitle,
-    .dark-mode .message-content p {
-        color: #fff;
-    }
+            .send-btn {
+                padding: 0.5rem 1rem;
+            }
 
-    .loading {
-        text-align: center;
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 20px;
-    }
-</style>
-
+            textarea {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
 <body>
-    <div class="chat-container">
-        <div class="messages" id="messages"></div>
-        <div id="loading" class="loading" style="display: none;">加载中...</div>
-        <div class="input-container">
-            <input id="chat-input" type="text" placeholder="输入消息..." />
-            <button onclick="sendMessage()">发送</button>
-            <div class="dropdown">
-                <button onclick="toggleDropdown(event)">更多</button>
-                <div class="dropdown-content" id="dropdownMenu">
-                    <div class="dropdown-item" onclick="toggleTheme()">
-                        <span>浅色/深色</span>
-                    </div>
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-history" id="chatHistory"></div>
+            
+            <div class="thinking-indicator" id="thinkingIndicator">
+                <div class="dot-flashing"></div>
+                正在思考中...
+            </div>
+
+            <div class="user-input-area">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="userInput" 
+                        placeholder="输入你的问题..." 
+                        rows="1"
+                        oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"
+                    ></textarea>
+                    <button class="send-btn" onclick="sendMessage()">
+                        <span>发送</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 格式化消息文本
-        function formatMessage(text) {
-            if (!text) return '';
+        // API 配置
+        const API_ENDPOINT = 'https://api.siliconflow.cn/v1/chat/completions';
+        const API_KEY = 'sk-isawunjgabcmnrvscmbqvopyljkxrwiggiwahwyrtakjyfkf'; // 请替换为您的有效API Key
 
-            // 处理标题和换行
-            let lines = text.split('\n');
-            let formattedLines = lines.map(line => {
-                // 处理标题（**文本**）
-                line = line.replace(/\*\*(.*?)\*\*/g, '<span class="bold-text">$1</span>');
-                return line;
-            });
+        // 元素引用
+        const chatHistory = document.getElementById('chatHistory');
+        const userInput = document.getElementById('userInput');
+        const thinkingIndicator = document.getElementById('thinkingIndicator');
 
-            // 将 ### 替换为换行，并确保每个部分都是一个段落
-            let processedText = formattedLines.join('\n');
-            let sections = processedText
-                .split('###')
-                .filter(section => section.trim())
-                .map(section => {
-                    // 移除多余的换行和空格
-                    let lines = section.split('\n').filter(line => line.trim());
+        // 发送消息
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
 
-                    if (lines.length === 0) return '';
+            // 添加用户消息
+            appendMessage(message, 'user');
+            userInput.value = '';
+            thinkingIndicator.style.display = 'flex';
 
-                    // 处理每个部分
-                    let result = '';
-                    let currentIndex = 0;
-
-                    while (currentIndex < lines.length) {
-                        let line = lines[currentIndex].trim();
-
-                        // 如果是数字开头（如 "1.")
-                        if (/^\d+\./.test(line)) {
-                            result += `<p class="section-title">${line}</p>`;
-                        }
-                        // 如果是小标题（以破折号开头）
-                        else if (line.startsWith('-')) {
-                            result += `<p class="subsection"><span class="bold-text">${line.replace(/^-/, '').trim()}</span></p>`;
-                        }
-                        // 如果是正文（包含冒号的行）
-                        else if (line.includes(':')) {
-                            let [subtitle, content] = line.split(':').map(part => part.trim());
-                            result += `<p><span class="subtitle">${subtitle}</span>: ${content}</p>`;
-                        }
-                        // 普通文本
-                        else {
-                            result += `<p>${line}</p>`;
-                        }
-                        currentIndex++;
-                    }
-                    return result;
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'deepseek-ai/DeepSeek-V3',
+                        messages: [{ role: 'user', content: message }],
+                        max_tokens: 512,
+                        temperature: 0.7
+                    })
                 });
 
-            return sections.join('');
-        }
-
-        // 显示消息
-        function displayMessage(role, message) {
-            const messagesContainer = document.getElementById('messages');
-            const messageElement = document.createElement('div');
-            messageElement.className = `message ${role}`;
-
-            const avatar = document.createElement('img');
-            avatar.src = role === 'user' ? 'user-avatar.png' : 'bot-avatar.png';
-            avatar.alt = role === 'user' ? 'User' : 'Bot';
-
-            const messageContent = document.createElement('div');
-            messageContent.className = 'message-content';
-
-            // 用户消息直接显示，机器人消息需要格式化
-            messageContent.innerHTML = role === 'user' ? message : formatMessage(message);
-
-            messageElement.appendChild(avatar);
-            messageElement.appendChild(messageContent);
-            messagesContainer.appendChild(messageElement);
-
-            // 平滑滚动到底部
-            messageElement.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function sendMessage() {
-            const inputElement = document.getElementById('chat-input');
-            const message = inputElement.value;
-            if (!message.trim()) return;
-
-            displayMessage('user', message);
-            inputElement.value = '';
-
-            // 显示加载动画
-            const loadingElement = document.getElementById('loading');
-            if (loadingElement) {
-                loadingElement.style.display = 'block';
-            }
-
-            const apiKey = 'sk-uqgyncqiyxkmylaelrfrjvcejqrzoytylxwkmtcbnvtvqjoo';
-            const endpoint = 'https://api.siliconflow.cn/v1';
-
-            const payload = {
-                reasoner: "deepseek-ai/DeepSeek-R1",
-                messages: [
-                    { role: "system", content: "You are a helpful assistant" },
-                    { role: "user", content: message }
-                ],
-                stream: false
-            };
-
-            fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                },
-                body: JSON.stringify(payload)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // 隐藏加载动画
-                    if (loadingElement) {
-                        loadingElement.style.display = 'none';
-                    }
-
-                    if (data.choices && data.choices.length > 0) {
-                        displayMessage('bot', data.choices[0].message.content);
-                    } else {
-                        displayMessage('bot', '出错了，请稍后再试。');
-                    }
-                })
-                .catch(error => {
-                    // 隐藏加载动画
-                    if (loadingElement) {
-                        loadingElement.style.display = 'none';
-                    }
-
-                    displayMessage('bot', '出错了，请稍后再试。');
-                    console.error('Error:', error);
-                });
-        }
-
-        // 添加主题切换功能
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            const chatContainer = document.querySelector('.chat-container');
-            const messages = document.querySelector('.messages');
-
-            // 同时切换容器的深色模式
-            chatContainer.classList.toggle('dark-mode');
-            messages.classList.toggle('dark-mode');
-
-            // 保存主题设置
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDarkMode);
-        }
-
-        // 页面加载时检查主题设置
-        document.addEventListener('DOMContentLoaded', () => {
-            const isDarkMode = localStorage.getItem('darkMode') === 'true';
-            if (isDarkMode) {
-                document.body.classList.add('dark-mode');
-                document.querySelector('.chat-container').classList.add('dark-mode');
-                document.querySelector('.messages').classList.add('dark-mode');
-            }
-        });
-
-        // 添加下拉菜单功能
-        function toggleDropdown(event) {
-            event.preventDefault();
-            document.getElementById('dropdownMenu').classList.toggle('show');
-        }
-
-        // 点击其他地方关闭下拉菜单
-        window.onclick = function (event) {
-            if (!event.target.matches('.dropdown button')) {
-                const dropdowns = document.getElementsByClassName('dropdown-content');
-                for (const dropdown of dropdowns) {
-                    if (dropdown.classList.contains('show')) {
-                        dropdown.classList.remove('show');
-                    }
-                }
+                const data = await response.json();
+                appendMessage(data.choices[0].message.content, 'bot');
+            } catch (error) {
+                appendMessage('抱歉，出现错误，请稍后再试。', 'error');
+            } finally {
+                thinkingIndicator.style.display = 'none';
             }
         }
 
-        // 添加回车发送功能
-        document.getElementById('chat-input').addEventListener('keypress', function (event) {
-            if (event.key === 'Enter' && !event.shiftKey) {
-                event.preventDefault();
+        // 添加消息到对话历史
+        function appendMessage(text, type = 'user') {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type === 'bot' ? 'bot' : 'user'}`;
+            messageDiv.innerHTML = `
+                <div class="avatar">${type === 'bot' ? 'AI' : '你'}</div>
+                <div class="content">${text.replace(/\n/g, '<br>')}</div>
+            `;
+            chatHistory.appendChild(messageDiv);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        // 回车发送消息
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
                 sendMessage();
             }
         });
     </script>
 </body>
-
 </html>
