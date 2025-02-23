@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380">
+    <link rel="stylesheet" href="css/style.css">
+    <title>光遇每日指引</title>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div id="stars"></div>
+
+    <!-- 图片模态框 -->
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <img class="modal-image" src="" alt="放大查看">
+        </div>
+        <div class="close-btn">×</div>
+    </div>
+
+    <div class="container">
+        <div class="title-box">
+            <h1 class="title">光遇每日指引</h1>
+        </div>
+
+        <div class="image-wrapper">
+            <div class="image-container">
+                <div class="loader"></div>
+                <img id="taskImage" class="task-image" alt="今日任务">
+            </div>
+        </div>
+
+        <button class="refresh-btn" onclick="loadImage()">
+            <span>🕊️ 获取最新任务</span>
+        </button>
+
+        <div class="footer">
+            ✨ 数据每日凌晨同步更新 | 光芒指引你的方向 ✨
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
