@@ -18,8 +18,8 @@ $(document).ready(function () {
                         // 处理动图装饰
                         img.addClass('gif-decoration')
                             .css({
-                                right: Math.random() * 80 + 10 + '%',
-                                bottom: Math.random() * 30 + 10 + '%'
+                                right: Math.random() * 10 + 5 + '%',
+                                bottom: Math.random() * 10 + 5 + '%'
                             });
                         $('body').append(img);
                     } else {
@@ -30,6 +30,8 @@ $(document).ready(function () {
                         card.click(function () {
                             $('#modal-img').attr('src', imgUrl);
                             $('#modal').addClass('active');
+                            $('body').addClass('no-scroll');
+                            $('#modal-img').css('transform', 'translate(-50%, -50%)');
                         });
                         $('#gallery').append(card);
                     }
@@ -48,6 +50,9 @@ $(document).ready(function () {
 
     // 关闭模态框
     $('#modal').click(function (e) {
-        if (e.target === this) $(this).removeClass('active');
+        if (e.target === this) {
+            $(this).removeClass('active');
+            $('body').removeClass('no-scroll');
+        }
     });
 });
