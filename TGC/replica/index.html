@@ -2,180 +2,33 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>光遇复刻先祖｜时空之旅</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f3f1 0%, #e8e6e4 100%);
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-            color: #584c40;
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            padding: 30px 0;
-            position: relative;
-        }
-
-        .title {
-            font-size: 2.2rem;
-            color: #f7a54a;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            color: #8c7b6b;
-            font-size: 1rem;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #a09384;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-            overflow: hidden;
-            margin: 15px 0;
-            transition: transform 0.3s ease;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .refresh {
-            position: fixed;
-            bottom: 30px;
-            right: 20px;
-            background: #f7a54a;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(247,165,74,0.3);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .refresh:active {
-            transform: scale(0.95);
-        }
-
-        .refresh img {
-            width: 24px;
-            height: 24px;
-            filter: brightness(0) invert(1);
-        }
-
-        .toast {
-            position: fixed;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380">
+    <link rel="stylesheet" href="css/style.css">
+    <title>光遇复刻先祖 - 星空预言</title>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="title">复刻先祖</h1>
-            <p class="subtitle">时光流转 · 温暖重逢</p>
-        </header>
-
-        <div class="content">
-            <div id="loading" class="loading">正在获取先祖信息...</div>
-            <div id="images-container"></div>
-        </div>
-
-        <div class="refresh" onclick="loadData()">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTMuNSAyYy0zLjA0My40ODQtNS41IDMuNDA0LTUuNSA2Ljg3MnYxLjc5OEw1IDhsMy41IDMuN0wxMiA3bC0zLjUtMy43TDcgNS4zM1Y0LjdDNyAxLjk5IDkuMjM5LTEgMTIuMDAxLjE0NCAxMy4yMDYtLjQyIDE2IDIuNDYxIDE2IDZ2My4yOGwtMiAxLjcyNVY2YzAtMi43MDctMi4zMDktNC45MDMtNS00Ljk4N1Yyem0tLjUxIDE5YzMuMDM4LS40NTQgNS41MS0zLjM1IDUuNTEtNi44MDh2LTEuODg5TDE5IDE2bC0zLjUtMy42OTdMMTIgMTdsMy41IDMuNzhMMTkgMTdsLTEuNS0xLjI1VjE5YzAgMi43NTctMi4yNDMgNS01IDVoLTF2LTJ6Ii8+PC9zdmc+" alt="刷新">
-        </div>
-
-        <div id="toast" class="toast"></div>
+    <!-- 动态星辰背景 -->
+    <div class="dynamic-stars">
+        <div class="stars"></div>
+        <div class="stars"></div>
     </div>
 
-    <script>
-        // 初始化加载
-        document.addEventListener('DOMContentLoaded', loadData);
+    <div class="container">
+        <header class="header">
+            <h1 class="title">圣岛预言 ● 先祖归来</h1>
+        </header>
 
-        function showToast(text, duration = 2000) {
-            const toast = document.getElementById('toast');
-            toast.textContent = text;
-            toast.style.bottom = '30px';
-            setTimeout(() => toast.style.bottom = '-50px', duration);
-        }
-
-        async function loadData() {
-            try {
-                document.getElementById('loading').style.display = 'block';
-                document.getElementById('images-container').innerHTML = '';
-
-                // 请求图片
-                const apiUrl = 'https://api.t1qq.com/api/sky/sc/scfk?key=luF8owK4UYIjENYbUmtKvRx2Zi';
-                
-                // 创建图片容器
-                const img = new Image();
-                img.className = 'card';
-                img.style.animation = 'fadeIn 0.5s ease';
-                
-                img.onload = () => {
-                    document.getElementById('loading').style.display = 'none';
-                };
-                img.onerror = () => {
-                    throw new Error('图片加载失败');
-                };
-                img.src = apiUrl;
-                
-                document.getElementById('images-container').appendChild(img);
-
-            } catch (error) {
-                document.getElementById('loading').style.display = 'none';
-                showToast('⚠️ 数据获取失败，请下拉刷新重试');
-                console.error('API请求失败:', error);
-            }
-        }
-
-        // 添加下拉刷新
-        let startY;
-        window.addEventListener('touchstart', e => startY = e.touches[0].pageY);
-        window.addEventListener('touchend', e => {
-            if (window.scrollY === 0 && e.changedTouches[0].pageY - startY > 80) {
-                loadData();
-            }
-        });
-    </script>
+        <main>
+            <div class="card">
+                <div class="loading" id="loading">
+                    <div class="lds-ripple"><div></div></div>
+                    <p>正在与云端建立连接...</p>
+                </div>
+                <img id="prophecyImg" class="prophecy-image" alt="本周复刻先祖预言">
+            </div>
+        </main>
+    </div>
+    <script src="js/script.js"></script>
 </body>
 </html>
