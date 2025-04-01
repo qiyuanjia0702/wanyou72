@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freewind 服务器状态</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="server-card">
+        <div class="server-header">
+            <img src="https://api.mcstatus.io/v2/icon/neo.candycake.cloud:30475" alt="服务器图标" class="server-icon"
+                onerror="this.style.display='none'">
+            <h1 style="color: white; margin-bottom: 8px;">Freewind 服务器</h1>
+            <div class="status-indicator loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <div class="server-info">
+
+            <div class="info-item">
+                <span style="color: rgba(255,255,255,0.7);">地址</span>
+                <button class="copy-button" onclick="copyAddress()">复制地址</button>
+            </div>
+
+            <div class="info-item">
+                <span style="color: rgba(255,255,255,0.7);">核心版本</span>
+                <span id="protocol" style="color: white;">-</span>
+            </div>
+
+            <div class="info-item">
+                <span style="color: rgba(255,255,255,0.7);">在线玩家</span>
+                <span id="players" style="color: white;">-</span>
+            </div>
+
+            <div id="motd" class="motd" style="color: white;"></div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <div class="notification-text">地址已复制！</div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
