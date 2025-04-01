@@ -121,4 +121,4 @@ async function checkStatus() {
 }
 
 window.onload = checkStatus;
-setInterval(checkStatus, 30000);
+setInterval(checkStatus, 1000);
