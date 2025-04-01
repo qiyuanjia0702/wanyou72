@@ -48,28 +48,23 @@ async function updateOnline(ip, title) {
     }
 }
 
-// 页面加载时自动调用fetchData函数，获取数据并显示在卡片上
+// 页面加载时自动调用fetchData函数，仅获取机械殖民地的数据并显示在卡片上
 document.addEventListener('DOMContentLoaded', async function() {
-    const servers = [
-        { ip: 'neo.candycake.cloud:30475', title: '乌托邦' },
-        { ip: 'neo.candycake.cloud:31320', title: '雾中人' },
-        { ip: 'aito.candycake.cloud:28793', title: 'YYZ' } 
-    ];
+    const server = { ip: 'neo.candycake.cloud:30475', title: '机械殖民地' };
 
-    for (let i = 0; i < servers.length; i++) {
-        const data = await fetchData(servers[i].ip);
-        if (data) {
-            displayData(cards[i], data, servers[i].title);
-        }
+    const data = await fetchData(server.ip);
+    if (data) {
+        displayData(cards[0], data, server.title);
     }
 
-    // 实时更新ping延迟和在线人数及MOTD
+    // 实时更新ping延迟和在线人数及MOTD，仅针对机械殖民地
     setInterval(() => {
-        servers.forEach(server => {
-            updatePing(server.ip, server.title);
-            updateOnline(server.ip, server.title);
-        });
+        updatePing(server.ip, server.title);
+        updateOnline(server.ip, server.title);
     }, 3000); // 每3秒更新一次
 });
+
+// 如果有针对其他状态面板的逻辑，请移除
+// 例如：document.getElementById('ping-雾中人').textContent = ...;
 
 

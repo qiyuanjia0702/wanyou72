@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarTitle = document.querySelector('.navbar h2');
     navbarTitle.textContent = ''; // 清空原有文本
     const img = document.createElement('img');
-    img.src = 'https://ipv4wp.axzzz.top:9503/f/2DWeIZ/Logo.png';
+    img.src = 'https://www.20050702.top/i/2025/04/01/dkk2jh.png';
     img.style.width = '120px'; // 设置图片宽度
     img.style.height = 'auto'; // 保持图片比例
     navbarTitle.appendChild(img);
@@ -26,20 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks[2].textContent = '下载';
     navLinks[3].textContent = '关于';
 
-    // 设置功能卡片服务器信息
+    // 设置功能卡片服务器信息，仅保留机械殖民地
     const servers = [
-        { title: '乌托邦', ping: '加载中...', online: '加载中...', city: '加载中...', motd: '加载中...' },
-        { title: '雾中人', ping: '加载中...', online: '加载中...', city: '加载中...', motd: '加载中...' },
-        { title: 'YYZ', ping: '加载中...', online: '加载中...', city: '加载中...', motd: '加载中...' }
+        { title: '机械殖民地', ping: '加载中...', online: '加载中...', city: '加载中...', motd: '加载中...' }
     ];
 
-    for (let i = 0; i < servers.length; i++) {
-        cards[i].querySelector('h3').textContent = servers[i].title;
-        cards[i].querySelector('#ping-' + servers[i].title).textContent = servers[i].ping;
-        cards[i].querySelector('#online-' + servers[i].title).textContent = servers[i].online;
-        cards[i].querySelector('#city-' + servers[i].title).textContent = servers[i].city;
-        cards[i].querySelector('#motd-' + servers[i].title).textContent = servers[i].motd;
-    }
+    const card = document.querySelector('.card');
+    card.querySelector('h3').textContent = servers[0].title;
+    card.querySelector('#ping-' + servers[0].title).textContent = servers[0].ping;
+    card.querySelector('#online-' + servers[0].title).textContent = servers[0].online;
+    card.querySelector('#city-' + servers[0].title).textContent = servers[0].city;
+    card.querySelector('#motd-' + servers[0].title).textContent = servers[0].motd;
+
+    // 更新状态面板内容，仅保留机械殖民地的状态
+    document.getElementById('ping-机械殖民地').textContent = 'Ping: 20ms';
+    document.getElementById('online-机械殖民地').textContent = '在线人数: 15/100';
+    document.getElementById('city-机械殖民地').textContent = '城市: 机械殖民地';
+    document.getElementById('motd-机械殖民地').textContent = '欢迎来到机械殖民地服务器！';
 
     // 设置功能卡片标题居中
     const cardTitles = document.querySelectorAll('.card h3');
