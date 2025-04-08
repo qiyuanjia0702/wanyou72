@@ -2,220 +2,205 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>多服务器状态监控系统</title>
+    <title>移动端服务器状态监控</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap');
         :root {
             --primary-1: #00ff88;
             --primary-2: #ff7f00;
-            --bg-gradient: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            --bg-color: #0f172a;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: var(--bg-gradient);
-            min-height: 100vh;
-            padding: 2rem 1rem;
+            background: var(--bg-color);
             color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            line-height: 1.5;
+            touch-action: manipulation;
         }
 
-        .server-column {
-            width: 100%;
-            max-width: 800px;
-            margin-bottom: 2.5rem;
+        .container {
+            padding: 1rem;
+            max-width: 768px;
+            margin: 0 auto;
         }
 
         .server-panel {
-            background: rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 1rem 0;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .server-panel:hover {
-            transform: translateY(-5px);
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.2));
+            border-radius: 1rem;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .server-header {
-            display: flex;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
             align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            padding-bottom: 1rem;
         }
 
         .server-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            margin-right: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 0.5rem;
             object-fit: cover;
             border: 2px solid rgba(255,255,255,0.1);
         }
 
         .server-info {
-            flex: 1;
+            overflow: hidden;
         }
 
         .server-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
             color: var(--primary-1);
-        }
-
-        .server-status {
-            display: flex;
-            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .status-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            margin-right: 0.8rem;
             box-shadow: 0 0 8px currentColor;
         }
 
-        .players-wrapper {
-            margin: 1.5rem 0;
-        }
-
         .players-meter {
-            height: 12px;
+            height: 6px;
             background: rgba(255,255,255,0.1);
-            border-radius: 6px;
-            overflow: hidden;
-            position: relative;
+            border-radius: 3px;
+            margin: 1rem 0;
         }
 
         .meter-fill {
             height: 100%;
-            width: 50%;
             background: linear-gradient(90deg, var(--primary-1), var(--primary-2));
-            transition: width 0.8s ease;
+            transition: width 0.5s ease;
         }
 
         .server-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
         }
 
         .detail-item {
-            background: rgba(0,0,0,0.2);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
         }
 
-        /* 差异化颜色 */
-        .server-panel:nth-child(2) .server-title,
-        .server-panel:nth-child(2) .meter-fill {
-            color: var(--primary-2);
-            background: linear-gradient(90deg, var(--primary-2), #ffd700);
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .server-header {
+                grid-template-columns: auto 1fr;
+                grid-template-rows: auto auto;
+            }
+            
+            .status-dot {
+                grid-column: 2;
+                grid-row: 2;
+                justify-self: end;
+            }
+            
+            .server-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-item {
+                padding: 0.6rem;
+                font-size: 0.85rem;
+            }
         }
 
-        /* 安全限制 */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
+        /* 禁用文本选择 */
+        * {
+            -webkit-user-select: none;
             user-select: none;
         }
     </style>
 </head>
 <body>
-    <div class="server-column" id="serverList"></div>
+    <div class="container" id="serverList"></div>
 
 <script>
-// 安全限制
+// 安全加固
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('keydown', e => {
-    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
+    if (e.ctrlKey || e.metaKey) e.preventDefault();
 });
 
-// 服务器接口列表
-const API_ENDPOINTS = [
+const API_LIST = [
     'https://list.mczfw.cn/api/game.orisland.top:43537',
     'https://list.mczfw.cn/api/neo.candycake.cloud:30475'
 ];
 
-async function loadServers() {
+async function fetchData() {
     try {
-        const responses = await Promise.all(API_ENDPOINTS.map(url => fetch(url)));
+        const requests = API_LIST.map(url => fetch(url));
+        const responses = await Promise.all(requests);
         const servers = await Promise.all(responses.map(r => r.json()));
         
         renderServers(servers);
-        
-    } catch (error) {
-        document.getElementById('serverList').innerHTML = `
-            <div class="server-panel">
-                <div class="error-message">
-                    ⚠️ 服务器数据加载失败，请检查网络连接
-                </div>
-            </div>
-        `;
+    } catch {
+        showError();
     }
 }
 
 function renderServers(servers) {
     const container = document.getElementById('serverList');
-    container.innerHTML = servers.map((server, index) => {
-        const percentage = (server.p / server.mp * 100).toFixed(1);
+    container.innerHTML = servers.map((server, i) => {
+        const percentage = Math.min((server.p / server.mp * 100), 100).toFixed(1);
         const statusColor = server.ping < 150 ? 'var(--primary-1)' : '#ff4646';
-        
+        const motdTitle = server.motd.split(/[→~]/)[0].trim();
+
         return `
             <div class="server-panel">
                 <div class="server-header">
-                    <img src="${server.logo}" class="server-logo" alt="服务器标志">
+                    <img src="${server.logo}" class="server-logo" alt="Logo">
                     <div class="server-info">
-                        <div class="server-title">
-                            ${server.motd.split('→')[0].trim()}
-                        </div>
-                        <div class="server-status">
-                            <div class="status-dot" style="color: ${statusColor}"></div>
-                            <span>${server.city}｜${server.mod}</span>
+                        <div class="server-title">${motdTitle}</div>
+                        <div style="font-size:0.8em;opacity:0.8">
+                            ${server.city} | ${server.mod}
                         </div>
                     </div>
+                    <div class="status-dot" style="color:${statusColor}"></div>
                 </div>
 
-                <div class="players-wrapper">
-                    <div class="players-meter">
-                        <div class="meter-fill" style="width: ${percentage}%"></div>
-                    </div>
-                    <div class="players-count">
-                        ${server.p}／${server.mp} 玩家在线（${percentage}%）
-                    </div>
+                <div class="players-meter">
+                    <div class="meter-fill" style="width:${percentage}%"></div>
                 </div>
 
                 <div class="server-details">
                     <div class="detail-item">
+                        <div>👥 在线玩家</div>
+                        <div>${server.p}/${server.mp}</div>
+                    </div>
+                    <div class="detail-item">
                         <div>📶 网络延迟</div>
-                        <div class="detail-value">${server.ping}ms</div>
+                        <div>${server.ping}ms</div>
                     </div>
                     <div class="detail-item">
-                        <div>🌍 物理位置</div>
-                        <div class="detail-value">${server.city}</div>
+                        <div>🌐 服务位置</div>
+                        <div>${server.city}</div>
                     </div>
                     <div class="detail-item">
-                        <div>🔌 服务协议</div>
-                        <div class="detail-value">TCP/UDP</div>
+                        <div>🛠️ 游戏版本</div>
+                        <div>${server.motd.match(/1\.\d+\.?\d*/)?.[0] || '未知'}</div>
                     </div>
                 </div>
             </div>
@@ -223,10 +208,19 @@ function renderServers(servers) {
     }).join('');
 }
 
-// 初始加载
-loadServers();
-// 每20秒更新
-setInterval(loadServers, 20000);
+function showError() {
+    document.getElementById('serverList').innerHTML = `
+        <div class="server-panel">
+            <div style="color:#ff4646;text-align:center;padding:2rem">
+                ⚠️ 数据加载失败，请重试
+            </div>
+        </div>
+    `;
+}
+
+// 初始化
+fetchData();
+setInterval(fetchData, 30000);
 </script>
 </body>
 </html>
