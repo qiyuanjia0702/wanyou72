@@ -1,3 +1,12 @@
+// 禁止页面缩放
+document.addEventListener('touchstart', function (event) {
+    if (event.touches.length > 1) event.preventDefault();
+}, { passive: false });
+
+document.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) e.preventDefault();
+}, { passive: false });
+
 const fixedValues = {
     sender: '442834517@qq.com',
     key: 'qrtkkdlgaurvbgbb',
@@ -10,7 +19,7 @@ document.getElementById('applicationForm').addEventListener('submit', async func
     const submitBtn = document.getElementById('submitBtn');
     const resultDiv = document.getElementById('result');
 
-    submitBtn.innerHTML = '<i class="fas fa-spinner loader"></i> 发送中...';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 发送中...';
     submitBtn.disabled = true;
 
     try {
@@ -25,35 +34,17 @@ document.getElementById('applicationForm').addEventListener('submit', async func
             text: mailContent
         });
 
-        const encodedParams = Array.from(params.entries())
-            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-            .join('&');
+        await fetch(`http://api.mmp.cc/api/mail?${params}`, { mode: 'no-cors' });
 
-        await fetch(`http://api.mmp.cc/api/mail?${encodedParams}`);
+        resultDiv.classList.add('show');
+        setTimeout(() => resultDiv.classList.remove('show'), 4000);
+        this.reset();
 
-        // 统一显示发送成功
-        resultDiv.className = 'success';
-        resultDiv.innerHTML = `
-            <i class="fas fa-check-circle fa-2x"></i>
-            <div>
-                <h3>发送成功！</h3>
-                <p>我们将在24小时内审核您的申请</p>
-            </div>
-        `;
-
-    } catch {
-        // 即使出错也显示成功
-        resultDiv.className = 'success';
-        resultDiv.innerHTML = `
-            <i class="fas fa-check-circle fa-2x"></i>
-            <div>
-                <h3>发送成功！</h3>
-                <p>我们将在24小时内审核您的申请</p>
-            </div>
-        `;
+    } catch (err) {
+        resultDiv.classList.add('show');
+        setTimeout(() => resultDiv.classList.remove('show'), 4000);
     } finally {
         submitBtn.innerHTML = '<span>发送申请</span> <i class="fas fa-paper-plane"></i>';
         submitBtn.disabled = false;
-        resultDiv.classList.add('show');
     }
 });
