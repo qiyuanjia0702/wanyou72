@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>游戏白名单申请</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-crown" style="margin-right: 10px;"></i>游戏白名单申请</h1>
+        <form id="applicationForm">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> 玩家昵称</label>
+                <input type="text" id="name" required placeholder="请输入游戏内昵称">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> 申请人邮箱</label>
+                <input type="email" id="applicantEmail" required placeholder="请输入您的联系邮箱">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-file-alt"></i> 申请内容</label>
+                <textarea id="text" rows="4" required placeholder="请详细说明您的申请理由..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                <span>发送申请</span>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+      
+        <div id="result"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
