@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支持作者 🙏</title>
+    <style>
+        :root {
+            --bg-color: #fff;
+            --text-color: #333;
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --gradient-start: #f5f7fa;
+            --gradient-end: #c3cfe2;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --theme-toggle-bg: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --card-bg: rgba(35, 35, 35, 0.98);
+            --gradient-start: #2c3e50;
+            --gradient-end: #3498db;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+            --theme-toggle-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 主题切换按钮样式 */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--theme-toggle-bg);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            backdrop-filter: blur(5px);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            position: absolute;
+            transition: opacity 0.3s ease;
+        }
+
+        .theme-toggle .icon-sun {
+            opacity: 1;
+        }
+
+        .theme-toggle .icon-moon {
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun {
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-moon {
+            opacity: 1;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle.wave {
+            animation: waveEffect 0.6s ease-out;
+        }
+
+        @keyframes waveEffect {
+            0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
+            100% { box-shadow: 0 0 0 12px transparent; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            user-select: none;
+            transition: background 0.5s ease, color 0.3s ease;
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s;
+            flex-direction: column;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            color: var(--text-color);
+            font-size: 1.2em;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loader::after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(76, 175, 80, 0.2);
+            border-top-color: #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            padding-right: 50px;
+        }
+
+        .qr-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .qr-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .qr-title {
+            text-align: center;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .qr-code {
+            width: 100%;
+            padding-bottom: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .qr-card[data-platform="微信"] { border-top: 4px solid #4CAF50; }
+        .qr-card[data-platform="支付宝"] { border-top: 4px solid #1677ff; }
+        .qr-card[data-platform="QQ"] { border-top: 4px solid #12B7F5; }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 15px;
+                border-radius: 15px;
+            }
+
+            .qr-container {
+                gap: 15px;
+            }
+
+            .qr-card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                margin-bottom: 20px;
+                padding-right: 40px;
+            }
+
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+
+            .qr-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-text">正在加载支付方式...</div>
+    </div>
+
+    <div class="container">
+        <button class="theme-toggle" id="themeToggle">
+            <!-- 内嵌SVG图标 -->
+            <svg class="icon-sun" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M512 972.8c-254.5152 0-460.8-206.2848-460.8-460.8s206.2848-460.8 460.8-460.8 460.8 206.2848 460.8 460.8-206.2848 460.8-460.8 460.8z" fill="currentColor"></path>
+                <path d="M512 819.2c-169.6768 0-307.2-137.5232-307.2-307.2s137.5232-307.2 307.2-307.2 307.2 137.5232 307.2 307.2-137.5232 307.2-307.2 307.2z" fill="currentColor"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M570.67 172.32A358.8 358.8 0 0 1 630 370.54c0 199.13-161.39 360.56-360.52 360.56a362.46 362.46 0 0 1-61.24-5.21c64.49 97.79 175.3 162.34 301.2 162.34C708.57 888.23 870 726.8 870 527.67c0-178.25-129.36-326.27-299.33-355.35z" fill="currentColor"></path>
+                <path d="M457.81 886.68a375.86 375.86 0 0 1-314.55-169.53 16 16 0 0 1 16.05-24.57 348.2 348.2 0 0 0 58.54 5c190 0 344.56-154.57 344.56-344.56a343.06 343.06 0 0 0-56.72-189.41A16 16 0 0 1 521.75 139a376.55 376.55 0 0 1-63.94 747.68zM191.38 728.62a343.78 343.78 0 0 0 266.43 126.06c190 0 344.56-154.56 344.56-344.55 0-156.24-103.51-290.44-250.79-331.67a376.44 376.44 0 0 1-333.73 551.09c-8.85 0-17.65-0.31-26.47-0.93z" fill="currentColor"></path>
+            </svg>
+        </button>
+        
+        <h1>感谢您的支持 ❤️</h1>
+        <div class="qr-container" id="qrContainer"></div>
+    </div>
+
+    <script>
+        // 主题管理
+        const themeToggle = document.getElementById('themeToggle');
+        let currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        function applyTheme() {
+            document.body.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+        }
+
+        function toggleTheme() {
+            themeToggle.classList.add('wave');
+            setTimeout(() => themeToggle.classList.remove('wave'), 600);
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme();
+        }
+
+        // 安全限制
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','C','J'].includes(e.key))) {
+                e.preventDefault();
+            }
+        });
+
+        // 平台检测
+        const userAgent = navigator.userAgent;
+        const platforms = userAgent.match(/MicroMessenger/i) ? ['微信'] :
+                         userAgent.match(/QQ/i) ? ['QQ'] :
+                         ['微信', '支付宝', 'QQ'];
+
+        // 二维码数据
+        const qrData = {
+            '微信': 'https://ipv4wp.axzzz.top:9503/f/yYRgTg/%E5%BE%AE%E4%BF%A1.png',
+            '支付宝': 'https://ipv4wp.axzzz.top:9503/f/ejwQHQ/%E6%94%AF%E4%BB%98%E5%AE%9D.png',
+            'QQ': 'https://ipv4wp.axzzz.top:9503/f/MmaJij/QQ.png'
+        };
+
+        // 图片预加载
+        async function preloadImages() {
+            const loader = document.querySelector('.loader');
+            try {
+                await Promise.all(platforms.map(platform => 
+                    new Promise((resolve, reject) => {
+                        const img = new Image();
+                        img.src = qrData[platform];
+                        img.onload = resolve;
+                        img.onerror = reject;
+                    })
+                ));
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    document.body.classList.remove('loading');
+                }, 500);
+            } catch (error) {
+                loader.innerHTML = '<div class="loader-text">资源加载失败，请刷新重试</div>';
+            }
+        }
+
+        // 生成二维码卡片
+        function createQRCards() {
+            const container = document.getElementById('qrContainer');
+            container.innerHTML = platforms.map(platform => `
+                <div class="qr-card" data-platform="${platform}">
+                    <div class="qr-title">${platform}支付</div>
+                    <div class="qr-code" style="background-image: url('${qrData[platform]}')"></div>
+                </div>
+            `).join('');
+        }
+
+        // 初始化
+        document.body.classList.add('loading');
+        themeToggle.addEventListener('click', toggleTheme);
+        applyTheme();
+
+        window.addEventListener('load', async () => {
+            await preloadImages();
+            createQRCards();
+        });
+    </script>
+</body>
+</html>
