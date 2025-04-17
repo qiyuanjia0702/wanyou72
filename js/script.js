@@ -1,3 +1,22 @@
+// 图片资源统一管理
+const imageResources = {
+    gallery: [
+        "https://vip.123pan.cn/1815439627/yk6baz03t0n000d7w33gzhqbcrcxazwfDIYPAIFwBIQvAvxPBIi0Ba==.png",
+        "https://vip.123pan.cn/1815439627/ymjew503t0n000d7w32y57xnbfclkfcqDIYPAIFwBIQvAvxPBIi0Ba==.png",
+        "https://vip.123pan.cn/1815439627/yk6baz03t0m000d7w33g6k0kqrxawybxDIYPAIFwBIQvAvxPBIi0Ba==.png",
+        "https://vip.123pan.cn/1815439627/ymjew503t0m000d7w32xoyy5cfwz6iq8DIYPAIFwBIQvAvxPBIi0Ba==.jpg",
+        "https://vip.123pan.cn/1815439627/ymjew503t0l000d7w32x7da03dhcsg2mDIYPAIFwBIQvAvxPBIi0Ba==.png",
+        "https://vip.123pan.cn/1815439627/yk6baz03t0l000d7w33fcr8m83hoix8gDIYPAIFwBIQvAvxPBIi0Ba==.png",
+        "https://vip.123pan.cn/1815439627/ymjew503t0l000d7w32x7da69qhd69u0DIYPAIFwBIQvAvxPBIi0Ba==.jpg",
+        "https://vip.123pan.cn/1815439627/yk6baz03t0n000d7w33gzhqnqlcxn45jDIYPAIFwBIQvAvxPBIi0Ba==.jpg",
+        "https://vip.123pan.cn/1815439627/yk6baz03t0m000d7w33g6k0vxqxb9kayDIYPAIFwBIQvAvxPBIi0Ba==.jpg",
+        "https://vip.123pan.cn/1815439627/ymjew503t0n000d7w32y57xtm5clxrsmDIYPAIFwBIQvAvxPBIi0Ba==.jpg",
+        "https://vip.123pan.cn/1815439627/ymjew503t0m000d7w32xoyybl3wzjojuDIYPAIFwBIQvAvxPBIi0Ba==.jpg"
+    ],
+    server1: "https://vip.123pan.cn/1815439627/yk6baz03t0l000d7w33fcr8m83hoix8gDIYPAIFwBIQvAvxPBIi0Ba==.png",
+    server2: "https://vip.123pan.cn/1815439627/ymjew503t0m000d7w32xoyydjiwzndlhDIYPAIFwBIQvAvxPBIi0Ba==.jpg"
+};
+
 // 服务器状态API集成
 async function fetchServerStatus() {
     try {
@@ -83,7 +102,7 @@ async function fetchServerStatus() {
 
         const statusIcon = document.getElementById('server-status-icon');
         statusIcon.className = 'flex-shrink-0 h-10 w-10 rounded-full bg-gray-500 flex items-center justify-center';
-        statusIcon.innerHTML = '<i class="fas fa-exclamation-triangle text-white"></i>';
+        statusIcon.innerHTML = '<i class="fas fa-exclamation-triangle text-white"></i';
 
         const statusBadge = document.getElementById('server-status-badge');
         statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-900 text-gray-200';
@@ -98,8 +117,128 @@ async function fetchServerStatus() {
     }
 }
 
-// 页面加载时获取服务器状态
+// 初始化画廊
+function initGallery() {
+    const galleryContainer = document.getElementById('gallery-container');
+
+    // 清空现有内容
+    galleryContainer.innerHTML = '';
+
+    // 动态生成画廊项目
+    imageResources.gallery.forEach((imageUrl, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        galleryItem.onclick = () => openModal(index);
+
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = `服务器截图${index + 1}`;
+
+        galleryItem.appendChild(img);
+        galleryContainer.appendChild(galleryItem);
+    });
+}
+
+// 画廊功能
+let currentImageIndex = 0;
+let galleryExpanded = false;
+
+function openModal(index) {
+    currentImageIndex = index;
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = 'flex';
+    modalImg.src = imageResources.gallery[currentImageIndex];
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function changeImage(n) {
+    currentImageIndex += n;
+    if (currentImageIndex >= imageResources.gallery.length) {
+        currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = imageResources.gallery.length - 1;
+    }
+    document.getElementById('modalImage').src = imageResources.gallery[currentImageIndex];
+}
+
+function toggleGallery() {
+    const gallery = document.querySelector('.gallery');
+    galleryExpanded = !galleryExpanded;
+
+    if (galleryExpanded) {
+        gallery.classList.add('show-all');
+        document.querySelector('.gallery-more-btn button').innerHTML = '收起 <i class="fas fa-chevron-up ml-1"></i>';
+    } else {
+        gallery.classList.remove('show-all');
+        document.querySelector('.gallery-more-btn button').innerHTML = '查看更多 <i class="fas fa-chevron-down ml-1"></i>';
+    }
+}
+
+// 保护功能
+function showProtectionModal() {
+    const modal = document.getElementById('protectionModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProtectionModal() {
+    const modal = document.getElementById('protectionModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 禁止右键菜单
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    showProtectionModal();
+});
+
+// 禁止F12开发者工具
+document.addEventListener('keydown', function (e) {
+    // F12键
+    if (e.keyCode === 123) {
+        e.preventDefault();
+        showProtectionModal();
+    }
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        showProtectionModal();
+    }
+    // Ctrl+Shift+J
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+        showProtectionModal();
+    }
+    // Ctrl+Shift+C
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+        e.preventDefault();
+        showProtectionModal();
+    }
+    // Ctrl+U
+    if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        showProtectionModal();
+    }
+});
+
+// 页面加载时初始化
 document.addEventListener('DOMContentLoaded', function () {
+    // 设置服务器图片
+    document.getElementById('server1-image').src = imageResources.server1;
+    document.getElementById('server2-image').src = imageResources.server2;
+
+    // 初始化画廊
+    initGallery();
+
+    // 获取服务器状态
     fetchServerStatus();
     // 每3秒刷新一次状态
     setInterval(fetchServerStatus, 3000);
@@ -154,6 +293,28 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (event) {
         if (!mobileMenu.contains(event.target) && event.target !== mobileMenuButton) {
             mobileMenu.classList.remove('active');
+        }
+    });
+
+    // 点击模态框外部关闭模态框
+    const modal = document.getElementById('imageModal');
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // 键盘事件
+    document.addEventListener('keydown', function (event) {
+        const modal = document.getElementById('imageModal');
+        if (modal.style.display === 'flex') {
+            if (event.key === 'Escape') {
+                closeModal();
+            } else if (event.key === 'ArrowRight') {
+                changeImage(1);
+            } else if (event.key === 'ArrowLeft') {
+                changeImage(-1);
+            }
         }
     });
 });

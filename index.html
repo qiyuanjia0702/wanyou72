@@ -4,13 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>方块世界 | 我的世界服务器</title>
+    <title>倾世之城 | 我的世界服务器</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="min-h-screen">
+    <!-- 禁止操作弹窗 -->
+    <div id="protectionModal" class="protection-modal">
+        <div class="protection-content">
+            <div class="protection-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h3 class="protection-title">操作受限</h3>
+            <p class="protection-message">
+                为了保护服务器内容安全，我们禁止了右键菜单和开发者工具功能。<br>
+                请尊重我们的劳动成果，不要尝试复制或查看源代码。
+            </p>
+            <button onclick="closeProtectionModal()" class="protection-btn">我明白了</button>
+        </div>
+    </div>
+
     <!-- 导航栏 -->
     <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +34,7 @@
                     <div class="flex-shrink-0">
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-cube text-blue-400 text-2xl"></i>
-                            <span class="text-white font-bold text-xl">方块世界</span>
+                            <span class="text-white font-bold text-xl">倾世之城</span>
                         </div>
                     </div>
                 </div>
@@ -31,6 +46,8 @@
                             class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">特色</a>
                         <a href="#servers"
                             class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">服务器</a>
+                        <a href="#gallery"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">画廊</a>
                         <a href="#rules"
                             class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">规则</a>
                         <a href="#staff"
@@ -59,6 +76,7 @@
         <a href="#home" class="nav-link">首页</a>
         <a href="#features" class="nav-link">特色</a>
         <a href="#servers" class="nav-link">服务器</a>
+        <a href="#gallery" class="nav-link">画廊</a>
         <a href="#rules" class="nav-link">规则</a>
         <a href="#staff" class="nav-link">团队</a>
         <a href="#join"
@@ -104,8 +122,6 @@
                                     <i class="fas fa-cube text-blue-400 text-9xl opacity-20"></i>
                                 </div>
                             </div>
-                            <img class="w-full h-auto rounded-lg relative z-10"
-                                src="https://www.20050702.top/i/2025/04/16/y21mn4.png" alt="我的世界游戏截图">
                         </div>
                     </div>
                 </div>
@@ -289,10 +305,12 @@
                 <!-- 服务器1 -->
                 <div class="server-card bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
                     style="animation-delay: 0.3s;">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover"
+                    <div class="relative h-48 overflow-hidden bg-gray-700 flex items-center justify-center">
+                        <img class="w-full h-full object-cover" id="server1-image"
                             src="https://www.20050702.top/app/thumb.php?img=/i/2025/04/16/y0wna4.jpeg" alt="生存服务器">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-cube text-blue-400 text-6xl opacity-20"></i>
+                        </div>
                         <div class="absolute bottom-0 left-0 p-4">
                             <h3 class="text-2xl font-bold text-white">(未开放)</h3>
                             <p class="text-blue-400">版本: xxxx</p>
@@ -318,10 +336,12 @@
                 <!-- 服务器2 -->
                 <div class="server-card bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
                     style="animation-delay: 0.4s;">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover" src="https://www.20050702.top/i/2025/04/16/xzpczd.png"
-                            alt="小游戏服务器">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                    <div class="relative h-48 overflow-hidden bg-gray-700 flex items-center justify-center">
+                        <img class="w-full h-full object-cover" id="server2-image"
+                            src="https://www.20050702.top/app/thumb.php?img=/i/2025/04/16/y0wna4.jpeg" alt="生存服务器">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-cube text-blue-400 text-6xl opacity-20"></i>
+                        </div>
                         <div class="absolute bottom-0 left-0 p-4">
                             <h3 class="text-2xl font-bold text-white">倾世之城</h3>
                             <p class="text-blue-400">版本: 1.21.4</p>
@@ -346,6 +366,41 @@
             </div>
         </div>
     </section>
+
+    <!-- 服务器画廊 -->
+    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up">
+                    <span class="block">服务器画廊</span>
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto slide-up" style="animation-delay: 0.2s;">
+                    欣赏我们服务器中的精彩瞬间
+                </p>
+            </div>
+
+            <div class="gallery" id="gallery-container">
+                <!-- 画廊项目将通过JavaScript动态生成 -->
+            </div>
+
+            <div class="gallery-more-btn">
+                <button onclick="toggleGallery()"
+                    class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                    查看更多 <i class="fas fa-chevron-down ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图片模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <span class="prev-btn" onclick="changeImage(-1)">&#10094;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+        <span class="next-btn" onclick="changeImage(1)">&#10095;</span>
+    </div>
 
     <!-- 服务器规则 -->
     <section id="rules" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
@@ -472,13 +527,10 @@
                 <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
                     style="animation-delay: 0.3s;">
                     <div class="relative pt-8 px-6 staff-content">
-                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <div class="h-20 w-20 rounded-full border-4 border-blue-500 overflow-hidden">
-                                <img class="h-full w-full object-cover" src="https://imgapi.cn/qq.php?qq=1841543532"
-                                    alt="管理员头像">
-                            </div>
+                        <div class="staff-avatar-container">
+                            <img class="staff-avatar" src="https://imgapi.cn/qq.php?qq=1841543532" alt="管理员头像">
                         </div>
-                        <div class="text-center pt-8 pb-6">
+                        <div class="text-center pb-6">
                             <h3 class="text-xl font-bold text-white">CIOO</h3>
                             <p class="text-blue-400 text-sm">服务器创始人</p>
                             <p class="mt-3 text-gray-300 text-sm">
@@ -502,13 +554,10 @@
                 <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
                     style="animation-delay: 0.4s;">
                     <div class="relative pt-8 px-6 staff-content">
-                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <div class="h-20 w-20 rounded-full border-4 border-blue-500 overflow-hidden">
-                                <img class="h-full w-full object-cover" src="https://imgapi.cn/qq.php?qq=3038886380"
-                                    alt="管理员头像">
-                            </div>
+                        <div class="staff-avatar-container">
+                            <img class="staff-avatar" src="https://imgapi.cn/qq.php?qq=3038886380" alt="管理员头像">
                         </div>
-                        <div class="text-center pt-8 pb-6">
+                        <div class="text-center pb-6">
                             <h3 class="text-xl font-bold text-white">Freewind</h3>
                             <p class="text-blue-400 text-sm">技术总监</p>
                             <p class="mt-3 text-gray-300 text-sm">
@@ -532,13 +581,10 @@
                 <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
                     style="animation-delay: 0.5s;">
                     <div class="relative pt-8 px-6 staff-content">
-                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <div class="h-20 w-20 rounded-full border-4 border-blue-500 overflow-hidden">
-                                <img class="h-full w-full object-cover" src="https://imgapi.cn/qq.php?qq=3856727842"
-                                    alt="管理员头像">
-                            </div>
+                        <div class="staff-avatar-container">
+                            <img class="staff-avatar" src="https://imgapi.cn/qq.php?qq=3856727842" alt="管理员头像">
                         </div>
-                        <div class="text-center pt-8 pb-6">
+                        <div class="text-center pb-6">
                             <h3 class="text-xl font-bold text-white">WEER</h3>
                             <p class="text-blue-400 text-sm">维护总监</p>
                             <p class="mt-3 text-gray-300 text-sm">
@@ -562,13 +608,10 @@
                 <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
                     style="animation-delay: 0.6s;">
                     <div class="relative pt-8 px-6 staff-content">
-                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <div class="h-20 w-20 rounded-full border-4 border-blue-500 overflow-hidden">
-                                <img class="h-full w-full object-cover" src="https://imgapi.cn/qq.php?qq=1952892902"
-                                    alt="管理员头像">
-                            </div>
+                        <div class="staff-avatar-container">
+                            <img class="staff-avatar" src="https://imgapi.cn/qq.php?qq=1952892902" alt="管理员头像">
                         </div>
-                        <div class="text-center pt-8 pb-6">
+                        <div class="text-center pb-6">
                             <h3 class="text-xl font-bold text-white">KING.</h3>
                             <p class="text-blue-400 text-sm">客服主管</p>
                             <p class="mt-3 text-gray-300 text-sm">
@@ -668,7 +711,7 @@
                         最受欢迎的服务器，自2022年运营至今，拥有超过上百注册玩家。
                     </p>
                     <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-blue-400">
+                        <a href="#" class="text-gray-4 hover:text-blue-400">
                             <i class="fab fa-qq"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-blue-400">
