@@ -11,6 +11,18 @@
 </head>
 
 <body class="min-h-screen">
+    <!-- 加载动画 -->
+    <div id="loader">
+        <div class="loader-logo">
+            <i class="fas fa-cube block-animation"></i>
+            <span>倾世之城</span>
+        </div>
+        <div class="loader-bar">
+            <div class="loader-progress" id="loaderProgress"></div>
+        </div>
+        <div class="loader-message" id="loaderMessage">正在加载服务器数据...</div>
+    </div>
+
     <!-- 禁止操作弹窗 -->
     <div id="protectionModal" class="protection-modal">
         <div class="protection-content">
@@ -18,7 +30,8 @@
                 <i class="fas fa-lock"></i>
             </div>
             <h3 class="protection-title">操作受限</h3>
-            <p class="protection-message"><br>
+            <p class="protection-message">
+                为了保护服务器内容安全，我们禁止了右键菜单和开发者工具功能。<br>
                 请尊重我们的劳动成果，不要尝试复制或查看源代码。
             </p>
             <button onclick="closeProtectionModal()" class="protection-btn">我明白了</button>
@@ -26,7 +39,7 @@
     </div>
 
     <!-- 导航栏 -->
-    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
+    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full z-50 border-b border-gray-800" style="display: none;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -85,7 +98,7 @@
     </div>
 
     <!-- 英雄区域 -->
-    <section id="home" class="hero-bg pt-32 pb-20 px-4 sm:px-6 lg:px-8 fade-in">
+    <section id="home" class="hero-bg pt-32 pb-20 px-4 sm:px-6 lg:px-8 fade-in" style="display: none;">
         <div class="max-w-7xl mx-auto">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8">
                 <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
@@ -129,7 +142,8 @@
     </section>
 
     <!-- 服务器状态 -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-20 slide-up" style="animation-delay: 0.6s;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-20 slide-up"
+        style="animation-delay: 0.6s; display: none;">
         <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
             <div class="px-6 py-4">
                 <div class="flex items-center">
@@ -165,7 +179,7 @@
     </div>
 
     <!-- 特色功能 -->
-    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50" style="display: none;">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up">
@@ -244,7 +258,7 @@
                             </div>
                         </div>
                         <p class="mt-4 text-gray-300">
-                            拥有超过上百注册玩家的活跃社区，定期举办建筑比赛、PVP大赛等活动，奖品丰厚。
+                            拥有超过10万注册玩家的活跃社区，定期举办建筑比赛、PVP大赛等活动，奖品丰厚。
                         </p>
                     </div>
                 </div>
@@ -289,7 +303,7 @@
     </section>
 
     <!-- 服务器列表 -->
-    <section id="servers" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+    <section id="servers" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900" style="display: none;">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up">
@@ -367,7 +381,7 @@
     </section>
 
     <!-- 服务器画廊 -->
-    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50" style="display: none;">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up">
@@ -402,7 +416,7 @@
     </div>
 
     <!-- 服务器规则 -->
-    <section id="rules" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <section id="rules" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50" style="display: none;">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up">
@@ -510,7 +524,7 @@
     </section>
 
     <!-- 管理团队 -->
-    <section id="staff" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+    <section id="staff" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900" style="display: none;">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up">
@@ -634,7 +648,8 @@
     </section>
 
     <!-- 加入我们 -->
-    <section id="join" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900/50 to-gray-900/50">
+    <section id="join" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900/50 to-gray-900/50"
+        style="display: none;">
         <div class="max-w-7xl mx-auto">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
                 <div class="slide-up">
@@ -642,13 +657,13 @@
                         <span class="block">准备好加入我们了吗？</span>
                     </h2>
                     <p class="mt-4 text-lg text-gray-300">
-                        立即加入我们的世界，与数千名玩家一起探索无限可能的我的世界！
+                        立即加入方块世界，与数千名玩家一起探索无限可能的我的世界！
                     </p>
                     <div class="mt-8">
                         <div class="inline-flex rounded-md shadow">
-                            <a href="https://qm.qq.com/q/xb7USyNShO"
+                            <a href="bmd/index.html"
                                 class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 btn-glow pulse">
-                                点击加入官方群 <i class="fas fa-play ml-2"></i>
+                                点击加入服务器 <i class="fas fa-play ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -698,13 +713,13 @@
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-gray-900 border-t border-gray-800">
+    <footer class="bg-gray-900 border-t border-gray-800" style="display: none;">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">
                 <div class="space-y-8 xl:col-span-1">
                     <div class="flex items-center space-x-2">
                         <i class="fas fa-cube text-blue-400 text-2xl"></i>
-                        <span class="text-white font-bold text-xl">倾世之城</span>
+                        <span class="text-white font-bold text-xl">方块世界</span>
                     </div>
                     <p class="text-gray-300 text-sm">
                         最受欢迎的服务器，自2022年运营至今，拥有超过上百注册玩家。
@@ -723,7 +738,7 @@
                 </div>
                 <div class="mt-12 border-t border-gray-800 pt-8">
                     <p class="text-gray-400 text-sm text-center">
-                        &copy; 2025 倾世之城我的世界服务器. 保留所有权利。
+                        &copy; 2025 方块世界我的世界服务器. 保留所有权利。
                     </p>
                     <p class="mt-2 text-gray-500 text-xs text-center">
                         Minecraft 是 Mojang Studios 的商标，本服务器与 Mojang 或 Microsoft 没有从属关系。

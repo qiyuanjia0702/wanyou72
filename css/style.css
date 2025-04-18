@@ -1,16 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-body {
-    font-family: 'Noto Sans SC', sans-serif;
+/* 新增加载动画样式 */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: #0f172a;
-    color: #e2e8f0;
-    overflow-x: hidden;
-    user-select: none;
-    -webkit-user-select: none;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.hero-bg {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+.loader-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.loader-logo i {
+    font-size: 3rem;
+    color: #60a5fa;
+    margin-right: 15px;
+    animation: pulse 2s infinite;
+}
+
+.loader-logo span {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+.loader-bar {
+    width: 300px;
+    height: 6px;
+    background-color: #1e293b;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.loader-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.loader-message {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 300px;
 }
 
 .block-animation {
@@ -27,6 +79,37 @@ body {
     50% {
         transform: translateY(-20px);
     }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+/* 原有样式保持不变 */
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.hero-bg {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
 }
 
 .fade-in {
@@ -56,24 +139,6 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-.pulse {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
 
