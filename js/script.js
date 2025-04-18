@@ -1,20 +1,22 @@
 // 图片资源统一管理
 const imageResources = {
     gallery: [
-        "https://vip.123pan.cn/1815439627/yk6baz03t0n000d7w33gzhqbcrcxazwfDIYPAIFwBIQvAvxPBIi0Ba==.png",
-        "https://vip.123pan.cn/1815439627/ymjew503t0n000d7w32y57xnbfclkfcqDIYPAIFwBIQvAvxPBIi0Ba==.png",
-        "https://vip.123pan.cn/1815439627/yk6baz03t0m000d7w33g6k0kqrxawybxDIYPAIFwBIQvAvxPBIi0Ba==.png",
-        "https://vip.123pan.cn/1815439627/ymjew503t0m000d7w32xoyy5cfwz6iq8DIYPAIFwBIQvAvxPBIi0Ba==.jpg",
-        "https://vip.123pan.cn/1815439627/ymjew503t0l000d7w32x7da03dhcsg2mDIYPAIFwBIQvAvxPBIi0Ba==.png",
-        "https://vip.123pan.cn/1815439627/yk6baz03t0l000d7w33fcr8m83hoix8gDIYPAIFwBIQvAvxPBIi0Ba==.png",
-        "https://vip.123pan.cn/1815439627/ymjew503t0l000d7w32x7da69qhd69u0DIYPAIFwBIQvAvxPBIi0Ba==.jpg",
-        "https://vip.123pan.cn/1815439627/yk6baz03t0n000d7w33gzhqnqlcxn45jDIYPAIFwBIQvAvxPBIi0Ba==.jpg",
-        "https://vip.123pan.cn/1815439627/yk6baz03t0m000d7w33g6k0vxqxb9kayDIYPAIFwBIQvAvxPBIi0Ba==.jpg",
-        "https://vip.123pan.cn/1815439627/ymjew503t0n000d7w32y57xtm5clxrsmDIYPAIFwBIQvAvxPBIi0Ba==.jpg",
-        "https://vip.123pan.cn/1815439627/ymjew503t0m000d7w32xoyybl3wzjojuDIYPAIFwBIQvAvxPBIi0Ba==.jpg"
+        "https://img.picui.cn/free/2025/04/18/68021f54cf599.png",
+        "https://img.picui.cn/free/2025/04/18/68021f50a6c42.png",
+        "https://img.picui.cn/free/2025/04/18/68021f5070dc6.png",
+        "https://img.picui.cn/free/2025/04/18/68021f4f1e500.png",
+        "https://img.picui.cn/free/2025/04/18/68021f4f18812.png",
+        "https://img.picui.cn/free/2025/04/18/68021f4ed8f48.png",
+        "https://img.picui.cn/free/2025/04/18/68021f44604f1.jpg",
+        "https://img.picui.cn/free/2025/04/18/68021f4398c6c.jpg",
+        "https://img.picui.cn/free/2025/04/18/68021f434016c.jpg",
+        "https://img.picui.cn/free/2025/04/18/68021f431de88.jpg",
+        "https://img.picui.cn/free/2025/04/18/68021f42406dc.jpg",
+        "https://img.picui.cn/free/2025/04/18/68021f41c12e3.jpg",
+        "https://img.picui.cn/free/2025/04/18/68021f41a241f.jpg"
     ],
-    server1: "https://vip.123pan.cn/1815439627/yk6baz03t0l000d7w33fcr8m83hoix8gDIYPAIFwBIQvAvxPBIi0Ba==.png",
-    server2: "https://vip.123pan.cn/1815439627/ymjew503t0m000d7w32xoyydjiwzndlhDIYPAIFwBIQvAvxPBIi0Ba==.jpg"
+    server1: "https://img.picui.cn/free/2025/04/18/68021f4267b6b.jpg",
+    server2: "https://img.picui.cn/free/2025/04/18/68021f425f8a6.jpg"
 };
 
 // 服务器状态API集成
