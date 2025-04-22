@@ -1,536 +1,189 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>倾世之城 | 我的世界服务器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>404 - 页面未找到</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .slide-in {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        
+        .btn-hover {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-hover:active {
+            transform: translateY(0);
+        }
+        
+        .glow {
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+        }
+        
+        .line-decoration {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            transform-origin: left center;
+        }
+    </style>
 </head>
+<body class="bg-gradient min-h-screen flex items-center justify-center text-white overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <!-- 线性装饰元素 -->
+        <div class="line-decoration" style="width: 40%; top: 20%; left: 10%; transform: rotate(15deg);"></div>
+        <div class="line-decoration" style="width: 50%; top: 30%; right: 10%; transform: rotate(-10deg);"></div>
+        <div class="line-decoration" style="width: 60%; bottom: 25%; left: 5%; transform: rotate(5deg);"></div>
+        <div class="line-decoration" style="width: 45%; bottom: 35%; right: 15%; transform: rotate(-15deg);"></div>
+        
+        <!-- 浮动装饰线 -->
+        <div class="absolute top-1/4 left-1/4 w-32 h-px bg-white opacity-20 pulse" style="animation-delay: 0.3s;"></div>
+        <div class="absolute top-1/3 right-1/3 w-40 h-px bg-white opacity-20 pulse" style="animation-delay: 0.6s;"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-24 h-px bg-white opacity-20 pulse" style="animation-delay: 0.9s;"></div>
+        <div class="absolute bottom-1/3 left-1/3 w-36 h-px bg-white opacity-20 pulse" style="animation-delay: 1.2s;"></div>
+    </div>
 
-<body class="min-h-screen"> <!-- 加载动画 -->
-    <div id="loader">
-        <div class="loader-logo"> <i class="fas fa-cube block-animation"></i> <span>倾世之城</span> </div>
-        <div class="loader-bar">
-            <div class="loader-progress" id="loaderProgress"></div>
-        </div>
-        <div class="loader-message" id="loaderMessage">正在加载服务器数据...</div>
-    </div> <!-- 禁止操作弹窗 -->
-    <div id="protectionModal" class="protection-modal">
-        <div class="protection-content">
-            <div class="protection-icon"> <i class="fas fa-lock"></i> </div>
-            <h3 class="protection-title">操作受限</h3>
-            <p class="protection-message"> 请尊重我们的劳动成果，不要尝试复制或查看源代码。 </p> <button onclick="closeProtectionModal()"
-                class="protection-btn">我明白了</button>
-        </div>
-    </div> <!-- 导航栏 -->
-    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full z-50 border-b border-gray-800" style="display: none;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <div class="flex items-center space-x-2"> <i class="fas fa-cube text-blue-400 text-2xl"></i>
-                            <span class="text-white font-bold text-xl">倾世之城</span>
-                        </div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="floating mb-8 slide-in" style="animation-delay: 0.2s;">
+                <div class="inline-block relative">
+                    <div class="relative">
+                        <i class="fas fa-exclamation-triangle text-7xl glow"></i>
                     </div>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8"> <a href="#home"
-                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">首页</a>
-                        <a href="#features"
-                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">特色</a>
-                        <a href="#servers"
-                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">服务器</a>
-                        <a href="#gallery"
-                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">画廊</a>
-                        <a href="#rules"
-                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">规则</a>
-                        <a href="#staff"
-                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">团队</a>
-                    </div>
-                </div>
-                <div class="hidden md:block"> <a href="#join"
-                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 btn-glow">
-                        立即加入 </a> </div>
-                <div class="-mr-2 flex md:hidden"> <button type="button" id="mobile-menu-button"
-                        class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
-                        <span class="sr-only">打开主菜单</span> <i class="fas fa-bars"></i> </button> </div>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 glow slide-in" style="animation-delay: 0.4s;">404</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 slide-in" style="animation-delay: 0.6s;">页面不存在</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90 slide-in" style="animation-delay: 0.8s;">
+                您访问的页面可能已被移动、删除或暂时不可用。请检查URL或尝试以下操作。
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 slide-in" style="animation-delay: 1s;">
+                <a href="#" class="btn-hover inline-flex items-center justify-center px-8 py-3 bg-white text-indigo-700 rounded-lg font-semibold transition-all duration-300">
+                    <i class="fas fa-home mr-2"></i> 返回首页
+                </a>
+                <a href="mailto:3038886380@qq.com" class="btn-hover inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-indigo-700">
+                    <i class="fas fa-envelope mr-2"></i> 联系我们
+                </a>
             </div>
         </div>
-    </nav> <!-- 手机菜单 -->
-    <div id="mobile-menu" class="mobile-menu"> <a href="#home" class="nav-link">首页</a> <a href="#features"
-            class="nav-link">特色</a> <a href="#servers" class="nav-link">服务器</a> <a href="#gallery"
-            class="nav-link">画廊</a> <a href="#rules" class="nav-link">规则</a> <a href="#staff" class="nav-link">团队</a> <a
-            href="#join"
-            class="mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 btn-glow">
-            立即加入 </a> </div> <!-- 英雄区域 -->
-    <section id="home" class="hero-bg pt-32 pb-20 px-4 sm:px-6 lg:px-8 fade-in" style="display: none;">
-        <div class="max-w-7xl mx-auto">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl slide-up">
-                        <span class="block">探索无限的</span> <span class="block text-blue-400">方块世界</span>
-                    </h1>
-                    <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 slide-up"
-                        style="animation-delay: 0.2s;"> 加入我们精心打造的我的世界服务器，体验前所未有的冒险与创造。24小时稳定运行，专业管理团队，公平的游戏环境。 </p>
-                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 slide-up"
-                        style="animation-delay: 0.4s;">
-                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4"> <a href="#join"
-                                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 btn-glow">
-                                立即加入 </a> <a href="#features"
-                                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-400 bg-gray-800 hover:bg-gray-700 md:py-4 md:text-lg md:px-10">
-                                了解更多 </a> </div>
-                    </div>
-                </div>
-                <div
-                    class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                        <div
-                            class="relative block w-full bg-gray-800 rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="block-animation"> <i
-                                        class="fas fa-cube text-blue-400 text-9xl opacity-20"></i> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> <!-- 服务器状态 -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-20 slide-up"
-        style="animation-delay: 0.6s; display: none;">
-        <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
-            <div class="px-6 py-4">
-                <div class="flex items-center">
-                    <div id="server-status-icon"
-                        class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-500 flex items-center justify-center"> <i
-                            class="fas fa-question text-white"></i> </div>
-                    <div class="ml-auto"> <span id="server-status-badge"
-                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-900 text-gray-200">
-                            <svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
-                                <circle cx="4" cy="4" r="3" />
-                            </svg> 未知 </span> </div>
-                </div>
-                <div class="mt-4">
-                    <div class="w-full bg-gray-700 rounded-full h-2.5">
-                        <div id="player-progress" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                    </div>
-                </div>
-                <div class="mt-2 text-xs text-gray-400" id="server-motd">服务器信息加载中...</div>
-            </div>
-        </div>
-    </div> <!-- 特色功能 -->
-    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50" style="display: none;">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up"> <span class="block">服务器特色</span>
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto slide-up" style="animation-delay: 0.2s;">
-                    体验我们精心设计的游戏内容，带给你前所未有的我的世界体验 </p>
-            </div>
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"> <!-- 特色1 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:border-blue-500 border border-gray-700 slide-up"
-                    style="animation-delay: 0.3s;">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500/10 p-3 rounded-lg"> <i
-                                    class="fas fa-shield-alt text-blue-400 text-2xl"></i> </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-white">公平竞技</h3>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-gray-300"> 严格的防作弊系统，确保所有玩家都能在公平的环境下游戏。我们的管理团队24小时监控游戏环境。 </p>
-                    </div>
-                </div> <!-- 特色2 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:border-blue-500 border border-gray-700 slide-up"
-                    style="animation-delay: 0.4s;">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500/10 p-3 rounded-lg"> <i
-                                    class="fas fa-gamepad text-blue-400 text-2xl"></i> </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-white">多种玩法</h3>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-gray-300"> 生存、创造、RPG、小游戏等多种玩法模式，满足不同玩家的需求。每周更新游戏内容，保持新鲜感。 </p>
-                    </div>
-                </div> <!-- 特色3 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:border-blue-500 border border-gray-700 slide-up"
-                    style="animation-delay: 0.5s;">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500/10 p-3 rounded-lg"> <i
-                                    class="fas fa-server text-blue-400 text-2xl"></i> </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-white">高性能服务器</h3>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-gray-300"> 采用顶级服务器硬件，确保游戏流畅运行。多线BGP网络，全国玩家都能享受低延迟的游戏体验。 </p>
-                    </div>
-                </div> <!-- 特色4 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:border-blue-500 border border-gray-700 slide-up"
-                    style="animation-delay: 0.6s;">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500/10 p-3 rounded-lg"> <i
-                                    class="fas fa-users text-blue-400 text-2xl"></i> </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-white">活跃社区</h3>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-gray-300"> 拥有超过上百注册玩家的活跃社区，定期举办建筑比赛、PVP大赛等活动，奖品丰厚。 </p>
-                    </div>
-                </div> <!-- 特色5 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:border-blue-500 border border-gray-700 slide-up"
-                    style="animation-delay: 0.7s;">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500/10 p-3 rounded-lg"> <i
-                                    class="fas fa-cogs text-blue-400 text-2xl"></i> </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-white">自定义插件</h3>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-gray-300"> 独家开发的自定义插件系统，提供独特的游戏体验，包括经济系统、任务系统、宠物系统等。 </p>
-                    </div>
-                </div> <!-- 特色6 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:border-blue-500 border border-gray-700 slide-up"
-                    style="animation-delay: 0.8s;">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500/10 p-3 rounded-lg"> <i
-                                    class="fas fa-headset text-blue-400 text-2xl"></i> </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-white">专业客服</h3>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-gray-300"> 24小时在线客服团队，随时解决玩家问题。举报系统响应迅速，保障游戏环境。 </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> <!-- 服务器列表 -->
-    <section id="servers" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900" style="display: none;">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up"> <span class="block">我们的服务器</span>
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto slide-up" style="animation-delay: 0.2s;">
-                    两种游戏模式，带给你不同的游戏体验 </p>
-            </div>
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2"> <!-- 服务器1 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
-                    style="animation-delay: 0.3s;">
-                    <div class="relative h-48 overflow-hidden bg-gray-700 flex items-center justify-center"> <img
-                            class="w-full h-full object-cover" id="server1-image"
-                            src="https://www.20050702.top/app/thumb.php?img=/i/2025/04/16/y0wna4.jpeg" alt="生存服务器">
-                        <div class="absolute inset-0 flex items-center justify-center"> <i
-                                class="fas fa-cube text-blue-400 text-6xl opacity-20"></i> </div>
-                        <div class="absolute bottom-0 left-0 p-4">
-                            <h3 class="text-2xl font-bold text-white">(未开放)</h3>
-                            <p class="text-blue-400">版本: xxxx</p>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300 mb-4"> 模组生存模式，更多玩法精髓的同时加入更多维度和物品。 </p>
-                        <div class="flex flex-wrap gap-2 mb-4"> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">模组接入</span> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">趣味世界</span> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">更多玩法</span> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">养老生存</span> </div> <a
-                            href="#join"
-                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 btn-glow">
-                            加入游戏 <i class="fas fa-arrow-right ml-2"></i> </a>
-                    </div>
-                </div> <!-- 服务器2 -->
-                <div class="server-card bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
-                    style="animation-delay: 0.4s;">
-                    <div class="relative h-48 overflow-hidden bg-gray-700 flex items-center justify-center"> <img
-                            class="w-full h-full object-cover" id="server2-image"
-                            src="https://www.20050702.top/app/thumb.php?img=/i/2025/04/16/y0wna4.jpeg" alt="生存服务器">
-                        <div class="absolute inset-0 flex items-center justify-center"> <i
-                                class="fas fa-cube text-blue-400 text-6xl opacity-20"></i> </div>
-                        <div class="absolute bottom-0 left-0 p-4">
-                            <h3 class="text-2xl font-bold text-white">倾世之城</h3>
-                            <p class="text-blue-400">版本: 1.21.4</p>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300 mb-4"> 经典生存模式，保留原版玩法精髓的同时加入经济系统和领地保护，适合喜欢挑战的玩家。 </p>
-                        <div class="flex flex-wrap gap-2 mb-4"> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">经济系统</span> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">领地保护</span> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">家园系统</span> <span
-                                class="px-2 py-1 text-xs rounded-full bg-blue-900 text-blue-200">多世界</span> </div> <a
-                            href="#join"
-                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 btn-glow">
-                            加入游戏 <i class="fas fa-arrow-right ml-2"></i> </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> <!-- 服务器画廊 -->
-    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50" style="display: none;">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up"> <span class="block">服务器画廊</span>
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto slide-up" style="animation-delay: 0.2s;">
-                    欣赏我们服务器中的精彩瞬间 </p>
-            </div>
-            <div class="gallery" id="gallery-container"> <!-- 画廊项目将通过JavaScript动态生成 --> </div>
-            <div class="gallery-more-btn"> <button onclick="toggleGallery()"
-                    class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"> 查看更多 <i
-                        class="fas fa-chevron-down ml-1"></i> </button> </div>
-        </div>
-    </section> <!-- 图片模态框 -->
-    <div id="imageModal" class="modal"> <span class="close-modal" onclick="closeModal()">&times;</span> <span
-            class="prev-btn" onclick="changeImage(-1)">&#10094;</span>
-        <div class="modal-content"> <img id="modalImage" src="" alt=""> </div> <span class="next-btn"
-            onclick="changeImage(1)">&#10095;</span>
-    </div> <!-- 服务器规则 -->
-    <section id="rules" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50" style="display: none;">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up"> <span class="block">服务器规则</span>
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto slide-up" style="animation-delay: 0.2s;">
-                    为了维护良好的游戏环境，请遵守以下规则 </p>
-            </div>
-            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden slide-up" style="animation-delay: 0.3s;">
-                <div class="px-6 py-4 border-b border-gray-700">
-                    <h3 class="text-lg font-medium text-white">基本规则</h3>
-                </div>
-                <div class="divide-y divide-gray-700">
-                    <div class="px-6 py-4">
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                <i class="fas fa-ban text-blue-400 text-xs"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-gray-300"> <span class="font-medium text-white">禁止使用任何形式的作弊软件</span> -
-                                    包括但不限于X-ray、飞行、加速等外挂。一经发现永久封禁。 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4">
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                <i class="fas fa-comment-slash text-blue-400 text-xs"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-gray-300"> <span class="font-medium text-white">禁止辱骂、人身攻击、刷屏等不良行为</span>
-                                    - 保持友善的交流环境，违者视情节轻重给予禁言或封禁处理。 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4">
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                <i class="fas fa-gavel text-blue-400 text-xs"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-gray-300"> <span class="font-medium text-white">禁止破坏他人建筑或财产</span> -
-                                    生存服务器请使用领地保护插件，恶意破坏者将受到严惩。 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4">
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                <i class="fas fa-exchange-alt text-blue-400 text-xs"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-gray-300"> <span class="font-medium text-white">禁止任何形式的现实货币交易</span> -
-                                    游戏内物品仅限游戏内货币交易，违者永久封禁。 </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="px-6 py-4 border-b border-gray-700">
-                    <h3 class="text-lg font-medium text-white">其他注意事项</h3>
-                </div>
-                <div class="divide-y divide-gray-700">
-                    <div class="px-6 py-4">
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                <i class="fas fa-question-circle text-blue-400 text-xs"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-gray-300"> <span class="font-medium text-white">举报违规行为</span> -
-                                    如发现违规行为，请使用/report命令或联系在线管理举报。 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4">
-                        <div class="flex items-start">
-                            <div
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                <i class="fas fa-exclamation-triangle text-blue-400 text-xs"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-gray-300"> <span class="font-medium text-white">管理团队拥有最终解释权</span> -
-                                    管理团队有权根据实际情况对规则进行补充或调整。 </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> <!-- 管理团队 -->
-    <section id="staff" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900" style="display: none;">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl slide-up"> <span class="block">管理团队</span>
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto slide-up" style="animation-delay: 0.2s;">
-                    我们的专业团队致力于为您提供最佳游戏体验 </p>
-            </div>
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"> <!-- 成员1 -->
-                <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
-                    style="animation-delay: 0.3s;">
-                    <div class="relative pt-8 px-6 staff-content">
-                        <div class="staff-avatar-container"> <img class="staff-avatar"
-                                src="https://imgapi.cn/qq.php?qq=1841543532" alt="管理员头像"> </div>
-                        <div class="text-center pb-6">
-                            <h3 class="text-xl font-bold text-white">CIOO</h3>
-                            <p class="text-blue-400 text-sm">服务器创始人</p>
-                            <p class="mt-3 text-gray-300 text-sm"> 资深我的世界玩家，也是现任腐竹，负责服务器整体规划和技术开发，额外任务:操办活动以及集体团建。 </p>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4 bg-gray-700/50 border-t border-gray-700">
-                        <div class="flex justify-center space-x-4"> <a href="#"
-                                class="text-gray-400 hover:text-blue-400"> <i class="fab fa-qq"></i> </a> <a href="#"
-                                class="text-gray-400 hover:text-blue-400"> <i class="fab fa-weixin"></i> </a> </div>
-                    </div>
-                </div> <!-- 成员2 -->
-                <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
-                    style="animation-delay: 0.4s;">
-                    <div class="relative pt-8 px-6 staff-content">
-                        <div class="staff-avatar-container"> <img class="staff-avatar"
-                                src="https://imgapi.cn/qq.php?qq=3038886380" alt="管理员头像"> </div>
-                        <div class="text-center pb-6">
-                            <h3 class="text-xl font-bold text-white">Freewind</h3>
-                            <p class="text-blue-400 text-sm">技术总监</p>
-                            <p class="mt-3 text-gray-300 text-sm"> 服务器运维和前端开发，负责服务器维护，确保服务器稳定运行，其他的问题找腐竹，不要找我。 </p>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4 bg-gray-700/50 border-t border-gray-700">
-                        <div class="flex justify-center space-x-4"> <a href="#"
-                                class="text-gray-400 hover:text-blue-400"> <i class="fab fa-github"></i> </a> <a
-                                href="#" class="text-gray-400 hover:text-blue-400"> <i class="fab fa-bilibili"></i> </a>
-                        </div>
-                    </div>
-                </div> <!-- 成员3 -->
-                <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
-                    style="animation-delay: 0.5s;">
-                    <div class="relative pt-8 px-6 staff-content">
-                        <div class="staff-avatar-container"> <img class="staff-avatar"
-                                src="https://imgapi.cn/qq.php?qq=3856727842" alt="管理员头像"> </div>
-                        <div class="text-center pb-6">
-                            <h3 class="text-xl font-bold text-white">WEER</h3>
-                            <p class="text-blue-400 text-sm">维护总监</p>
-                            <p class="mt-3 text-gray-300 text-sm"> 建筑以及命令大师，负责服务器地图设计和建筑审核，定期举办建筑比赛活动。 </p>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4 bg-gray-700/50 border-t border-gray-700">
-                        <div class="flex justify-center space-x-4"> <a href="#"
-                                class="text-gray-400 hover:text-blue-400"> <i class="fab fa-bilibili"></i> </a> <a
-                                href="#" class="text-gray-400 hover:text-blue-400"> <i class="fab fa-youtube"></i> </a>
-                        </div>
-                    </div>
-                </div> <!-- 成员4 -->
-                <div class="server-card staff-card bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300 slide-up"
-                    style="animation-delay: 0.6s;">
-                    <div class="relative pt-8 px-6 staff-content">
-                        <div class="staff-avatar-container"> <img class="staff-avatar"
-                                src="https://imgapi.cn/qq.php?qq=1952892902" alt="管理员头像"> </div>
-                        <div class="text-center pb-6">
-                            <h3 class="text-xl font-bold text-white">KING.</h3>
-                            <p class="text-blue-400 text-sm">客服主管</p>
-                            <p class="mt-3 text-gray-300 text-sm"> 负责玩家问题解答和纠纷处理，维护和谐的社区环境，24小时在线服务。 </p>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4 bg-gray-700/50 border-t border-gray-700">
-                        <div class="flex justify-center space-x-4"> <a href="#"
-                                class="text-gray-400 hover:text-blue-400"> <i class="fab fa-qq"></i> </a> <a href="#"
-                                class="text-gray-400 hover:text-blue-400"> <i class="fab fa-weixin"></i> </a> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> <!-- 加入我们 -->
-    <section id="join" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900/50 to-gray-900/50"
-        style="display: none;">
-        <div class="max-w-7xl mx-auto">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <div class="slide-up">
-                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl"> <span class="block">准备好加入我们了吗？</span>
-                    </h2>
-                    <p class="mt-4 text-lg text-gray-300"> 立即加入我们的世界，与数千名玩家一起探索无限可能的我的世界！ </p>
-                    <div class="mt-8">
-                        <div class="inline-flex rounded-md shadow"> <a href="https://qm.qq.com/q/VX6QjKEMwY"
-                                class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 btn-glow pulse">
-                                点击加入官群 <i class="fas fa-play ml-2"></i> </a> </div>
-                    </div>
-                </div>
-                <div class="mt-12 lg:mt-0 slide-up" style="animation-delay: 0.2s;">
-                    <div class="bg-gray-800 rounded-lg shadow-xl p-6">
-                        <h3 class="text-lg font-medium text-white mb-4">服务器连接信息</h3>
-                        <div class="space-y-4">
-                            <div> <label class="block text-sm font-medium text-gray-300">服务器IP</label>
-                                <div class="mt-1 flex rounded-md shadow-sm"> <input type="text" readonly
-                                        class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md bg-gray-700 border border-gray-600 text-white"
-                                        value="qszc.xyz:43943"> <button onclick="copyToClipboard('qszc.xyz:43943')"
-                                        class="inline-flex items-center px-3 py-2 border border-l-0 border-gray-600 rounded-r-md bg-gray-600 text-sm font-medium text-white hover:bg-gray-500">
-                                        复制 </button> </div>
-                            </div>
-                            <div> <label class="block text-sm font-medium text-gray-300">支持版本</label>
-                                <div class="mt-1"> <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900 text-blue-200">
-                                        1.21.x </span> </div>
-                            </div>
-                            <div> <label class="block text-sm font-medium text-gray-300">QQ群</label>
-                                <div class="mt-1 flex rounded-md shadow-sm"> <input type="text" readonly
-                                        class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md bg-gray-700 border border-gray-600 text-white"
-                                        value="1023056129"> <button onclick="copyToClipboard('1023056129')"
-                                        class="inline-flex items-center px-3 py-2 border border-l-0 border-gray-600 rounded-r-md bg-gray-600 text-sm font-medium text-white hover:bg-gray-500">
-                                        复制 </button> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> <!-- 页脚 -->
-    <footer class="bg-gray-900 border-t border-gray-800" style="display: none;">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-                <div class="space-y-8 xl:col-span-1">
-                    <div class="flex items-center space-x-2"> <i class="fas fa-cube text-blue-400 text-2xl"></i> <span
-                            class="text-white font-bold text-xl">倾世之城</span> </div>
-                    <p class="text-gray-300 text-sm"> 最受欢迎的服务器，自2022年运营至今，拥有超过上百注册玩家。 </p>
-                    <div class="flex space-x-6"> <a href="#" class="text-gray-4 hover:text-blue-400"> <i
-                                class="fab fa-qq"></i> </a> <a href="#" class="text-gray-400 hover:text-blue-400"> <i
-                                class="fab fa-weixin"></i> </a> <a href="#" class="text-gray-400 hover:text-blue-400">
-                            <i class="fab fa-bilibili"></i> </a> </div>
-                </div>
-                <div class="mt-12 border-t border-gray-800 pt-8">
-                    <p class="text-gray-400 text-sm text-center"> &copy; 2025 倾世之城我的世界服务器. 保留所有权利。 </p>
-                    <p class="mt-2 text-gray-500 text-xs text-center"> Minecraft 是 Mojang Studios 的商标，本服务器与 Mojang 或
-                        Microsoft 没有从属关系。 </p>
-                </div>
-            </div>
-    </footer>
+    </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为按钮添加点击波纹效果
+            const buttons = document.querySelectorAll('a.btn-hover');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const x = e.clientX - e.target.getBoundingClientRect().left;
+                    const y = e.clientY - e.target.getBoundingClientRect().top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.className = 'absolute bg-white opacity-40 -translate-x-1/2 -translate-y-1/2';
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    ripple.style.width = '10px';
+                    ripple.style.height = '10px';
+                    ripple.style.borderRadius = '4px';
+                    ripple.style.animation = 'ripple 1s ease-out forwards';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 1000);
+                });
+            });
+            
+            // 添加漂浮的线性装饰元素
+            const container = document.querySelector('.absolute.top-0.left-0');
+            const colors = ['rgba(255,255,255,0.1)', 'rgba(255,255,255,0.15)', 'rgba(255,255,255,0.2)'];
+            
+            for (let i = 0; i < 6; i++) {
+                const line = document.createElement('div');
+                const width = Math.random() * 100 + 50;
+                const height = Math.random() > 0.5 ? 1 : 2;
+                const duration = Math.random() * 8 + 8;
+                const delay = Math.random() * 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const angle = Math.random() * 60 - 30;
+                
+                line.style.position = 'absolute';
+                line.style.width = `${width}px`;
+                line.style.height = `${height}px`;
+                line.style.backgroundColor = color;
+                line.style.top = `${Math.random() * 100}%`;
+                line.style.left = `${Math.random() * 100}%`;
+                line.style.transform = `rotate(${angle}deg)`;
+                line.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                container.appendChild(line);
+            }
+            
+            // 添加样式表用于波纹效果
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: translate(-50%, -50%) scale(15);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
-
 </html>
