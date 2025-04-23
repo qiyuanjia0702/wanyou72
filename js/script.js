@@ -13,7 +13,9 @@ const imageResources = {
         "https://img.picui.cn/free/2025/04/18/68021f431de88.jpg",
         "https://img.picui.cn/free/2025/04/18/68021f42406dc.jpg",
         "https://img.picui.cn/free/2025/04/18/68021f41c12e3.jpg",
-        "https://img.picui.cn/free/2025/04/18/68021f41a241f.jpg"
+        "https://img.picui.cn/free/2025/04/18/68021f41a241f.jpg",
+        "https://img.picui.cn/free/2025/04/24/680930c43a6a6.jpg",
+        "https://img.picui.cn/free/2025/04/24/680930c428e02.jpg"
     ],
     server1: "https://img.picui.cn/free/2025/04/18/68021f4267b6b.jpg",
     server2: "https://img.picui.cn/free/2025/04/18/68021f425f8a6.jpg"
@@ -180,11 +182,11 @@ async function fetchServerStatus() {
             // 更新状态徽章
             statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-900 text-green-200';
             statusBadge.innerHTML = `
-        <svg class="-ml-1 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
-            <circle cx="4" cy="4" r="3" />
-        </svg>
-        运行中
-    `;
+<svg class="-ml-1 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
+    <circle cx="4" cy="4" r="3" />
+</svg>
+运行中
+`;
 
             // 计算并更新玩家进度条
             const playerPercentage = (data.p / data.mp) * 100;
@@ -210,11 +212,11 @@ async function fetchServerStatus() {
 
             statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-900 text-red-200';
             statusBadge.innerHTML = `
-        <svg class="-ml-1 mr-1.5 h-2 w-2 text-red-400" fill="currentColor" viewBox="0 0 8 8">
-            <circle cx="4" cy="4" r="3" />
-        </svg>
-        离线
-    `;
+<svg class="-ml-1 mr-1.5 h-2 w-2 text-red-400" fill="currentColor" viewBox="0 0 8 8">
+    <circle cx="4" cy="4" r="3" />
+</svg>
+离线
+`;
 
             playerProgress.style.width = '0%';
             playerProgress.className = 'bg-gray-600 h-2.5 rounded-full';
@@ -231,10 +233,10 @@ async function fetchServerStatus() {
         const statusBadge = document.getElementById('server-status-badge');
         statusBadge.className = 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-900 text-gray-200';
         statusBadge.innerHTML = `
-    <svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
-        <circle cx="4" cy="4" r="3" />
-    </svg>
-    错误
+<svg class="-ml-1 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
+<circle cx="4" cy="4" r="3" />
+</svg>
+错误
 `;
 
         document.getElementById('server-motd').textContent = '无法连接到状态服务器';
@@ -251,7 +253,8 @@ function initGallery() {
     // 动态生成画廊项目
     imageResources.gallery.forEach((imageUrl, index) => {
         const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
+        galleryItem.className = 'gallery-item animate';
+        galleryItem.style.setProperty('--animation-delay', `${index * 0.1}s`);
         galleryItem.onclick = () => openModal(index);
 
         const img = document.createElement('img');

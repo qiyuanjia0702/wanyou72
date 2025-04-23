@@ -149,6 +149,8 @@ body {
 
 .server-card {
     transition: all 0.3s ease;
+    padding: 1.5rem;
+    border-radius: 10px;
 }
 
 .nav-link {
@@ -173,6 +175,8 @@ body {
 .btn-glow {
     box-shadow: 0 0 15px rgba(96, 165, 250, 0.5);
     transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
 }
 
 .btn-glow:hover {
@@ -246,6 +250,10 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease;
     aspect-ratio: 16/9;
+    border: 1px solid #1e293b;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInScale 0.5s ease forwards;
 }
 
 .gallery-item:hover {
@@ -263,10 +271,32 @@ body {
     transform: scale(1.1);
 }
 
+.gallery-item.animate {
+    animation-delay: var(--animation-delay, 0s);
+}
+
 .gallery-more-btn {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.gallery-more-btn button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+/* 动画效果 */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* 模态框样式 */
