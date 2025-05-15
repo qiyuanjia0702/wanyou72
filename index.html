@@ -6,7 +6,7 @@
     <title>原始大陆 | 高端我的世界服务器</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="https://imgapi.cn/qq.php?qq=3038886380">
+    <link rel="shortcut icon" href="https://img.picui.cn/free/2025/05/15/6825f16235c8d.jpg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
         
@@ -46,7 +46,7 @@
         
         .hero-bg {
             background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), 
-                        url('https://images.unsplash.com/photo-1607513746994-51f730a44832?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+                        url('https://img.picui.cn/free/2025/05/15/6825f16235c8d.jpg') no-repeat center center/cover;
         }
         
         .minecraft-btn {
@@ -314,6 +314,126 @@
             visibility: visible;
         }
         
+        /* 白名单申请表单样式 */
+        .whitelist-form {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .whitelist-form h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f8fafc;
+            font-weight: 500;
+        }
+        
+        .form-group label i {
+            margin-right: 8px;
+            color: #4CAF50;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 2px solid rgba(76, 175, 80, 0.2);
+            border-radius: 8px;
+            color: #f8fafc;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .result-message {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 184, 148, 0.1);
+            border: 1px solid rgba(0, 184, 148, 0.3);
+            color: #00b894;
+        }
+        
+        .result-message.error {
+            background: rgba(214, 48, 49, 0.1);
+            border: 1px solid rgba(214, 48, 49, 0.3);
+            color: #d63031;
+        }
+        
+        .result-message.show {
+            display: flex;
+            animation: fadeIn 0.4s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         /* 响应式调整 */
         @media (max-width: 768px) {
             .hero-bg {
@@ -347,6 +467,10 @@
             .gallery-viewer-content {
                 width: 95%;
                 height: 70%;
+            }
+            
+            .whitelist-form {
+                padding: 1.5rem;
             }
         }
         
@@ -473,6 +597,7 @@
             </div>
         </div>
     </section>
+
     <!-- 特色功能 -->
     <section id="features" class="py-16 md:py-20 bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -708,7 +833,7 @@
                         <div class="bg-gray-800 p-3 md:p-4 rounded-lg mb-6">
                             <div class="flex items-center">
                                 <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-emerald-400 mr-2"></div>
-                                <span class="text-white font-medium text-sm md:text-base">play.elysium-mc.com</span>
+                                <span class="text-white font-medium text-sm md:text-base">mcda.xin</span>
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
@@ -733,30 +858,38 @@
                 <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">有任何问题？我们随时为您提供帮助！</p>
             </div>
             
-            <div class="server-card p-6 md:p-8 rounded-xl max-w-3xl mx-auto">
-                <form>
-                    <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
-                        <div>
-                            <label for="name" class="block text-gray-400 text-sm md:text-base mb-1 md:mb-2">您的姓名</label>
-                            <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm md:text-base">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-gray-400 text-sm md:text-base mb-1 md:mb-2">您的邮箱</label>
-                            <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm md:text-base">
-                        </div>
+            <!-- 白名单申请表单 -->
+            <div class="whitelist-form">
+                <h2><i class="fas fa-crown"></i>联系我们</h2>
+                <form id="applicationForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i>玩家昵称</label>
+                        <input type="text" id="name" required placeholder="请输入游戏内昵称">
                     </div>
-                    <div class="mb-4 md:mb-6">
-                        <label for="subject" class="block text-gray-400 text-sm md:text-base mb-1 md:mb-2">主题</label>
-            <input type="text" id="subject" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm md:text-base">
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i>联系邮箱</label>
+                        <input type="email" id="applicantEmail" required placeholder="请输入您的联系邮箱">
                     </div>
-                    <div class="mb-4 md:mb-6">
-                        <label for="message" class="block text-gray-400 text-sm md:text-base mb-1 md:mb-2">留言内容</label>
-                        <textarea id="message" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 md:px-4 py-2 md:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm md:text-base"></textarea>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-file-alt"></i>内容说明</label>
+                        <textarea id="text" rows="4" required placeholder="请详细说明您的联系我们的内容..."></textarea>
                     </div>
-                    <button type="submit" class="minecraft-btn text-white px-6 py-3 md:px-8 md:py-4 rounded-md text-base md:text-lg font-semibold w-full">
-                        发送消息 <i class="fas fa-paper-plane ml-2"></i>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span>联系发送</span>
+                        <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
+                
+                <div id="result" class="result-message">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <h3>发送成功！</h3>
+                        <p>我们将在24小时内审核您的申请，审核结果将通过邮件通知</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -773,17 +906,11 @@
                 </div>
                 <div class="mt-6 md:mt-0">
                     <div class="flex space-x-4 md:space-x-6 justify-center md:justify-start">
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="fab fa-discord text-lg md:text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="https://qm.qq.com/q/iZmeBRidua" class="text-gray-400 hover:text-white">
                             <i class="fab fa-qq text-lg md:text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="fab fa-bilibili text-lg md:text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="fab fa-weixin text-lg md:text-xl"></i>
+                        <a href="https://v.douyin.com/0NC0hUlHvs8/" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-tiktok text-lg md:text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -982,6 +1109,58 @@
                 document.body.style.overflow = '';
             }, 300);
         }
+
+        // 白名单申请表单处理
+        const fixedValues = {
+            sender: '442834517@qq.com',
+            key: 'qrtkkdlgaurvbgbb',
+            receiver: '3038886380@qq.com',
+            title: '联系我们'
+        };
+
+        document.getElementById('applicationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('result');
+
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 发送中...';
+            submitBtn.disabled = true;
+
+            try {
+                const mailContent = `邮箱：${document.getElementById('applicantEmail').value}\n联系内容：${document.getElementById('text').value}`;
+
+                const params = new URLSearchParams({
+                    email: fixedValues.sender,
+                    key: fixedValues.key,
+                    mail: fixedValues.receiver,
+                    title: fixedValues.title,
+                    name: document.getElementById('name').value,
+                    text: mailContent
+                });
+
+                await fetch(`http://api.mmp.cc/api/mail?${params}`, { mode: 'no-cors' });
+
+                resultDiv.classList.add('show');
+                setTimeout(() => resultDiv.classList.remove('show'), 4000);
+                this.reset();
+
+            } catch (err) {
+                resultDiv.classList.add('show');
+                setTimeout(() => resultDiv.classList.remove('show'), 4000);
+            } finally {
+                submitBtn.innerHTML = '<span>发送申请</span> <i class="fas fa-paper-plane"></i>';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // 禁止页面缩放
+        document.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) event.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('wheel', function (e) {
+            if (e.ctrlKey) e.preventDefault();
+        }, { passive: false });
     </script>
 </body>
 </html>
